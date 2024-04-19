@@ -1,0 +1,2 @@
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Data\Dataset(test)\Medicinal_Leaf_dataset\Aloevera\2.jpg
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Data\Dataset(test)\Medicinal_plant_dataset\Aloevera\339.jpg

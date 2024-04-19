@@ -1,186 +1,174 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
-
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
-using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+using System.IO;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 {
     /// <summary>
     /// This class is responsible for parsing images from the given directory path.
+    /// It writes the paths of the images to a text file.
     /// </summary>
     internal class ImageAccess
     {
         /// <summary>
-        /// This method is responsible for parsing images from the given directory path.
-        /// It create paths for leaf and plant dataset and then pass the complete path to the ParseImage method.
+        /// Parses the directories for image files and writes their paths to a text file.
         /// </summary>
-        /// <param name="path"> The base path of the dataset. </param>
-        public void BaseDirectory(string path)
+        /// <param name="path">The base path of the directories.</param>
+        /// <param name="pathTextFile">The path of the text file to write to.</param>
+        public void DirectoryParser(string path, string pathTextFile)
         {
-            string pathLeaf = path + "\\Medicinal_Leaf_dataset";
-            string pathPlant = path + "\\Medicinal_plant_dataset";
-
-            ImageAccess imageAccess = new ImageAccess();
-            imageAccess.ParseImage(pathLeaf);
-            imageAccess.ParseImage(pathPlant);
-        }
-
-        /// <summary>
-        /// This method is responsible for checking if the given path is a correct directory or not. Means check for the existance of the path.
-        /// If the directory is correct and exist then it will call the ProcessDirectory method.
-        /// </summary>
-        /// <param name="Path"></param>
-        /// <exception cref="DirectoryNotFoundException"></exception>
-        private void ParseImage(string Path)
-        {
-            if (!Directory.Exists(Path))
+            string[] directories = new string[]
             {
-                throw new DirectoryNotFoundException($"The directory '{Path}' does not exist.");
-            }
+                    Path.Combine(path, "Medicinal_Leaf_dataset"),
+                    Path.Combine(path, "Medicinal_plant_dataset")
+            };
 
-            WriteLine($" Stating point: Processing Path.");
-            ProcessDirectory(Path);
-        }
+            Directory.CreateDirectory(pathTextFile);
 
-        /// <summary>
-        /// This method is responsible for processing or chacking whether the given directory have and subdirectories or not and then call ProcessImage method.
-        /// </summary>
-        /// <param name="Path"></param>
-        private void ProcessDirectory(string Path)
-        {
-            string[] subdirectories = Directory.GetDirectories(Path);
-            foreach (string subdirectory in subdirectories)
+            using (StreamWriter writer = new StreamWriter(Path.Combine(pathTextFile, "dataset.txt"), false))
             {
-                ProcessImage(subdirectory);
-            }
-        }
-
-        /// <summary>
-        /// This method is responsible for processing the images from the given subdirectory path.
-        /// </summary>
-        /// <param name="subDirectoryPath"></param>
-        private void ProcessImage(string subDirectoryPath)
-        {
-            string[] filePaths = Directory.GetFiles(subDirectoryPath);
-            foreach (string filePath in filePaths)
-            {
-                if (Path.GetExtension(filePath) == ".jpg" || Path.GetExtension(filePath) == ".png")
+                foreach (string directory in directories)
                 {
-                    WriteLine($"Processing {filePath}.");
+                    if (!Directory.Exists(directory))
+                    {
+                        throw new DirectoryNotFoundException($"The directory '{directory}' does not exist.");
+                    }
 
-                    ImageResize imageResize = new ImageResize();
-                    imageResize.Resizer(filePath);
+                    foreach (string subdirectory in Directory.EnumerateDirectories(directory))
+                    {
+                        foreach (string filePath in Directory.EnumerateFiles(subdirectory))
+                        {
+                            string extension = Path.GetExtension(filePath);
+                            if (extension == ".jpg" || extension == ".png")
+                            {
+                                writer.WriteLine(filePath);
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 
-    internal class ImageResize
+    /// <summary>
+    /// This class is responsible for writing images to a directory.
+    /// </summary>
+    internal class NewImageWrite
     {
-        public string outputDirectory = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(resized)";
-
-        public void Resizer(string path)
+        /// <summary>
+        /// Creates a directory and writes an image to it.
+        /// </summary>
+        /// <param name="path">The path of the directory to create.</param>
+        /// <param name="newImg">The image to write.</param>
+        /// <param name="imgName">The name of the image file.</param>
+        public void DirrectoryCreate(string path, Mat newImg, string imgName)
         {
-            WriteLine($"In ImageResize");
-            Resizer_244_244(path);
-            Resizer_299_299(path);
-        }
-
-        private void Resizer_244_244(string path)
-        {
-            int width = 244;
-            int height = 244;
-
-            Mat image = CvInvoke.Imread(path, ImreadModes.Color);
-            Mat resizedImage = new Mat();
-            CvInvoke.Resize(image, resizedImage, new Size(width, height), 0, 0, Inter.Lanczos4);
-
-            DirectoryInfo? dirParentInfo = new DirectoryInfo(path).Parent?.Parent;
-            DirectoryInfo? dirInfo = new DirectoryInfo(path).Parent;
-            string? dirName = null;
-            string? dirParentName = null;
-            if (dirInfo is not null && dirParentInfo is not null)
+            if (!Directory.Exists(path))
             {
-                dirParentName = dirParentInfo.Name;
-                dirName = dirInfo.Name;
+                try
+                {
+                    Directory.CreateDirectory(path);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to create directory: {e}");
+                }
             }
-            string imgName = Path.GetFileName(path);
-            WriteLine(imgName);
-            outputDirectory = outputDirectory + "\\size244_244" + "\\" + dirParentName + "\\" + dirName;
 
-            NewImageWrite newImageWrite = new NewImageWrite();
-            newImageWrite.DirrectoryCreate(outputDirectory, resizedImage, imgName);
+            WriteImage(path, newImg, imgName);
         }
 
-        private void Resizer_299_299(string path)
+        /// <summary>
+        /// Writes an image to a file.
+        /// </summary>
+        /// <param name="path">The path of the file to write to.</param>
+        /// <param name="newImg">The image to write.</param>
+        /// <param name="imgName">The name of the image file.</param>
+        private void WriteImage(string path, Mat newImg, string imgName)
         {
-            int width = 299;
-            int height = 299;
+            string newPath = Path.Combine(path, imgName);
 
-            Mat image = CvInvoke.Imread(path, ImreadModes.Color);
-            Mat resizedImage = new Mat();
-            CvInvoke.Resize(image, resizedImage, new Size(width, height), 0, 0, Inter.Lanczos4);
-
-            DirectoryInfo? dirParentInfo = new DirectoryInfo(path).Parent?.Parent;
-            DirectoryInfo? dirInfo = new DirectoryInfo(path).Parent;
-            string? dirName = null;
-            string? dirParentName = null;
-            if (dirInfo is not null && dirParentInfo is not null)
-            {
-                dirParentName = dirParentInfo.Name;
-                dirName = dirInfo.Name;
-            }
-            string imgName = Path.GetFileName(path);
-            WriteLine(imgName);
-            outputDirectory = outputDirectory + "\\299_299" + "\\" + dirParentName + "\\" + dirName;
-
-            NewImageWrite newImageWrite = new NewImageWrite();
-            newImageWrite.DirrectoryCreate(outputDirectory, resizedImage, imgName);
-        }
-    }
-}
-
-internal class NewImageWrite
-{
-    public void DirrectoryCreate(string path, Mat newImg, string imgName)
-    {
-        if (!Directory.Exists(path))
-        {
             try
             {
-                Directory.CreateDirectory(path);
-                WriteLine($"Directory Created Successfully: {path}");
+                CvInvoke.Imwrite(newPath, newImg);
+                Console.WriteLine($"Image written successfully: {newPath}");
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                WriteLine($"Failed to create directory: {e}");
+                Console.WriteLine($"Failed to write image: {e}");
             }
         }
-        else
-        {
-            WriteLine($"Directory Already Exists: {path}");
-        }
-
-        WriteImage(path, newImg, imgName);
     }
 
-    private void WriteImage(string path, Mat newImg, string imgName)
+    /// <summary>
+    /// This class is responsible for resizing images.
+    /// </summary>
+    internal class ImageResize
     {
-        string newPath = Path.Combine(path, imgName);
+        /// <summary>
+        /// The directory to output the resized images to.
+        /// </summary>
+        public string OutputDirectory { get; } = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(resized)";
 
-        // Write the image to a file
-        try
+        private readonly NewImageWrite _newImageWrite = new NewImageWrite();
+
+        /// <summary>
+        /// Resizes the images specified in the text file at the given path.
+        /// </summary>
+        /// <param name="path">The path of the text file containing the image paths.</param>
+        public void ResizeFactory(string path)
         {
-            CvInvoke.Imwrite(newPath, newImg);
-            WriteLine($"Image written successfully: {newPath}");
+            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            {
+                string line;
+                while ((line = reader.ReadLine()!) != null)
+                {
+                    Resizer(line, 224, 224);
+                    Resizer(line, 299, 299);
+                }
+            }
         }
-        catch (IOException e)
+
+        /// <summary>
+        /// Resizes an image to the specified width and height.
+        /// </summary>
+        /// <param name="path">The path of the image to resize.</param>
+        /// <param name="width">The width to resize to.</param>
+        /// <param name="height">The height to resize to.</param>
+        private void Resizer(string path, int width, int height)
         {
-            WriteLine($"Failed to write image: {e}");
+            Mat image = CvInvoke.Imread(path, ImreadModes.Color);
+            Mat resizedImage = new Mat();
+            CvInvoke.Resize(image, resizedImage, new Size(width, height), 0, 0, Inter.Area);
+
+            ImageWriterAssistance(path, resizedImage, width, height);
         }
+
+        /// <summary>
+        /// Assists in writing the resized image to the output directory.
+        /// </summary>
+        /// <param name="path">The path of the original image.</param>
+        /// <param name="newImg">The resized image.</param>
+        /// <param name="width">The width of the resized image.</param>
+        /// <param name="height">The height of the resized image.</param>
+        private void ImageWriterAssistance(string path, Mat newImg, int width, int height)
+        {
+            DirectoryInfo? dirParentInfo = new DirectoryInfo(path).Parent?.Parent;
+            DirectoryInfo? dirInfo = new DirectoryInfo(path).Parent;
+            string? dirName = dirInfo?.Name!;
+            string? dirParentName = dirParentInfo?.Name!;
+            string imgName = Path.GetFileName(path);
+            string specificOutputDirectory = Path.Combine(OutputDirectory, $"size{width}_{height}", dirParentName, dirName);
+
+            _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+        }
+    }
+
+    /// <summary>
+    /// This class is responsible for Data Augmentation.
+    /// </summary>
+    internal class DataAugmentation
+    {
     }
 }
