@@ -7,12 +7,10 @@ namespace Minor_Project_Ai_Plant_Recognition
         public static void Main(string[] args)
         {
             // Directory of orignal dataset
-            string pathLeaf = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(orignal)\\Medicinal_Leaf_dataset";
-            string pathPlant = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(orignal)\\Medicinal_plant_dataset";
+            string path = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(orignal)";
 
             ImageAccess imageAccess = new ImageAccess();
-            //imageAccess.ParseImage(pathLeaf);
-            imageAccess.ParseImage(pathPlant);
+            imageAccess.BaseDirectory(path);
         }
     }
 }
