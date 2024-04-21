@@ -11,7 +11,7 @@ namespace Minor_Project_Ai_Plant_Recognition
             string path = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(test)";
             string pathTextFile = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Temp\\dataset";
 
-            string[] action = ["resize", "Augment"];
+            string[] action = ["Resize", "Augment", "BckgrndRemove"];
 
             ImageAccess imageAccess = new ImageAccess();
 
@@ -19,13 +19,18 @@ namespace Minor_Project_Ai_Plant_Recognition
 
             DataAugmentation augmentation = new DataAugmentation();
 
+            BckgrndRemover bckgrndRemover = new BckgrndRemover();
+
             imageAccess.DirectoryParser(path, pathTextFile, action[0]);
             imageResize.ResizeFactory(pathTextFile);
 
             string pathResized = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(resized)";
             imageAccess.DirectoryParser(pathResized, pathTextFile, action[1]);
-
             augmentation.AugmentFactory(pathTextFile);
+
+            string pathAugmented = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(augmented)";
+            imageAccess.DirectoryParser(pathAugmented, pathTextFile, action[2]);
+            bckgrndRemover.RemoveBackgroundFactory(pathTextFile);
         }
     }
 }

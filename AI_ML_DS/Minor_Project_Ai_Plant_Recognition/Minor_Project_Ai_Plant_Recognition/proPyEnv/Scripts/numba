@@ -1,0 +1,8 @@
+#!D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\minor_project_ai_plant_recognition\proPyEnv\Scripts\python.exe
+# -*- coding: UTF-8 -*-
+from __future__ import print_function, division, absolute_import
+
+from numba.misc.numba_entry import main
+
+if __name__ == "__main__":
+    main()

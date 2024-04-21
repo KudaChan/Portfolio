@@ -1,6 +1,8 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using System.Drawing;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 {
@@ -57,13 +59,15 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         {
             List<string> directories = new List<string>();
 
-            if (action == "resize" || action == "parse")
+            if (action == "Resize" || action == "parse")
             {
+                Console.WriteLine("in resize or parse:");
                 directories.Add(Path.Combine(path, "Medicinal_Leaf_dataset"));
                 directories.Add(Path.Combine(path, "Medicinal_plant_dataset"));
             }
             else if (action == "Augment")
             {
+                Console.WriteLine("in augment: ");
                 directories.Add(Path.Combine(path, "size224_224"));
                 directories.Add(Path.Combine(path, "size299_299"));
 
@@ -72,8 +76,25 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
                     directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
                 }
             }
+            else if (action == "BckgrndRemove")
+            {
+                Console.WriteLine("in background remover: ");
+                List<string> dirNames = new List<string> { "flipped", "noised", "resized", "rotated", "translated" };
+                List<string> dimension = new List<string> { "size224_224", "size299_299" };
+                foreach (string dirName in dirNames)
+                {
+                    foreach (string dim in dimension)
+                    {
+                        directories.Add(Path.Combine(path, dirName, dim));
+                    }
+                }
 
-            Console.WriteLine("in augment: ");
+                foreach (string directory in directories.ToList()) // Use ToList to create a copy for iteration
+                {
+                    directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
+                }
+            }
+
             foreach (string directory in directories)
             {
                 Console.WriteLine(directory);
@@ -219,6 +240,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
                     RotateAugmenter(line);
                     NoiseAugmenter(line);
                     TranslateAugmenter(line);
+                    CopyResizedImage(line);
                 }
             }
         }
@@ -291,6 +313,19 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         }
 
         /// <summary>
+        /// Augments an image by copying it to the output directory.
+        /// </summary>
+        /// <param name="path"></param>
+        private void CopyResizedImage(string path)
+        {
+            string action = "resized";
+            Mat image = CvInvoke.Imread(path, ImreadModes.Color);
+            Mat copyResizedImage = image;
+
+            ImageWriterAssistance(path, copyResizedImage, action);
+        }
+
+        /// <summary>
         /// The directory to output the augmented images to.
         /// </summary>
         public string OutputDirectory { get; } = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(augmented)";
@@ -310,6 +345,74 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             string? dirParentParentName = directoryParentParentInfo?.Name!;
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, action, dirParentParentName, dirParentName, dirName);
+
+            _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+        }
+    }
+
+    /// <summary>
+    /// This class is responsible for removing the background from images.
+    /// </summary>
+    internal class BckgrndRemover
+    {
+        private readonly NewImageWrite _newImageWrite = new NewImageWrite();
+
+        /// <summary>
+        /// Removes the background from the images specified in the text file at the given path.
+        /// </summary>
+        /// <param name="path">The path of the text file containing the image paths.</param>
+        public void RemoveBackgroundFactory(string path)
+        {
+            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            {
+                string line;
+                while ((line = reader.ReadLine()!) != null)
+                {
+                    PythonScriptRemoveBackground(line);
+                }
+            }
+        }
+
+        private void PythonScriptRemoveBackground(string path)
+        {
+            var engine = Python.CreateEngine();
+
+            var pyEnvPath = engine.GetSearchPaths();
+            pyEnvPath.Add("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\proPyEnv\\Lib\\site-packages");
+            engine.SetSearchPaths(pyEnvPath);
+
+            var scope = engine.CreateScope();
+            var source = engine.CreateScriptSourceFromFile("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py");
+            var compilation = source.Compile();
+            compilation.Execute(scope);
+            dynamic removeBackground = scope.GetVariable("remove_background");
+            Mat resultImage = removeBackground(path);
+
+            ImageWriterAssistance(path, resultImage);
+        }
+
+        /// <summary>
+        /// The directory to output the images with the background removed to.
+        /// </summary>
+        public string OutputDirectory { get; } = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(background_removed)";
+
+        /// <summary>
+        /// Assists in writing the image with the background removed to the output directory.
+        /// </summary>
+        /// <param name="path">The path of the original image.</param>
+        /// <param name="newImg">The image with the background removed.</param>
+        private void ImageWriterAssistance(string path, Mat newImg)
+        {
+            DirectoryInfo? dirParentParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent?.Parent;
+            DirectoryInfo? dirParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent;
+            DirectoryInfo? dirParentInfo = new DirectoryInfo(path).Parent?.Parent;
+            DirectoryInfo? dirInfo = new DirectoryInfo(path).Parent;
+            string? dirName = dirInfo?.Name!;
+            string? dirParentName = dirParentInfo?.Name!;
+            string? dirParentParentName = dirParentParentInfo?.Name!;
+            string? dirParentParentParentName = dirParentParentParentInfo?.Name!;
+            string imgName = Path.GetFileName(path);
+            string specificOutputDirectory = Path.Combine(OutputDirectory, dirParentParentParentName, dirParentParentName, dirParentName, dirName);
 
             _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }

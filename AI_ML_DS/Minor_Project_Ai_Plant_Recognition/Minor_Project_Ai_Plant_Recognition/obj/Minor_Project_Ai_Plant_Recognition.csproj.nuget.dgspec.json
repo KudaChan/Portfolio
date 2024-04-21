@@ -57,6 +57,14 @@
             "Emgu.CV.runtime.windows": {
               "target": "Package",
               "version": "[4.8.1.5350, )"
+            },
+            "IronPython": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            },
+            "IronPython.StdLib": {
+              "target": "Package",
+              "version": "[3.4.1, )"
             }
           },
           "imports": [

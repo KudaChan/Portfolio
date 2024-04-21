@@ -14,11 +14,15 @@
   <ItemGroup>
     <PackageReference Include="Emgu.CV" Version="4.8.1.5350" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.8.1.5350" />
+    <PackageReference Include="IronPython" Version="3.4.1" />
+    <PackageReference Include="IronPython.StdLib" Version="3.4.1" />
+    <!--<PackageReference Include="pythonnet" Version="3.0.3" />-->
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Documentation\" />
+    <Folder Include="Temp\dataset\" />
   </ItemGroup>
 
 </Project>
