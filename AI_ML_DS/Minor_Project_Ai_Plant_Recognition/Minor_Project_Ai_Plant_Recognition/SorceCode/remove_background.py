@@ -1,8 +1,15 @@
 ﻿from rembg import remove
+
+print("rembg done")
 from PIL import Image
+
+print("PIL done")
 from io import BytesIO
+
+print("io done")
 import numpy as np
 
+print("numpy done")
 
 def remove_background(image_path):
     with open(image_path, "rb") as input_img_file:
@@ -17,7 +24,6 @@ def remove_background(image_path):
             img_png = Image.open(BytesIO(back_remove)).convert("RGBA")
 
         print("Background Removed: ok")
-
 
 # return np.array(img_png)
 

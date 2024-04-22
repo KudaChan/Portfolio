@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\pyhtonTemp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|d:\\project\\pyhtontemp\\pyhtontemp\\test.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|solutionrelative:pyhtontemp\\test.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|d:\\project\\pyhtontemp\\pyhtontemp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|solutionrelative:pyhtontemp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|d:\\project\\pyhtontemp\\pyhtontemp\\pyhtontemp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{63019B7F-DE14-4483-921E-372B3308B7B7}|pyhtonTemp\\pyhtonTemp.csproj|solutionrelative:pyhtontemp\\pyhtontemp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 210,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\Program.cs",
+              "RelativeDocumentMoniker": "pyhtonTemp\\Program.cs",
+              "ToolTip": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\Program.cs",
+              "RelativeToolTip": "pyhtonTemp\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T15:15:56.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "pyhtonTemp",
+              "DocumentMoniker": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\pyhtonTemp.csproj",
+              "RelativeDocumentMoniker": "pyhtonTemp\\pyhtonTemp.csproj",
+              "ToolTip": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\pyhtonTemp.csproj",
+              "RelativeToolTip": "pyhtonTemp\\pyhtonTemp.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-22T15:16:27.101Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 160,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "test.py",
+              "DocumentMoniker": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\test.py",
+              "RelativeDocumentMoniker": "pyhtonTemp\\test.py",
+              "ToolTip": "D:\\Project\\pyhtonTemp\\pyhtonTemp\\test.py",
+              "RelativeToolTip": "pyhtonTemp\\test.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-04-22T15:19:45.077Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

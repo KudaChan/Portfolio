@@ -58,13 +58,9 @@
               "target": "Package",
               "version": "[4.8.1.5350, )"
             },
-            "IronPython": {
+            "pythonnet": {
               "target": "Package",
-              "version": "[3.4.1, )"
-            },
-            "IronPython.StdLib": {
-              "target": "Package",
-              "version": "[3.4.1, )"
+              "version": "[3.0.3, )"
             }
           },
           "imports": [

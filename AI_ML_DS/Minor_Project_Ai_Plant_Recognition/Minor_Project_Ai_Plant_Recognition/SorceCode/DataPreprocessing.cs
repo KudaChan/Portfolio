@@ -1,8 +1,7 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using System.Drawing;
-using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
+using Python.Runtime;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 {
@@ -375,20 +374,32 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 
         private void PythonScriptRemoveBackground(string path)
         {
-            var engine = Python.CreateEngine();
+            Environment.SetEnvironmentVariable("PYTHONNET_PYDLL", @"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\proPyEnv\DLLs\python39.dll");
 
-            var pyEnvPath = engine.GetSearchPaths();
-            pyEnvPath.Add("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\proPyEnv\\Lib\\site-packages");
-            engine.SetSearchPaths(pyEnvPath);
+            PythonEngine.Initialize();
 
-            var scope = engine.CreateScope();
-            var source = engine.CreateScriptSourceFromFile("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py");
-            var compilation = source.Compile();
-            compilation.Execute(scope);
-            dynamic removeBackground = scope.GetVariable("remove_background");
-            Mat resultImage = removeBackground(path);
+            try
+            {
+                using (Py.GIL())
+                {
+                    dynamic sys = Py.Import("sys");
 
-            ImageWriterAssistance(path, resultImage);
+                    sys.path.append("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode");
+
+                    dynamic removeBackground = Py.Import("remove_background");
+                    dynamic newImg = removeBackground.remove_background(path);
+
+                    ImageWriterAssistance(path, newImg);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Failed to remove background: {e.Message}");
+            }
+            finally
+            {
+                PythonEngine.Shutdown();
+            }
         }
 
         /// <summary>

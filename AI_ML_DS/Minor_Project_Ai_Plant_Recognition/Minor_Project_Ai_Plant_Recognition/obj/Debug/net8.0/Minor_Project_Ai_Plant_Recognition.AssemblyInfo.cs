@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Minor_Project_Ai_Plant_Recognition")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ab5740aab20afe02e83d4c08b5a4639c4956404")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5d68405d88f0b167dac405eaba9e2ad6d620526")]
 [assembly: System.Reflection.AssemblyProductAttribute("Minor_Project_Ai_Plant_Recognition")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Minor_Project_Ai_Plant_Recognition")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
