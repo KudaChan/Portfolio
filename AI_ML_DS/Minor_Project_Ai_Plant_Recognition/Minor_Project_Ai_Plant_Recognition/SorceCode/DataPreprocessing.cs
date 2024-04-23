@@ -2,6 +2,7 @@
 using Emgu.CV.CvEnum;
 using System.Drawing;
 using Python.Runtime;
+using Emgu.CV.Util;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 {
@@ -24,7 +25,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 
             Directory.CreateDirectory(pathTextFile);
 
-            using (StreamWriter writer = new StreamWriter(Path.Combine(pathTextFile, "dataset.txt"), false))
+            using (StreamWriter writer = new(Path.Combine(pathTextFile, "dataset.txt"), false))
             {
                 foreach (string directory in directories)
                 {
@@ -93,12 +94,24 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
                     directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
                 }
             }
-
-            foreach (string directory in directories)
+            else if (action == "Normalization")
             {
-                Console.WriteLine(directory);
-            }
+                Console.WriteLine("in normalization: ");
+                List<string> dirNames = new List<string> { "flipped", "noised", "resized", "rotated", "translated" };
+                List<string> dimension = new List<string> { "size224_224", "size299_299" };
+                foreach (string dirName in dirNames)
+                {
+                    foreach (string dim in dimension)
+                    {
+                        directories.Add(Path.Combine(path, dirName, dim));
+                    }
+                }
 
+                foreach (string directory in directories.ToList()) // Use ToList to create a copy for iteration
+                {
+                    directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
+                }
+            }
             return directories;
         }
     }
@@ -114,7 +127,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="path">The path of the directory to create.</param>
         /// <param name="newImg">The image to write.</param>
         /// <param name="imgName">The name of the image file.</param>
-        public void DirrectoryCreate(string path, Mat newImg, string imgName)
+        public static void DirrectoryCreate(string path, Mat newImg, string imgName)
         {
             if (!Directory.Exists(path))
             {
@@ -137,17 +150,17 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="path">The path of the file to write to.</param>
         /// <param name="newImg">The image to write.</param>
         /// <param name="imgName">The name of the image file.</param>
-        private void WriteImage(string path, Mat newImg, string imgName)
+        private static void WriteImage(string path, Mat newImg, string imgName)
         {
             string newPath = Path.Combine(path, imgName);
 
             try
             {
                 CvInvoke.Imwrite(newPath, newImg);
-                Console.WriteLine($"Image written successfully: {newPath}");
             }
             catch (IOException e)
             {
+                Console.WriteLine("In NewImageWriter");
                 Console.WriteLine($"Failed to write image: {e}");
             }
         }
@@ -213,7 +226,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, $"size{width}_{height}", dirParentName, dirName);
 
-            _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+            NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
     }
 
@@ -345,7 +358,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, action, dirParentParentName, dirParentName, dirName);
 
-            _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+            NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
     }
 
@@ -392,9 +405,6 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
                     // Get the output path for the processed image
                     string outputPath = ImageWriterAssistance(path);
 
-                    WriteLine($"Path: {path}");
-                    WriteLine($"Output Path: {outputPath}");
-
                     // Read the Python script
                     string pythonScript = System.IO.File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\remove_background.py");
                     // Run the Python script
@@ -406,7 +416,6 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             catch (Exception e)
             {
                 Console.WriteLine($"Failed to remove background: {e.Message}");
-                //Console.WriteLine($"Stack Trace: {e.StackTrace}");
             }
             finally
             {
@@ -441,6 +450,79 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             return Path.Combine(specificOutputDirectory, imgName);
             // Regular image write is not needed.
             //_newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+        }
+    }
+
+    /// <summary>
+    /// This class is responsble for normalization of images data.
+    /// </summary>
+    internal class Normalization
+    {
+        private readonly NewImageWrite _newImageWrite = new NewImageWrite();
+
+        /// <summary>
+        /// Normalizes the images specified in the text file at the given path.
+        /// </summary>
+        /// <param name="path">The path of the text file containing the image paths.</param>
+        public void NormalizationFactor(string path)
+        {
+            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            {
+                string line;
+                while ((line = reader.ReadLine()!) != null)
+                {
+                    NormalizeColorWise(line);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Normalizes an image using min-max.
+        /// </summary>
+        /// <param name="path">The path of the image to process.</param>
+        public void NormalizeColorWise(string path)
+        {
+            Mat image = CvInvoke.Imread(path, ImreadModes.Color);
+
+            Mat normalizedImage = image.Clone();
+            VectorOfMat vm = new VectorOfMat();
+            CvInvoke.Split(image, vm);
+
+            for (int i = 0; i < vm.Size; i++)
+            {
+                Mat channel = vm[i];
+                CvInvoke.Normalize(channel, channel, 0, 255, NormType.MinMax);
+            }
+            CvInvoke.Merge(vm, normalizedImage);
+
+            ImageWriterAssistance(path, normalizedImage);
+        }
+
+        /// <summary>
+        /// The directory to output the normalized images to the directory.
+        /// </summary>
+        public string OutputDirectory { get; } = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(normalized)";
+
+        /// <summary>
+        /// Assists in writing the normalized image to the output directory.
+        /// </summary>
+        /// <param name="path">The path of the original image.</param>
+        /// <param name="newImg">The image with the background removed.</param>
+
+        private void ImageWriterAssistance(string path, Mat newImg)
+        {
+            DirectoryInfo? dirParentParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent?.Parent;
+            DirectoryInfo? dirParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent;
+            DirectoryInfo? dirParentInfo = new DirectoryInfo(path).Parent?.Parent;
+            DirectoryInfo? dirInfo = new DirectoryInfo(path).Parent;
+            string? dirName = dirInfo?.Name!;
+            string? dirParentName = dirParentInfo?.Name!;
+            string? dirParentParentName = dirParentParentInfo?.Name!;
+            string? dirParentParentParentName = dirParentParentParentInfo?.Name!;
+            string imgName = Path.GetFileName(path);
+            string specificOutputDirectory = Path.Combine(OutputDirectory, dirParentParentParentName, dirParentParentName, dirParentName, dirName);
+
+            NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
     }
 }

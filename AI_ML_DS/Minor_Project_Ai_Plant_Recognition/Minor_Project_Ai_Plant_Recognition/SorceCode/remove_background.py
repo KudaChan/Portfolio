@@ -24,5 +24,3 @@ def remove_backgrnd(image_path, image_output_path):
         os.makedirs(os.path.dirname(image_output_path), exist_ok=True)
 
         img.save(image_output_path, "JPEG")
-
-    print("Background Removed: ok")
