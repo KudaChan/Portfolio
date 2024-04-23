@@ -8,11 +8,31 @@ namespace pyhtonTemp
     {
         private static void Main(string[] args)
         {
-            PythonEngine.Initialize();
-            using (Py.GIL())
+            Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+            // Set the Python HOME environment variable (replace with your actual path)
+            //Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
+
+            // Set the Python PATH environment variable (replace with your actual path)
+            //Environment.SetEnvironmentVariable("PYTHONPATH", @"C:\myPyEnv\testEnv\Lib\site-packages", EnvironmentVariableTarget.Process);
+
+            try
             {
-                dynamic np = Py.Import("numpy");
-                Console.WriteLine(np.cos(np.pi * 2));
+                PythonEngine.Initialize();
+                using (Py.GIL())
+                {
+                    string pythoncode = System.IO.File.ReadAllText(@"D:\Project\pyhtonTemp\pyhtonTemp\test.py");
+                    PythonEngine.RunSimpleString(pythoncode);
+
+                    dynamic result = PythonEngine.RunSimpleString("my_sum()");
+                }
+            }
+            catch (PythonException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                PythonEngine.Shutdown();
             }
         }
     }

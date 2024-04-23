@@ -372,32 +372,45 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             }
         }
 
+        /// <summary>
+        /// Executes a Python script to remove the background from an image.
+        /// </summary>
+        /// <param name="path">The path of the image to process.</param>
         private void PythonScriptRemoveBackground(string path)
         {
-            Environment.SetEnvironmentVariable("PYTHONNET_PYDLL", @"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\proPyEnv\DLLs\python39.dll");
-
-            PythonEngine.Initialize();
+            // Path to the Python DLL
+            Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+            // Setting the PYTHONHOME environment variable
+            Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
 
             try
             {
+                // Initialize the Python Engine
+                PythonEngine.Initialize();
                 using (Py.GIL())
                 {
-                    dynamic sys = Py.Import("sys");
+                    // Get the output path for the processed image
+                    string outputPath = ImageWriterAssistance(path);
 
-                    sys.path.append("D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode");
+                    WriteLine($"Path: {path}");
+                    WriteLine($"Output Path: {outputPath}");
 
-                    dynamic removeBackground = Py.Import("remove_background");
-                    dynamic newImg = removeBackground.remove_background(path);
-
-                    ImageWriterAssistance(path, newImg);
+                    // Read the Python script
+                    string pythonScript = System.IO.File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\remove_background.py");
+                    // Run the Python script
+                    PythonEngine.RunSimpleString(pythonScript);
+                    // Call the remove_backgrnd function from the Python script
+                    dynamic removeBackground = PythonEngine.RunSimpleString($"remove_backgrnd(r'{path}', r'{outputPath}')");
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Failed to remove background: {e.Message}");
+                //Console.WriteLine($"Stack Trace: {e.StackTrace}");
             }
             finally
             {
+                // Shutdown the Python Engine
                 PythonEngine.Shutdown();
             }
         }
@@ -412,7 +425,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// </summary>
         /// <param name="path">The path of the original image.</param>
         /// <param name="newImg">The image with the background removed.</param>
-        private void ImageWriterAssistance(string path, Mat newImg)
+        private string ImageWriterAssistance(string path)
         {
             DirectoryInfo? dirParentParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent?.Parent;
             DirectoryInfo? dirParentParentInfo = new DirectoryInfo(path).Parent?.Parent?.Parent;
@@ -425,7 +438,9 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, dirParentParentParentName, dirParentParentName, dirParentName, dirName);
 
-            _newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
+            return Path.Combine(specificOutputDirectory, imgName);
+            // Regular image write is not needed.
+            //_newImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
     }
 }

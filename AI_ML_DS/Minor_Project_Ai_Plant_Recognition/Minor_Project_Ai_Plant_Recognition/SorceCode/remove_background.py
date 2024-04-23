@@ -1,34 +1,28 @@
 ﻿from rembg import remove
-
-print("rembg done")
 from PIL import Image
-
-print("PIL done")
 from io import BytesIO
-
-print("io done")
 import numpy as np
+import os
 
-print("numpy done")
+def remove_backgrnd(image_path, image_output_path):
+    """
+    Function to remove the background of an image.
 
-def remove_background(image_path):
+    Parameters:
+    image_path (str): The path of the image file from which the background is to be removed.
+    image_output_path (str): The path where the image with the background removed is to be saved.
+
+    Returns:
+    None
+    """
     with open(image_path, "rb") as input_img_file:
         input_img = input_img_file.read()
         back_remove = remove(input_img, alpha_matting_background_threshold=200)
 
-        if isinstance(back_remove, Image.Image):
-            img_png = back_remove.convert("RGBA")
-        elif isinstance(back_remove, np.ndarray):
-            img_png = Image.fromarray(back_remove).convert("RGBA")
-        else:
-            img_png = Image.open(BytesIO(back_remove)).convert("RGBA")
+        img = Image.open(BytesIO(back_remove)).convert("RGB")
 
-        print("Background Removed: ok")
+        os.makedirs(os.path.dirname(image_output_path), exist_ok=True)
 
-# return np.array(img_png)
+        img.save(image_output_path, "JPEG")
 
-# x = 1
-# y = 2
-# z = x + y
-
-# print(z)
+    print("Background Removed: ok")
