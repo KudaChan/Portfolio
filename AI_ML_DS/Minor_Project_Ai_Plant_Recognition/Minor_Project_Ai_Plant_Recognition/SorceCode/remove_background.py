@@ -4,6 +4,8 @@ from io import BytesIO
 import numpy as np
 import os
 
+def remove_backgroung_factory(path):
+
 def remove_backgrnd(image_path, image_output_path):
     """
     Function to remove the background of an image.
@@ -24,3 +26,7 @@ def remove_backgrnd(image_path, image_output_path):
         os.makedirs(os.path.dirname(image_output_path), exist_ok=True)
 
         img.save(image_output_path, "JPEG")
+
+def img_writer_assistance()
+
+def img_writer()

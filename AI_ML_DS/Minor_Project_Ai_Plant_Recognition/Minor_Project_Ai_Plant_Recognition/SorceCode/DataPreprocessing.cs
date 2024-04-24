@@ -1,8 +1,8 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
-using System.Drawing;
-using Python.Runtime;
 using Emgu.CV.Util;
+using Python.Runtime;
+using System.Drawing;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 {
@@ -25,7 +25,27 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
 
             Directory.CreateDirectory(pathTextFile);
 
-            using (StreamWriter writer = new(Path.Combine(pathTextFile, "dataset.txt"), false))
+            if (action == "Augment" || action == "BckgrndRemove" || action == "Normalization")
+            {
+                DirParserByImgDim(directories, pathTextFile);
+            }
+            else if (action == "Resize" || action == "parse")
+            {
+                DirParserByClass(directories, pathTextFile);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException($"The action '{action}' does not exist.");
+            }
+        }
+
+        public void DirParserByClass(string[] directories, string pathTextFile)
+        {
+            if (File.Exists(Path.Combine(pathTextFile, "dataset_base.txt")))
+            {
+                File.Delete(Path.Combine(pathTextFile, "dataset_base.txt"));
+            }
+            using (StreamWriter writer = new(Path.Combine(pathTextFile, "dataset_base.txt"), true))
             {
                 foreach (string directory in directories)
                 {
@@ -49,6 +69,69 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             }
         }
 
+        public void DirParserByImgDim(string[] directories, string pathTextFile)
+        {
+            //using (StreamWriter writer = new(Path.Combine(pathTextFile, $"dataset_.{parentName}txt"), false))
+            if (File.Exists(Path.Combine(pathTextFile, $"dataset_size224_224.txt")))
+            {
+                File.Delete(Path.Combine(pathTextFile, $"dataset_size224_224.txt"));
+            }
+            if (File.Exists(Path.Combine(pathTextFile, $"dataset_size299_299.txt")))
+            {
+                File.Delete(Path.Combine(pathTextFile, $"dataset_size299_299.txt"));
+            }
+
+            foreach (string directory in directories)
+            {
+                if (new DirectoryInfo(directory).Parent!.Name == "size224_224")
+                {
+                    if (!Directory.Exists(directory))
+                    {
+                        throw new DirectoryNotFoundException($"The directory '{directory}' does not exist.");
+                    }
+                    using (StreamWriter writer = new(Path.Combine(pathTextFile, $"dataset_size224_224.txt"), true))
+                    {
+                        foreach (string subdirectory in Directory.EnumerateDirectories(directory))
+                        {
+                            foreach (string filePath in Directory.EnumerateFiles(subdirectory))
+                            {
+                                string extension = Path.GetExtension(filePath);
+                                if (extension == ".jpg" || extension == ".png")
+                                {
+                                    writer.WriteLine(filePath);
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (new DirectoryInfo(directory).Parent!.Name == "size299_299")
+                {
+                    if (!Directory.Exists(directory))
+                    {
+                        throw new DirectoryNotFoundException($"The directory '{directory}' does not exist.");
+                    }
+                    using (StreamWriter writer = new(Path.Combine(pathTextFile, $"dataset_size299_299.txt"), true))
+                    {
+                        foreach (string subdirectory in Directory.EnumerateDirectories(directory))
+                        {
+                            foreach (string filePath in Directory.EnumerateFiles(subdirectory))
+                            {
+                                string extension = Path.GetExtension(filePath);
+                                if (extension == ".jpg" || extension == ".png")
+                                {
+                                    writer.WriteLine(filePath);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    throw new DirectoryNotFoundException($"The directory does not exist.");
+                }
+            }
+        }
+
         /// <summary>
         /// Constructs a list of directories based on the specified action.
         /// </summary>
@@ -58,58 +141,55 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         public List<string> pathMakerBasedOnAction(string path, string action)
         {
             List<string> directories = new List<string>();
+            List<string> tempDir = new List<string>();
 
             if (action == "Resize" || action == "parse")
             {
-                Console.WriteLine("in resize or parse:");
                 directories.Add(Path.Combine(path, "Medicinal_Leaf_dataset"));
                 directories.Add(Path.Combine(path, "Medicinal_plant_dataset"));
             }
             else if (action == "Augment")
             {
-                Console.WriteLine("in augment: ");
-                directories.Add(Path.Combine(path, "size224_224"));
-                directories.Add(Path.Combine(path, "size299_299"));
+                tempDir.Add(Path.Combine(path, "size224_224"));
+                tempDir.Add(Path.Combine(path, "size299_299"));
 
-                foreach (string directory in directories.ToList()) // Use ToList to create a copy for iteration
+                foreach (string dir in tempDir.ToList()) // Use ToList to create a copy for iteration
                 {
-                    directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
+                    directories.AddRange(pathMakerBasedOnAction(dir, "parse"));
                 }
             }
             else if (action == "BckgrndRemove")
             {
-                Console.WriteLine("in background remover: ");
                 List<string> dirNames = new List<string> { "flipped", "noised", "resized", "rotated", "translated" };
                 List<string> dimension = new List<string> { "size224_224", "size299_299" };
                 foreach (string dirName in dirNames)
                 {
                     foreach (string dim in dimension)
                     {
-                        directories.Add(Path.Combine(path, dirName, dim));
+                        tempDir.Add(Path.Combine(path, dirName, dim));
                     }
                 }
 
-                foreach (string directory in directories.ToList()) // Use ToList to create a copy for iteration
+                foreach (string dir in tempDir.ToList()) // Use ToList to create a copy for iteration
                 {
-                    directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
+                    directories.AddRange(pathMakerBasedOnAction(dir, "parse"));
                 }
             }
             else if (action == "Normalization")
             {
-                Console.WriteLine("in normalization: ");
                 List<string> dirNames = new List<string> { "flipped", "noised", "resized", "rotated", "translated" };
                 List<string> dimension = new List<string> { "size224_224", "size299_299" };
                 foreach (string dirName in dirNames)
                 {
                     foreach (string dim in dimension)
                     {
-                        directories.Add(Path.Combine(path, dirName, dim));
+                        tempDir.Add(Path.Combine(path, dirName, dim));
                     }
                 }
 
-                foreach (string directory in directories.ToList()) // Use ToList to create a copy for iteration
+                foreach (string dir in tempDir.ToList()) // Use ToList to create a copy for iteration
                 {
-                    directories.AddRange(pathMakerBasedOnAction(directory, "parse"));
+                    directories.AddRange(pathMakerBasedOnAction(dir, "parse"));
                 }
             }
             return directories;
@@ -129,7 +209,19 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="imgName">The name of the image file.</param>
         public static void DirrectoryCreate(string path, Mat newImg, string imgName)
         {
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+                try
+                {
+                    Directory.CreateDirectory(path);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to create directory: {e}");
+                }
+            }
+            else
             {
                 try
                 {
@@ -184,15 +276,19 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="path">The path of the text file containing the image paths.</param>
         public void ResizeFactory(string path)
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            string textPath = Path.Combine(path, "dataset_base.txt");
+
+            ResizeDirectory(textPath, 224, 224);
+            ResizeDirectory(textPath, 299, 299);
+        }
+
+        public void ResizeDirectory(string path, int width, int height)
+        {
+            var lines = File.ReadLines(path);
+            Parallel.ForEach(lines, (line) =>
             {
-                string line;
-                while ((line = reader.ReadLine()!) != null)
-                {
-                    Resizer(line, 224, 224);
-                    Resizer(line, 299, 299);
-                }
-            }
+                Resizer(line, width, height);
+            });
         }
 
         /// <summary>
@@ -243,16 +339,30 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="path">The path of the text file containing the image paths.</param>
         public void AugmentFactory(string path)
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            string path224 = Path.Combine(path, "dataset_size224_224.txt");
+            string path299 = Path.Combine(path, "dataset_size299_299.txt");
+
+            Task path224Task = Task.Run(() => AugmentDirectory(path224));
+            Task path299Task = Task.Run(() => AugmentDirectory(path299));
+
+            Task.WaitAll(path224Task, path299Task);
+        }
+
+        public void AugmentDirectory(string path)
+        {
+            int totalLines = File.ReadLines(path).Count();
             {
-                string line;
-                while ((line = reader.ReadLine()!) != null)
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    FlipAugmenter(line);
-                    RotateAugmenter(line);
-                    NoiseAugmenter(line);
-                    TranslateAugmenter(line);
-                    CopyResizedImage(line);
+                    string line;
+                    while ((line = reader.ReadLine()!) != null)
+                    {
+                        FlipAugmenter(line);
+                        RotateAugmenter(line);
+                        NoiseAugmenter(line);
+                        TranslateAugmenter(line);
+                        CopyResizedImage(line);
+                    }
                 }
             }
         }
@@ -369,27 +479,20 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
     {
         private readonly NewImageWrite _newImageWrite = new NewImageWrite();
 
+        public void RemoveBackgroundFactory(string path)
+        {
+            string path224 = Path.Combine(path, "dataset_size224_224.txt");
+            string path299 = Path.Combine(path, "dataset_size299_299.txt");
+
+            RemoveBackgroundDirectory(path224);
+            RemoveBackgroundDirectory(path299);
+        }
+
         /// <summary>
         /// Removes the background from the images specified in the text file at the given path.
         /// </summary>
         /// <param name="path">The path of the text file containing the image paths.</param>
-        public void RemoveBackgroundFactory(string path)
-        {
-            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
-            {
-                string line;
-                while ((line = reader.ReadLine()!) != null)
-                {
-                    PythonScriptRemoveBackground(line);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Executes a Python script to remove the background from an image.
-        /// </summary>
-        /// <param name="path">The path of the image to process.</param>
-        private void PythonScriptRemoveBackground(string path)
+        public void RemoveBackgroundDirectory(string path)
         {
             // Path to the Python DLL
             Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
@@ -400,17 +503,16 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             {
                 // Initialize the Python Engine
                 PythonEngine.Initialize();
-                using (Py.GIL())
-                {
-                    // Get the output path for the processed image
-                    string outputPath = ImageWriterAssistance(path);
 
-                    // Read the Python script
-                    string pythonScript = System.IO.File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\remove_background.py");
-                    // Run the Python script
-                    PythonEngine.RunSimpleString(pythonScript);
-                    // Call the remove_backgrnd function from the Python script
-                    dynamic removeBackground = PythonEngine.RunSimpleString($"remove_backgrnd(r'{path}', r'{outputPath}')");
+                int totalLines = File.ReadLines(path).Count();
+
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()!) != null)
+                    {
+                        PythonScriptRemoveBackground(line);
+                    }
                 }
             }
             catch (Exception e)
@@ -421,6 +523,26 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
             {
                 // Shutdown the Python Engine
                 PythonEngine.Shutdown();
+            }
+        }
+
+        /// <summary>
+        /// Executes a Python script to remove the background from an image.
+        /// </summary>
+        /// <param name="path">The path of the image to process.</param>
+        private void PythonScriptRemoveBackground(string path)
+        {
+            using (Py.GIL())
+            {
+                // Get the output path for the processed image
+                string outputPath = ImageWriterAssistance(path);
+
+                // Read the Python script
+                string pythonScript = System.IO.File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\remove_background.py");
+                // Run the Python script
+                PythonEngine.RunSimpleString(pythonScript);
+                // Call the remove_backgrnd function from the Python script
+                dynamic removeBackground = PythonEngine.RunSimpleString($"remove_backgrnd(r'{path}', r'{outputPath}')");
             }
         }
 
@@ -466,13 +588,62 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing
         /// <param name="path">The path of the text file containing the image paths.</param>
         public void NormalizationFactor(string path)
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            string path224 = Path.Combine(path, "dataset_size224_224.txt");
+            string path299 = Path.Combine(path, "dataset_size299_299.txt");
+
+            Task path224Task = Task.Run(() => NormalizeDirectory(path224, "224Task"));
+            Task path299Task = Task.Run(() => NormalizeDirectory(path299, "299Task"));
+
+            Task.WaitAll(path224Task, path299Task);
+            //int totalLines = File.ReadLines(Path.Combine(path, "dataset.txt")).Count();
+
+            //using (var pbar = new ProgressBar(totalLines, "Resizing", new ProgressBarOptions { ProgressCharacter = '#' }))
+            //{
+            //    using (StreamReader reader = new StreamReader(Path.Combine(path, "dataset.txt")))
+            //    {
+            //        string line;
+            //        while ((line = reader.ReadLine()!) != null)
+            //        {
+            //            NormalizeColorWise(line);
+            //            pbar.Tick();
+            //        }
+            //    }
+            //}
+        }
+
+        private void NormalizeDirectory(string path, string taskName)
+        {
+            if (taskName == "224Task")
             {
-                string line;
-                while ((line = reader.ReadLine()!) != null)
+                int totalLines = File.ReadLines(path).Count();
                 {
-                    NormalizeColorWise(line);
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()!) != null)
+                        {
+                            NormalizeColorWise(line);
+                        }
+                    }
                 }
+            }
+            else if (taskName == "299Task")
+            {
+                int totalLines = File.ReadLines(path).Count();
+                {
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()!) != null)
+                        {
+                            NormalizeColorWise(line);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException($"The task '{taskName}' does not exist.");
             }
         }
 

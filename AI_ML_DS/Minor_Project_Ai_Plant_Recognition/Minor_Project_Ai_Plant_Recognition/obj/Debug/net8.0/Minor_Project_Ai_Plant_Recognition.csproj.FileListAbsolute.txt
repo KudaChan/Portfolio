@@ -45,3 +45,5 @@ D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Re
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\obj\Debug\net8.0\Minor_Project_Ai_Plant_Recognition.genruntimeconfig.cache
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\obj\Debug\net8.0\ref\Minor_Project_Ai_Plant_Recognition.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Python.Runtime.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\ShellProgressBar.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Kurukuru.dll

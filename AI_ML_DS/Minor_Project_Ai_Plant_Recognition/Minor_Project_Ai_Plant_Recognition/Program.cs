@@ -31,19 +31,27 @@ namespace Minor_Project_Ai_Plant_Recognition
 
         public void PreProcess()
         {
+            WriteLine("Resizing Start");
             _imageAccess.DirectoryParser(_basePath, _textFile, action[0]);
             _imageResize.ResizeFactory(_textFile);
+            WriteLine("Resizing Done");
 
+            WriteLine("Augmentation Start");
             _imageAccess.DirectoryParser(_pathResized, _textFile, action[1]);
             _augmentation.AugmentFactory(_textFile);
+            WriteLine("Augmentation Done");
 
+            WriteLine("Background Removal Start");
             _imageAccess.DirectoryParser(_pathAugmented, _textFile, action[2]);
             _bckgrndRemover.RemoveBackgroundFactory(_textFile);
+            WriteLine("Background Removal Done");
 
+            WriteLine("Normalization Start");
             _imageAccess.DirectoryParser(_pathBckgrndRemoved, _textFile, action[3]);
             _normalization.NormalizationFactor(_textFile);
+            WriteLine("Normalization Done");
 
-            Console.WriteLine("Preprocessing Done");
+            WriteLine("Preprocessing Done");
         }
     }
 

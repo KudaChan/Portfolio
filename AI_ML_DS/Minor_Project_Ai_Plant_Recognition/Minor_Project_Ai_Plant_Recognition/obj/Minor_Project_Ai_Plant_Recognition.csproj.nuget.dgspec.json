@@ -58,6 +58,14 @@
               "target": "Package",
               "version": "[4.8.1.5350, )"
             },
+            "Kurukuru": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
+            "ShellProgressBar": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "pythonnet": {
               "target": "Package",
               "version": "[3.0.3, )"
