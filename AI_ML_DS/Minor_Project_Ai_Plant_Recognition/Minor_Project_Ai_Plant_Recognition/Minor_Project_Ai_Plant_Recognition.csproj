@@ -8,6 +8,12 @@
 	<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="SampledData\**" />
+    <EmbeddedResource Remove="SampledData\**" />
+    <None Remove="SampledData\**" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<Using Include="System.Console" Static="true" />
 	</ItemGroup>
@@ -23,8 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Documentation\" />
+    <Folder Include="Dataset\DataPreProcessed\" />
+    <Folder Include="Dataset\DataTxtFile\" />
     <Folder Include="Temp\dataset\" />
   </ItemGroup>
 

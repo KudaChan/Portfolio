@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\minor_project_ai_plant_recognition\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\datasampling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\datasampling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\imageparsing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\imageparsing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\imagewriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\dataparse_sampling\\imagewriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\preprocessing\\datapreprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\preprocessing\\datapreprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\remove_background.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\remove_background.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|d:\\project\\ai_ml_ds\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition\\sorcecode\\datapreprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|solutionrelative:minor_project_ai_plant_recognition\\sorcecode\\datapreprocessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F84F6112-14AB-419E-A03C-A4334894D581}|Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj|D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\minor_project_ai_plant_recognition\\minor_project_ai_plant_recognition.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -21,16 +29,16 @@
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 435,
-          "SelectedChildIndex": 4,
+          "DockedHeight": 334,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Minor_Project_Ai_Plant_Recognition.csproj",
               "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj",
               "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj",
@@ -39,7 +47,8 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-04-21T19:08:13.186Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -51,47 +60,73 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DataPreprocessing.cs",
-              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataPreprocessing.cs",
-              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataPreprocessing.cs",
-              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataPreprocessing.cs",
-              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataPreprocessing.cs",
-              "ViewState": "AQIAAF4BAAAAAAAAAAAuwHECAAAQAAAA",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\PreProcessing\\DataPreprocessing.cs",
+              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\PreProcessing\\DataPreprocessing.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\PreProcessing\\DataPreprocessing.cs",
+              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\PreProcessing\\DataPreprocessing.cs",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T17:56:51.022Z",
+              "WhenOpened": "2024-04-25T11:08:22.008Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Program.cs",
-              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\Program.cs",
-              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Program.cs",
-              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "ImageWriter.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageWriter.cs",
+              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageWriter.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageWriter.cs",
+              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageWriter.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T08:01:24.586Z",
+              "WhenOpened": "2024-04-25T15:08:48.16Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "remove_background.py",
-              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py",
-              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py",
-              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py",
-              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\remove_background.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-04-24T07:40:09.388Z",
+              "Title": "ImageParsing.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageParsing.cs",
+              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageParsing.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageParsing.cs",
+              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\ImageParsing.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwFMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T11:01:45.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataSampling.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\DataSampling.cs",
+              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\DataSampling.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\DataSampling.cs",
+              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\SorceCode\\DataParse_Sampling\\DataSampling.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAowJUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-25T10:55:16.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Program.cs",
+              "RelativeDocumentMoniker": "Minor_Project_Ai_Plant_Recognition\\Program.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Program.cs",
+              "RelativeToolTip": "Minor_Project_Ai_Plant_Recognition\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAH4AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T08:01:24.586Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 385,
+          "DockedHeight": 334,
           "SelectedChildIndex": -1,
           "Children": [
             {

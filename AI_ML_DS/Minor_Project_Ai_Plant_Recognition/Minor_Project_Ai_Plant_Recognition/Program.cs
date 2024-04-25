@@ -1,4 +1,6 @@
-﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.Preprocessing;
+﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageParsing;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling;
 
 namespace Minor_Project_Ai_Plant_Recognition
 {
@@ -11,12 +13,13 @@ namespace Minor_Project_Ai_Plant_Recognition
     /// </summary>
     internal class RequiredPaths
     {
-        public string _textFileDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Temp\\dataset"!;
-        public string _baseDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(test)";
-        public string _resizedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(resized)";
-        public string _augmentedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(augmented)";
-        public string _bckgrndRemovedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(background_removed)";
-        public string _normalizedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Data\\Dataset(normalized)";
+        public string _textFileDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataTxtFile";
+        public string _orignalImgDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataOrignal";
+        public string _sampleImgDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataSampled\\Dataset(test)";
+        public string _resizedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(resized)";
+        public string _augmentedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(augmented)";
+        public string _bckgrndRemovedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(background_removed)";
+        public string _normalizedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(normalized)";
     }
 
     /// <summary>
@@ -62,7 +65,7 @@ namespace Minor_Project_Ai_Plant_Recognition
         /// <summary>
         /// The _basePath is the base directory of the images.
         /// </summary>
-        private string _basePath = new RequiredPaths()._baseDir;
+        private string _basePath = new RequiredPaths()._sampleImgDir;
 
         /// <summary>
         /// The _pathResized is the directory for the resized images.
@@ -111,6 +114,20 @@ namespace Minor_Project_Ai_Plant_Recognition
         }
     }
 
+    internal class DataSampler
+    {
+        private readonly ImageAccess _imageAccess = new ImageAccess();
+        private readonly DataSampling _imageSampling = new DataSampling();
+
+        private string _textFile = new RequiredPaths()._textFileDir;
+        private string _basePath = new RequiredPaths()._orignalImgDir;
+
+        public void SampleData()
+        {
+            _imageSampling.SampleDataInitiator(_basePath, _textFile);
+        }
+    }
+
     /// <summary>
     /// The Program class is the entry point of the application.
     /// </summary>
@@ -124,10 +141,15 @@ namespace Minor_Project_Ai_Plant_Recognition
         /// <param name="args">The command-line arguments.</param>
         public static void Main(string[] args)
         {
-            WriteLine("Preprocessing Started");
-            PreProcesser preProcesser = new PreProcesser();
-            preProcesser.PreProcess();
-            WriteLine("Preprocessing Done");
+            WriteLine("Data Sampling Started");
+            DataSampler dataSampler = new DataSampler();
+            dataSampler.SampleData();
+            WriteLine("Data Sampling Done");
+
+            //WriteLine("Preprocessing Started");
+            //PreProcesser preProcesser = new PreProcesser();
+            //preProcesser.PreProcess();
+            //WriteLine("Preprocessing Done");
         }
     }
 }
