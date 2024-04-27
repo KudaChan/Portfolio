@@ -7,21 +7,16 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
     {
         public void SampleDataInitiator(string basePath, string textFilePath)
         {
-            string plantDirName = Path.Combine(basePath, "Medicinal_leaf_dataset");
-            string leafDirName = Path.Combine(basePath, "Medicinal_plant_dataset");
+            string plantDirName = Path.Combine(basePath, "Medicinal_plant_dataset");
+            string leafDirName = Path.Combine(basePath, "Medicinal_leaf_dataset");
 
             string randPlantTextFile = Path.Combine(textFilePath, "plant_dataset.txt");
             string randLeafTextFile = Path.Combine(textFilePath, "leaf_dataset.txt");
 
-            Task plantParsing = Task.Run(() => SampleDataFactory(plantDirName, randPlantTextFile));
-            Task leafParsing = Task.Run(() => SampleDataFactory(leafDirName, randLeafTextFile));
+            Task plantParsing = Task.Run(() => DirSelector(plantDirName, randPlantTextFile));
+            Task leafParsing = Task.Run(() => DirSelector(leafDirName, randLeafTextFile));
 
             Task.WaitAll(plantParsing, leafParsing);
-        }
-
-        private void SampleDataFactory(string basePath, string textFilePath)
-        {
-            DirSelector(basePath, textFilePath);
         }
 
         private void DirSelector(string basePath, string textFilePath)
@@ -65,86 +60,94 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
 
         private void WritingDataToTxtFile(List<string> dirName, string textFilePath)
         {
-            if (File.Exists(Path.Combine(textFilePath, "dataset_base.txt")))
+            string filePath = textFilePath;
+            if (File.Exists(filePath))
             {
-                File.Delete(Path.Combine(textFilePath, "dataset_base.txt"));
+                File.Delete(filePath);
             }
 
-            foreach (string dir in dirName)
+            // Use StreamWriter for more efficient writing
+            using (StreamWriter sw = new StreamWriter(filePath))
             {
-                if (dirName.Count == 0)
+                Parallel.ForEach(dirName, dir =>
                 {
-                    WriteLine("Directory is empty.");
-                }
-                else
-                {
-                    WriteLine(dir);
-                }
-                if (!Directory.Exists(dir))
-                {
-                    throw new DirectoryNotFoundException($"The directory '{dir}' does not exist.");
-                }
-                else
-                {
-                    foreach (string file in Directory.EnumerateFiles(dir))
+                    if (!Directory.Exists(dir))
                     {
-                        string extension = Path.GetExtension(file);
-                        if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                        throw new DirectoryNotFoundException($"The directory '{dir}' does not exist.");
+                    }
+                    else
+                    {
+                        foreach (string file in Directory.EnumerateFiles(dir))
                         {
-                            try
+                            string extension = Path.GetExtension(file);
+                            if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
                             {
-                                File.AppendAllText(Path.Combine(textFilePath), $"{file}\n");
-                            }
-                            catch (Exception e)
-                            {
-                                WriteLine(e.Message);
+                                try
+                                {
+                                    lock (sw)
+                                    {
+                                        sw.WriteLine(file);
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    WriteLine(e.Message);
+                                }
                             }
                         }
                     }
-                }
+                });
             }
-            if (!File.Exists(textFilePath))
+
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException($"Failed to create the file at '{textFilePath}'.");
+                throw new FileNotFoundException($"Failed to create the file at '{filePath}'.");
             }
-            WritingImageToDirectory(textFilePath);
-
-            //string outputDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataSampled\\Dataset(5species)";
-
-            //using (StreamReader sr = new(Path.Combine(textFilePath, "dataset_base.txt")))
-            //{
-            //    string line;
-            //    while ((line = sr.ReadLine()!) != null)
-            //    {
-            //        DirectoryInfo dirGrandParent = Directory.GetParent(line)!.Parent!.Parent!;
-            //        DirectoryInfo dirParent = Directory.GetParent(line)!.Parent!;
-            //        string dirParentName = dirParent.Name;
-            //        string dirGrandParentName = dirGrandParent.Name;
-            //        Mat img = CvInvoke.Imread(line);
-            //        string specificDirPath = Path.Combine(outputDir, dirGrandParentName, dirParentName, Path.GetFileName(line));
-            //        NewImageWrite.DirrectoryCreate(specificDirPath, img, Path.GetFileName(line));
-            //    }
-            //}
+            WritingImageToDirectory(filePath);
         }
 
         private void WritingImageToDirectory(string textFilePath)
         {
             string outputDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataSampled\\Dataset(5species)";
 
+            if (textFilePath.Contains("plant_dataset.txt"))
+            {
+                outputDir = Path.Combine(outputDir, "Medicinal_plant_dataset");
+                WriteLine(outputDir);
+            }
+            else if (textFilePath.Contains("leaf_dataset.txt"))
+            {
+                outputDir = Path.Combine(outputDir, "Medicinal_leaf_dataset");
+                WriteLine(outputDir);
+            }
+
+            if (Directory.Exists(outputDir))
+            {
+                Directory.Delete(outputDir, true);
+            }
             using (StreamReader sr = new(textFilePath))
             {
-                string line;
-                while ((line = sr.ReadLine()!) != null)
+                // Use Parallel.ForEach for parallel processing
+                Parallel.ForEach(File.ReadLines(textFilePath), line =>
                 {
-                    DirectoryInfo dirGrandParent = Directory.GetParent(line)!.Parent!.Parent!;
-                    DirectoryInfo dirParent = Directory.GetParent(line)!.Parent!;
-                    string dirParentName = dirParent.Name;
-                    string dirGrandParentName = dirGrandParent.Name;
+                    string fileParentInfo = Directory.GetParent(line)!.Name;
                     Mat img = CvInvoke.Imread(line);
-                    string specificDirPath = Path.Combine(outputDir, dirGrandParentName, dirParentName, Path.GetFileName(line));
+                    string specificDirPath = Path.Combine(outputDir, fileParentInfo);
+
+                    //WriteLine(fileParentInfo);
+                    //WriteLine(specificDirPath);
+                    //WriteLine(Path.GetFileName(line));
+
                     NewImageWrite.DirrectoryCreate(specificDirPath, img, Path.GetFileName(line));
-                }
+                });
             }
+        }
+    }
+
+    internal class DataSplit
+    {
+        public void DataSplitFactory()
+        {
         }
     }
 }

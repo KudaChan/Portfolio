@@ -60,7 +60,7 @@
             }
             using (StreamWriter writer = new(Path.Combine(pathTextFile, "dataset_base.txt"), true))
             {
-                foreach (string directory in directories)
+                Parallel.ForEach(directories, directory =>
                 {
                     if (!Directory.Exists(directory))
                     {
@@ -74,11 +74,14 @@
                             string extension = Path.GetExtension(filePath);
                             if (extension == ".jpg" || extension == ".png")
                             {
-                                writer.WriteLine(filePath);
+                                lock (writer)
+                                {
+                                    writer.WriteLine(filePath);
+                                }
                             }
                         }
                     }
-                }
+                });
             }
         }
 
@@ -115,17 +118,20 @@
                     }
                     using (StreamWriter writer = new(Path.Combine(pathTextFile, $"dataset_size224_224.txt"), true))
                     {
-                        foreach (string subdirectory in Directory.EnumerateDirectories(directory))
+                        Parallel.ForEach(Directory.EnumerateDirectories(directory), subdirectory =>
                         {
                             foreach (string filePath in Directory.EnumerateFiles(subdirectory))
                             {
                                 string extension = Path.GetExtension(filePath);
                                 if (extension == ".jpg" || extension == ".png")
                                 {
-                                    writer.WriteLine(filePath);
+                                    lock (writer)
+                                    {
+                                        writer.WriteLine(filePath);
+                                    }
                                 }
                             }
-                        }
+                        });
                     }
                 }
                 else if (new DirectoryInfo(directory).Parent!.Name == "size299_299")
@@ -136,17 +142,20 @@
                     }
                     using (StreamWriter writer = new(Path.Combine(pathTextFile, $"dataset_size299_299.txt"), true))
                     {
-                        foreach (string subdirectory in Directory.EnumerateDirectories(directory))
+                        Parallel.ForEach(Directory.EnumerateDirectories(directory), subdirectory =>
                         {
                             foreach (string filePath in Directory.EnumerateFiles(subdirectory))
                             {
                                 string extension = Path.GetExtension(filePath);
                                 if (extension == ".jpg" || extension == ".png")
                                 {
-                                    writer.WriteLine(filePath);
+                                    lock (writer)
+                                    {
+                                        writer.WriteLine(filePath);
+                                    }
                                 }
                             }
-                        }
+                        });
                     }
                 }
                 else

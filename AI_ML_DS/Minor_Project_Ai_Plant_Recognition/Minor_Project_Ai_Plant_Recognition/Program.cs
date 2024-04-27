@@ -15,7 +15,7 @@ namespace Minor_Project_Ai_Plant_Recognition
     {
         public string _textFileDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataTxtFile";
         public string _orignalImgDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataOrignal";
-        public string _sampleImgDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataSampled\\Dataset(test)";
+        public string _sampleImgDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataSampled\\Dataset(5species)";
         public string _resizedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(resized)";
         public string _augmentedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(augmented)";
         public string _bckgrndRemovedDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed\\Dataset(background_removed)";
@@ -116,7 +116,6 @@ namespace Minor_Project_Ai_Plant_Recognition
 
     internal class DataSampler
     {
-        private readonly ImageAccess _imageAccess = new ImageAccess();
         private readonly DataSampling _imageSampling = new DataSampling();
 
         private string _textFile = new RequiredPaths()._textFileDir;
@@ -142,14 +141,14 @@ namespace Minor_Project_Ai_Plant_Recognition
         public static void Main(string[] args)
         {
             WriteLine("Data Sampling Started");
-            DataSampler dataSampler = new DataSampler();
-            dataSampler.SampleData();
+            //DataSampler dataSampler = new DataSampler();
+            //dataSampler.SampleData();
             WriteLine("Data Sampling Done");
 
-            //WriteLine("Preprocessing Started");
-            //PreProcesser preProcesser = new PreProcesser();
-            //preProcesser.PreProcess();
-            //WriteLine("Preprocessing Done");
+            WriteLine("Preprocessing Started");
+            PreProcesser preProcesser = new PreProcesser();
+            preProcesser.PreProcess();
+            WriteLine("Preprocessing Done");
         }
     }
 }

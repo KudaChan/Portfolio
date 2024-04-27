@@ -23,29 +23,31 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageW
         {
             if (Directory.Exists(path))
             {
-                Directory.Delete(path, true);
-                try
-                {
-                    Directory.CreateDirectory(path);
-                }
-                catch (Exception e)
-                {
-                    WriteLine($"Failed to create directory: {e}");
-                }
+                //Directory.Delete(path, true);
+
+                //try
+                //{
+                //    Directory.CreateDirectory(path);
+                //}
+                //catch (Exception e)
+                //{
+                //    WriteLine($"Failed to create directory: {e}");
+                //}
+
+                WriteImage(path, newImg, imgName);
             }
             else
             {
                 try
                 {
                     Directory.CreateDirectory(path);
+                    WriteImage(path, newImg, imgName);
                 }
                 catch (Exception e)
                 {
                     WriteLine($"Failed to create directory: {e}");
                 }
             }
-
-            WriteImage(path, newImg, imgName);
         }
 
         /// <summary>
