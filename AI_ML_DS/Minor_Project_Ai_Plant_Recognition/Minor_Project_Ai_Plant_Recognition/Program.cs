@@ -141,8 +141,8 @@ namespace Minor_Project_Ai_Plant_Recognition
         public static void Main(string[] args)
         {
             WriteLine("Data Sampling Started");
-            //DataSampler dataSampler = new DataSampler();
-            //dataSampler.SampleData();
+            DataSampler dataSampler = new DataSampler();
+            dataSampler.SampleData();
             WriteLine("Data Sampling Done");
 
             WriteLine("Preprocessing Started");

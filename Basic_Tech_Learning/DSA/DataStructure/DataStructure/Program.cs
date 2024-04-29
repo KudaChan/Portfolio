@@ -1,29 +1,44 @@
-﻿using DataStructure.CoreDataStructure;
+﻿using DataStructure.CoreDataStructure.DataCollection.SimpleArray;
 
 namespace Program
 {
     internal class Program
     {
-        public static void Main(string[] args)
+        private static void DataCollection()
         {
-            int a = 0;
+            Console.WriteLine("In C#, We have 4 types of collections methods:");
+            Console.WriteLine("  1. Array \n  2. Jagged Array \n  3. List \n  4. Dictionary");
+            Console.WriteLine("Select the collection method you want to perform: ");
+            int cm = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Select the task to perform:");
-            Console.WriteLine("1. Array Implementation");
-
-            a = Convert.ToInt32(Console.ReadLine());
-
-            switch (a)
+            switch (cm)
             {
                 case 1:
-                    ArrayImplementation arrayImplementation = new();
-                    arrayImplementation.ArrayStarter();
+                    SimpleArray simpleArray = new SimpleArray();
+                    simpleArray.SimpleArrayStarter();
+                    break;
+
+                case 2:
+                    Console.WriteLine("Jagged Array");
+                    break;
+
+                case 3:
+                    Console.WriteLine("List");
+                    break;
+
+                case 4:
+                    Console.WriteLine("Dictionary");
                     break;
 
                 default:
-                    Console.WriteLine("Invalid input");
+                    Console.WriteLine("Invalid selection");
                     break;
             }
+        }
+
+        public static void Main(string[] args)
+        {
+            DataCollection();
         }
     }
 }

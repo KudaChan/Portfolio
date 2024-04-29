@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|d:\\project\\basic_tech_learning\\dsa\\datastructure\\datastructure\\coredatastructure\\arrayimp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|solutionrelative:datastructure\\coredatastructure\\arrayimp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\datastructure\\documentation\\c# cheat sheet.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|solutionrelative:datastructure\\documentation\\c# cheat sheet.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|d:\\project\\basic_tech_learning\\dsa\\datastructure\\datastructure\\basicdatastructure\\datacollection\\simplearray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|solutionrelative:datastructure\\basicdatastructure\\datacollection\\simplearray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\datastructure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|solutionrelative:datastructure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\datastructure\\documentation\\c# cheat sheet.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{535EA2B9-6396-4916-937D-348C8F2AF73B}|DataStructure\\DataStructure.csproj|solutionrelative:datastructure\\documentation\\c# cheat sheet.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,6 +25,19 @@
           "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "C# Cheat Sheet.md",
+              "DocumentMoniker": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Documentation\\C# Cheat Sheet.md",
+              "RelativeDocumentMoniker": "DataStructure\\Documentation\\C# Cheat Sheet.md",
+              "ToolTip": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Documentation\\C# Cheat Sheet.md",
+              "RelativeToolTip": "DataStructure\\Documentation\\C# Cheat Sheet.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2024-04-27T04:26:51.624Z",
+              "IsPinned": true
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
@@ -34,39 +47,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "C# Cheat Sheet.md",
-              "DocumentMoniker": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Documentation\\C# Cheat Sheet.md",
-              "RelativeDocumentMoniker": "DataStructure\\Documentation\\C# Cheat Sheet.md",
-              "ToolTip": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Documentation\\C# Cheat Sheet.md",
-              "RelativeToolTip": "DataStructure\\Documentation\\C# Cheat Sheet.md",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2024-04-27T04:26:51.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ArrayImp.cs",
-              "DocumentMoniker": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\CoreDataStructure\\ArrayImp.cs",
-              "RelativeDocumentMoniker": "DataStructure\\CoreDataStructure\\ArrayImp.cs",
-              "ToolTip": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\CoreDataStructure\\ArrayImp.cs",
-              "RelativeToolTip": "DataStructure\\CoreDataStructure\\ArrayImp.cs",
-              "ViewState": "AQIAAEQBAAAAAAAAAAAAAGUBAABGAAAA",
+              "Title": "SimpleArray.cs",
+              "DocumentMoniker": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\BasicDataStructure\\DataCollection\\SimpleArray.cs",
+              "RelativeDocumentMoniker": "DataStructure\\BasicDataStructure\\DataCollection\\SimpleArray.cs",
+              "ToolTip": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\BasicDataStructure\\DataCollection\\SimpleArray.cs",
+              "RelativeToolTip": "DataStructure\\BasicDataStructure\\DataCollection\\SimpleArray.cs",
+              "ViewState": "AQIAANQAAAAAAAAAAAA6wBsBAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-27T04:21:44.068Z",
+              "WhenOpened": "2024-04-28T19:35:21.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Program.cs",
               "RelativeDocumentMoniker": "DataStructure\\Program.cs",
               "ToolTip": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\Program.cs",
               "RelativeToolTip": "DataStructure\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-26T18:39:27.282Z",
               "EditorCaption": ""

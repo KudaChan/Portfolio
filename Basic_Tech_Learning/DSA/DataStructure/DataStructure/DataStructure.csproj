@@ -9,6 +9,9 @@
 
   <ItemGroup>
     <Folder Include="AdvanceDataStructure\" />
+    <Folder Include="BasicDataStructure\LinkedLists\" />
+    <Folder Include="BasicDataStructure\Queues\" />
+    <Folder Include="BasicDataStructure\Stacks\" />
     <Folder Include="Problems\" />
   </ItemGroup>
 

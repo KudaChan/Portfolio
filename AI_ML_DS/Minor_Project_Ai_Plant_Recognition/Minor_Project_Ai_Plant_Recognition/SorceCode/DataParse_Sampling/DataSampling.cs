@@ -144,10 +144,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
         }
     }
 
-    internal class DataSplit
-    {
-        public void DataSplitFactory()
-        {
-        }
-    }
+    //internal class DataSplit
+    //{
+    //    public void DataSplitFactory()
+    //    {
+    //    }
+    //}
 }
