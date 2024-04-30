@@ -1,6 +1,7 @@
 ﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageParsing;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.ModelTraining;
 
 namespace Minor_Project_Ai_Plant_Recognition
 {
@@ -83,6 +84,11 @@ namespace Minor_Project_Ai_Plant_Recognition
         private string _pathBckgrndRemoved = new RequiredPaths()._bckgrndRemovedDir;
 
         /// <summary>
+        /// The _pathNormalized is the directory for the normalized images.
+        /// </summary>
+        private string _pathNormalized = new RequiredPaths()._normalizedDir;
+
+        /// <summary>
         /// The PreProcess method is responsible for the preprocessing of images.
         /// It performs the following actions in order: Resizing, Augmentation, Background Removal, and Normalization.
         /// For each action, it first writes a start message to the console.
@@ -93,21 +99,37 @@ namespace Minor_Project_Ai_Plant_Recognition
         public void PreProcess()
         {
             WriteLine("Resizing Start");
+            if (Directory.Exists(_pathResized))
+            {
+                Directory.Delete(_pathResized, true);
+            }
             _imageAccess.DirectoryParser(_basePath, _textFile, action[0]);
             _imageResize.ResizeFactory(_textFile);
             WriteLine("Resizing Done");
 
             WriteLine("Augmentation Start");
+            if (Directory.Exists(_pathAugmented))
+            {
+                Directory.Delete(_pathAugmented, true);
+            }
             _imageAccess.DirectoryParser(_pathResized, _textFile, action[1]);
             _augmentation.AugmentFactory(_textFile);
             WriteLine("Augmentation Done");
 
             WriteLine("Background Removal Start");
+            if (Directory.Exists(_pathBckgrndRemoved))
+            {
+                Directory.Delete(_pathBckgrndRemoved, true);
+            }
             _imageAccess.DirectoryParser(_pathAugmented, _textFile, action[2]);
             _bckgrndRemover.RemoveBackgroundFactory();
             WriteLine("Background Removal Done");
 
             WriteLine("Normalization Start");
+            if (Directory.Exists(_pathNormalized))
+            {
+                Directory.Delete(_pathNormalized, true);
+            }
             _imageAccess.DirectoryParser(_pathBckgrndRemoved, _textFile, action[3]);
             _normalization.NormalizationFactor(_textFile);
             WriteLine("Normalization Done");
@@ -127,6 +149,26 @@ namespace Minor_Project_Ai_Plant_Recognition
         }
     }
 
+    internal class DataSpliting
+    {
+        private readonly DataSplit _dataSplit = new DataSplit();
+
+        public void SplitData()
+        {
+            _dataSplit.DataSplitFactory();
+        }
+    }
+
+    internal class ModelTraining
+    {
+        private readonly ResNetImp _resNet = new ResNetImp();
+
+        public void TrainModel()
+        {
+            _resNet.ResNetImplementation();
+        }
+    }
+
     /// <summary>
     /// The Program class is the entry point of the application.
     /// </summary>
@@ -140,15 +182,25 @@ namespace Minor_Project_Ai_Plant_Recognition
         /// <param name="args">The command-line arguments.</param>
         public static void Main(string[] args)
         {
-            WriteLine("Data Sampling Started");
-            DataSampler dataSampler = new DataSampler();
-            dataSampler.SampleData();
-            WriteLine("Data Sampling Done");
+            //WriteLine("Data Sampling Started");
+            //DataSampler dataSampler = new DataSampler();
+            //dataSampler.SampleData();
+            //WriteLine("Data Sampling Done");
 
-            WriteLine("Preprocessing Started");
-            PreProcesser preProcesser = new PreProcesser();
-            preProcesser.PreProcess();
-            WriteLine("Preprocessing Done");
+            //WriteLine("Preprocessing Started");
+            //PreProcesser preProcesser = new PreProcesser();
+            //preProcesser.PreProcess();
+            //WriteLine("Preprocessing Done");
+
+            //WriteLine("Data Spliting Started");
+            //DataSpliting dataSpliting = new DataSpliting();
+            //dataSpliting.SplitData();
+            //WriteLine("Data Spliting Done");
+
+            WriteLine("Model Training Started");
+            ModelTraining modelTraining = new ModelTraining();
+            modelTraining.TrainModel();
+            WriteLine("Model Training Done");
         }
     }
 }

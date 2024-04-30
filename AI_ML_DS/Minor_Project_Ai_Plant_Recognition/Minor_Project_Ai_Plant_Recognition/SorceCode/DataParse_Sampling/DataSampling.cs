@@ -1,5 +1,6 @@
 ﻿using Emgu.CV;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageWriter;
+using System.Data;
 
 namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
 {
@@ -113,12 +114,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
             if (textFilePath.Contains("plant_dataset.txt"))
             {
                 outputDir = Path.Combine(outputDir, "Medicinal_plant_dataset");
-                WriteLine(outputDir);
             }
             else if (textFilePath.Contains("leaf_dataset.txt"))
             {
                 outputDir = Path.Combine(outputDir, "Medicinal_leaf_dataset");
-                WriteLine(outputDir);
             }
 
             if (Directory.Exists(outputDir))
@@ -144,10 +143,88 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling
         }
     }
 
-    //internal class DataSplit
-    //{
-    //    public void DataSplitFactory()
-    //    {
-    //    }
-    //}
+    internal class DataSplit
+    {
+        public void DataSplitFactory()
+        {
+            string srcDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataPreProcessed";
+            string DistDir = "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Dataset\\DataTestTrainValid";
+
+            if (Directory.Exists(DistDir))
+            {
+                Directory.Delete(DistDir, true);
+            }
+
+            DataDirSplitter(srcDir, Path.Combine(DistDir, "DataSet(train)"), 0.7f);
+            DataDirSplitter(srcDir, Path.Combine(DistDir, "DataSet(test)"), 0.2f);
+            DataDirSplitter(srcDir, Path.Combine(DistDir, "DataSet(validate)"), 0.1f);
+        }
+
+        private void DataDirSplitter(string srcDir, string DistDir, float size)
+        {
+            var subDirs = Directory.EnumerateDirectories(srcDir, "*", SearchOption.AllDirectories);
+
+            foreach (string subDir in subDirs)
+            {
+                var files = Directory.GetFiles(subDir);
+                if (files.Any(file => Path.GetExtension(file) == ".jpg"))
+                {
+                    if (!srcDir.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                    {
+                        srcDir += Path.DirectorySeparatorChar;
+                    }
+
+                    if (subDir.StartsWith(srcDir))
+                    {
+                        string relativePath = subDir.Substring(srcDir.Length);
+                        DataSplitter(subDir, DistDir, size, relativePath);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("The path is not a subdirectory of the base directory.");
+                    }
+                }
+            }
+        }
+
+        private void DataSplitter(string subDir, string distDir, float size, string dirName)
+        {
+            distDir = Path.Combine(distDir, dirName);
+            if (Directory.Exists(distDir))
+            {
+                Directory.Delete(distDir, true);
+                Directory.CreateDirectory(distDir);
+            }
+            else
+            {
+                Directory.CreateDirectory(distDir);
+            }
+
+            var files = Directory.GetFiles(subDir);
+            int fileCount = files.Length;
+            int count = (int)(fileCount * size);
+
+            Random rand = new();
+            List<string> randFiles = new();
+            if (fileCount > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    randFiles.Add(files[rand.Next(0, fileCount)]);
+                }
+            }
+            else
+            {
+                Exception e = new("The directory is empty.");
+                WriteLine(e.Message);
+            }
+
+            foreach (var file in randFiles)
+            {
+                string fileName = Path.GetFileName(file);
+                string destFile = Path.Combine(distDir, fileName);
+                File.Copy(file, destFile, true);
+            }
+        }
+    }
 }

@@ -2,13 +2,13 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Emgu.CV/4.8.1.5350": {
+      "Emgu.CV/4.9.0.5494": {
         "type": "package",
         "dependencies": {
           "System.Drawing.Primitives": "4.3.0",
           "System.Runtime": "4.3.1",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
-          "System.Text.Json": "7.0.3"
+          "System.Text.Json": "8.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Emgu.CV.dll": {
@@ -21,13 +21,13 @@
           }
         }
       },
-      "Emgu.CV.runtime.windows/4.8.1.5350": {
+      "Emgu.CV.runtime.windows/4.9.0.5494": {
         "type": "package",
         "dependencies": {
-          "Emgu.CV": "4.8.1.5350",
-          "Emgu.runtime.windows.msvc.rt.arm64": "19.37.32825",
-          "Emgu.runtime.windows.msvc.rt.x64": "19.37.32825",
-          "Emgu.runtime.windows.msvc.rt.x86": "19.37.32825"
+          "Emgu.CV": "4.9.0.5494",
+          "Emgu.runtime.windows.msvc.rt.arm64": "19.39.33523",
+          "Emgu.runtime.windows.msvc.rt.x64": "19.39.33523",
+          "Emgu.runtime.windows.msvc.rt.x86": "19.39.33523"
         },
         "runtimeTargets": {
           "runtimes/win-arm64/native/cvextern.dll": {
@@ -38,7 +38,11 @@
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/opencv_videoio_ffmpeg481_64.dll": {
+          "runtimes/win-x64/native/libusb-1.0.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/opencv_videoio_ffmpeg490_64.dll": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -46,13 +50,17 @@
             "assetType": "native",
             "rid": "win-x86"
           },
-          "runtimes/win-x86/native/opencv_videoio_ffmpeg481.dll": {
+          "runtimes/win-x86/native/libusb-1.0.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/opencv_videoio_ffmpeg490.dll": {
             "assetType": "native",
             "rid": "win-x86"
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.arm64/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/win-arm64/native/concrt140.dll": {
@@ -89,7 +97,7 @@
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.x64/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.x64/19.39.33523": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/win-x64/native/concrt140.dll": {
@@ -126,7 +134,7 @@
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.x86/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.x86/19.39.33523": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/win-x86/native/concrt140.dll": {
@@ -157,6 +165,18 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "Keras.NET/3.8.5": {
+        "type": "package",
+        "dependencies": {
+          "Numpy.Bare": "3.8.1.25"
+        },
+        "compile": {
+          "lib/netstandard2.0/Keras.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Keras.dll": {}
         }
       },
       "Kurukuru/1.4.2": {
@@ -195,12 +215,41 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Numpy.Bare/3.8.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "pythonnet_netstandard_py38_win": "2.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {}
+        }
+      },
+      "Python.Runtime/2.7.9": {
+        "type": "package"
+      },
       "pythonnet/3.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "System.Reflection.Emit": "4.3.0"
         },
+        "compile": {
+          "lib/netstandard2.0/Python.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Python.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "pythonnet_netstandard_py38_win/2.5.1": {
+        "type": "package",
         "compile": {
           "lib/netstandard2.0/Python.Runtime.dll": {
             "related": ".xml"
@@ -512,15 +561,15 @@
           }
         }
       },
-      "System.Text.Encodings.Web/7.0.0": {
+      "System.Text.Encodings.Web/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.Text.Encodings.Web.dll": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Text.Encodings.Web.dll": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
@@ -528,24 +577,24 @@
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll": {
+          "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll": {
             "assetType": "runtime",
             "rid": "browser"
           }
         }
       },
-      "System.Text.Json/7.0.3": {
+      "System.Text.Json/8.0.1": {
         "type": "package",
         "dependencies": {
-          "System.Text.Encodings.Web": "7.0.0"
+          "System.Text.Encodings.Web": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Text.Json.dll": {
+          "lib/net8.0/System.Text.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Text.Json.dll": {
+          "lib/net8.0/System.Text.Json.dll": {
             "related": ".xml"
           }
         },
@@ -584,32 +633,32 @@
     }
   },
   "libraries": {
-    "Emgu.CV/4.8.1.5350": {
-      "sha512": "1jOw9vu3z6uPEF3Z6ubDIYSrIYrv0h+ABINypNKEtKixMKU0ckUFsiX1AKXFE+kBz9vVFKXRVl94B1Mrf23tVA==",
+    "Emgu.CV/4.9.0.5494": {
+      "sha512": "arnHdpnI14Ov98BmiWOsijAO3qvs2Z5+nBD2uavJI24CRTRSvkCXKZoMmhJVA48QdCdWO8HkO4wMqEezL4Bz/A==",
       "type": "package",
-      "path": "emgu.cv/4.8.1.5350",
+      "path": "emgu.cv/4.9.0.5494",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "docs/README.md",
-        "emgu.cv.4.8.1.5350.nupkg.sha512",
+        "emgu.cv.4.9.0.5494.nupkg.sha512",
         "emgu.cv.nuspec",
         "icon.png",
-        "lib/net7.0-ios16.1/Emgu.CV.dll",
-        "lib/net7.0-ios16.1/Emgu.CV.xml",
-        "lib/net7.0-maccatalyst16.1/Emgu.CV.dll",
-        "lib/net7.0-maccatalyst16.1/Emgu.CV.xml",
+        "lib/net8.0-ios16.1/Emgu.CV.dll",
+        "lib/net8.0-ios16.1/Emgu.CV.xml",
+        "lib/net8.0-maccatalyst16.1/Emgu.CV.dll",
+        "lib/net8.0-maccatalyst16.1/Emgu.CV.xml",
         "lib/netstandard2.0/Emgu.CV.dll",
         "lib/netstandard2.0/Emgu.CV.xml",
         "lib/xamarinios10/Emgu.CV.dll",
         "lib/xamarinios10/Emgu.CV.xml"
       ]
     },
-    "Emgu.CV.runtime.windows/4.8.1.5350": {
-      "sha512": "GGjbAqjlHEDwEjxZnOJAmMEGTIV6KwLQKVgx+mzyHaFV+LK8gEuHW2bTW2VaHUmViONAUYho11VKsXf2CDEqiQ==",
+    "Emgu.CV.runtime.windows/4.9.0.5494": {
+      "sha512": "sByLvyNCzQCScjKHLRm1NrghPUOClXRxVibCav3ou8scflQA28aWB1P+nBMjyBE1qIQ1CGA+h5UB9XGtBSf5xg==",
       "type": "package",
-      "path": "emgu.cv.runtime.windows/4.8.1.5350",
+      "path": "emgu.cv.runtime.windows/4.9.0.5494",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -618,25 +667,27 @@
         "docs/build_info_arm64.inc",
         "docs/build_info_x64.inc",
         "docs/build_info_x86.inc",
-        "emgu.cv.runtime.windows.4.8.1.5350.nupkg.sha512",
+        "emgu.cv.runtime.windows.4.9.0.5494.nupkg.sha512",
         "emgu.cv.runtime.windows.nuspec",
         "icon.png",
         "runtimes/win-arm64/native/cvextern.dll",
         "runtimes/win-x64/native/cvextern.dll",
-        "runtimes/win-x64/native/opencv_videoio_ffmpeg481_64.dll",
+        "runtimes/win-x64/native/libusb-1.0.dll",
+        "runtimes/win-x64/native/opencv_videoio_ffmpeg490_64.dll",
         "runtimes/win-x86/native/cvextern.dll",
-        "runtimes/win-x86/native/opencv_videoio_ffmpeg481.dll"
+        "runtimes/win-x86/native/libusb-1.0.dll",
+        "runtimes/win-x86/native/opencv_videoio_ffmpeg490.dll"
       ]
     },
-    "Emgu.runtime.windows.msvc.rt.arm64/19.37.32825": {
-      "sha512": "/ToNhZ/R+hYcuKYXBeJ6D7f+rHYGiELjwYAyOh+zpDks5iNYEzjL8ZLKCem/mX62F/UNDDyWGldofwPwfmM8oA==",
+    "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
+      "sha512": "idtjLwgIM9eSdOSv9vB320N+5ha647ByAD20cx9mQ5bf1/pqOPg4+YIVy2Z5Yh/S1DxfIfn8kWHA9QbtKjDeCQ==",
       "type": "package",
-      "path": "emgu.runtime.windows.msvc.rt.arm64/19.37.32825",
+      "path": "emgu.runtime.windows.msvc.rt.arm64/19.39.33523",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
-        "emgu.runtime.windows.msvc.rt.arm64.19.37.32825.nupkg.sha512",
+        "emgu.runtime.windows.msvc.rt.arm64.19.39.33523.nupkg.sha512",
         "emgu.runtime.windows.msvc.rt.arm64.nuspec",
         "icon.png",
         "runtimes/win-arm64/native/concrt140.dll",
@@ -649,15 +700,15 @@
         "runtimes/win-arm64/native/vcruntime140_1.dll"
       ]
     },
-    "Emgu.runtime.windows.msvc.rt.x64/19.37.32825": {
-      "sha512": "/T6r8qNrUa3YwXhHavxToFrcfI9OfapPzdW9u8e1VpJsDiMbTlowYtBZQL8f6TTDEwlAgfJRfdNCT+bdZwFs7w==",
+    "Emgu.runtime.windows.msvc.rt.x64/19.39.33523": {
+      "sha512": "P6ibPhYDbQbDykWrgpvelZRjdc0tU6F6YcdRe3DEtKfdi5A+QXNuyg0HcMsUcQBvZMIVzezjohHhWbwamTDGLw==",
       "type": "package",
-      "path": "emgu.runtime.windows.msvc.rt.x64/19.37.32825",
+      "path": "emgu.runtime.windows.msvc.rt.x64/19.39.33523",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
-        "emgu.runtime.windows.msvc.rt.x64.19.37.32825.nupkg.sha512",
+        "emgu.runtime.windows.msvc.rt.x64.19.39.33523.nupkg.sha512",
         "emgu.runtime.windows.msvc.rt.x64.nuspec",
         "icon.png",
         "runtimes/win-x64/native/concrt140.dll",
@@ -670,15 +721,15 @@
         "runtimes/win-x64/native/vcruntime140_1.dll"
       ]
     },
-    "Emgu.runtime.windows.msvc.rt.x86/19.37.32825": {
-      "sha512": "Z/w5IOhqZ8SpExhuEmqHyoZjFiVVmdjNUBKuvtwda4Hla6QSm7q/CxQVPxn7c1z5Qgg7AbrQ3e7r7Uf+jaxyIg==",
+    "Emgu.runtime.windows.msvc.rt.x86/19.39.33523": {
+      "sha512": "WwCxayYRgG+o7sZ16NEaIsOajRytEtjJ8/bnqKziomZahp9LkWUwxfeSvttAYSCKNFCMQUoDS90Fa0NaIm10Pg==",
       "type": "package",
-      "path": "emgu.runtime.windows.msvc.rt.x86/19.37.32825",
+      "path": "emgu.runtime.windows.msvc.rt.x86/19.39.33523",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
-        "emgu.runtime.windows.msvc.rt.x86.19.37.32825.nupkg.sha512",
+        "emgu.runtime.windows.msvc.rt.x86.19.39.33523.nupkg.sha512",
         "emgu.runtime.windows.msvc.rt.x86.nuspec",
         "icon.png",
         "runtimes/win-x86/native/concrt140.dll",
@@ -688,6 +739,19 @@
         "runtimes/win-x86/native/msvcp140_atomic_wait.dll",
         "runtimes/win-x86/native/msvcp140_codecvt_ids.dll",
         "runtimes/win-x86/native/vcruntime140.dll"
+      ]
+    },
+    "Keras.NET/3.8.5": {
+      "sha512": "NFUV194GVq87ZBrUNMrFXy/pMPchh0clyShr4HHoKY+NYaCOIr9kvcRS1hE0rs8S9Adbvt2+gIG9HfNCWikIAg==",
+      "type": "package",
+      "path": "keras.net/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "keras.net.3.8.5.nupkg.sha512",
+        "keras.net.nuspec",
+        "lib/netstandard2.0/Keras.dll"
       ]
     },
     "Kurukuru/1.4.2": {
@@ -803,6 +867,30 @@
         "runtime.json"
       ]
     },
+    "Numpy.Bare/3.8.1.25": {
+      "sha512": "YqbpafFbck+JI0/guhaiJqAqTOKJXGbCfre6PZH+eeQbg27rllyTNPCdw36oLSNzagBIzJjmsGDE61lfSvairg==",
+      "type": "package",
+      "path": "numpy.bare/3.8.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Numpy.Bare.dll",
+        "numpy.bare.3.8.1.25.nupkg.sha512",
+        "numpy.bare.nuspec"
+      ]
+    },
+    "Python.Runtime/2.7.9": {
+      "sha512": "NBS5t9KJvBVDoAFsVOQ79Ri133Hir8O6sqcEZJufXLVvlReXvzyZKhkcO5fpWcqjj6798qrWd/tO/TXCx2Ga7g==",
+      "type": "package",
+      "path": "python.runtime/2.7.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "python.exe",
+        "python.runtime.2.7.9.nupkg.sha512",
+        "python.runtime.nuspec"
+      ]
+    },
     "pythonnet/3.0.3": {
       "sha512": "Go6pLzJ0msUVISUDf4n49GFja/7PbrjfQ9Nxpz+KV0r39YB8x5lPz7sItX38a0KGLoQIsSMxkUNDRjGRvplLHw==",
       "type": "package",
@@ -817,6 +905,19 @@
         "python-clear.png",
         "pythonnet.3.0.3.nupkg.sha512",
         "pythonnet.nuspec"
+      ]
+    },
+    "pythonnet_netstandard_py38_win/2.5.1": {
+      "sha512": "y8D5KG5Z5pFUzxBINwaN6LuM50LpkRV3TD8Lrn9jz1spbT1mBSCeYAzyA8MSo9+Jb3R/evXq0m3+d1KiDGGYUg==",
+      "type": "package",
+      "path": "pythonnet_netstandard_py38_win/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Python.Runtime.dll",
+        "lib/netstandard2.0/Python.Runtime.xml",
+        "pythonnet_netstandard_py38_win.2.5.1.nupkg.sha512",
+        "pythonnet_netstandard_py38_win.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -1875,10 +1976,10 @@
         "system.text.encoding.codepages.nuspec"
       ]
     },
-    "System.Text.Encodings.Web/7.0.0": {
-      "sha512": "OP6umVGxc0Z0MvZQBVigj4/U31Pw72ITihDWP9WiWDm+q5aoe0GaJivsfYGq53o6dxH7DcXWiCTl7+0o2CGdmg==",
+    "System.Text.Encodings.Web/8.0.0": {
+      "sha512": "yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
       "type": "package",
-      "path": "system.text.encodings.web/7.0.0",
+      "path": "system.text.encodings.web/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1895,27 +1996,31 @@
         "lib/net6.0/System.Text.Encodings.Web.xml",
         "lib/net7.0/System.Text.Encodings.Web.dll",
         "lib/net7.0/System.Text.Encodings.Web.xml",
+        "lib/net8.0/System.Text.Encodings.Web.dll",
+        "lib/net8.0/System.Text.Encodings.Web.xml",
         "lib/netstandard2.0/System.Text.Encodings.Web.dll",
         "lib/netstandard2.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.7.0.0.nupkg.sha512",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.8.0.0.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/7.0.3": {
-      "sha512": "AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
+    "System.Text.Json/8.0.1": {
+      "sha512": "7AWk2za1hSEJBppe/Lg+uDcam2TrDqwIKa9XcPssSwyjC2xa39EKEGul3CO5RWNF+hMuZG4zlBDrvhBdDTg4lg==",
       "type": "package",
-      "path": "system.text.json/7.0.3",
+      "path": "system.text.json/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
-        "README.md",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
         "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
@@ -1970,9 +2075,11 @@
         "lib/net6.0/System.Text.Json.xml",
         "lib/net7.0/System.Text.Json.dll",
         "lib/net7.0/System.Text.Json.xml",
+        "lib/net8.0/System.Text.Json.dll",
+        "lib/net8.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.7.0.3.nupkg.sha512",
+        "system.text.json.8.0.1.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2119,9 +2226,11 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Emgu.CV >= 4.8.1.5350",
-      "Emgu.CV.runtime.windows >= 4.8.1.5350",
+      "Emgu.CV >= 4.9.0.5494",
+      "Emgu.CV.runtime.windows >= 4.9.0.5494",
+      "Keras.NET >= 3.8.5",
       "Kurukuru >= 1.4.2",
+      "Python.Runtime >= 2.7.9",
       "ShellProgressBar >= 5.2.0",
       "pythonnet >= 3.0.3"
     ]
@@ -2178,15 +2287,23 @@
         "dependencies": {
           "Emgu.CV": {
             "target": "Package",
-            "version": "[4.8.1.5350, )"
+            "version": "[4.9.0.5494, )"
           },
           "Emgu.CV.runtime.windows": {
             "target": "Package",
-            "version": "[4.8.1.5350, )"
+            "version": "[4.9.0.5494, )"
+          },
+          "Keras.NET": {
+            "target": "Package",
+            "version": "[3.8.5, )"
           },
           "Kurukuru": {
             "target": "Package",
             "version": "[1.4.2, )"
+          },
+          "Python.Runtime": {
+            "target": "Package",
+            "version": "[2.7.9, )"
           },
           "ShellProgressBar": {
             "target": "Package",

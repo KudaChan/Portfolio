@@ -83,10 +83,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, $"size{width}_{height}", dirParentName, dirName);
 
-            if (Directory.Exists(specificOutputDirectory))
-            {
-                Directory.Delete(specificOutputDirectory, true);
-            }
+            //if (Directory.Exists(specificOutputDirectory))
+            //{
+            //    Directory.Delete(specificOutputDirectory, true);
+            //}
 
             NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
@@ -284,10 +284,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, action, dirParentParentName, dirParentName, dirName);
 
-            if (Directory.Exists(specificOutputDirectory))
-            {
-                Directory.Delete(specificOutputDirectory, true);
-            }
+            //if (Directory.Exists(specificOutputDirectory))
+            //{
+            //    Directory.Delete(specificOutputDirectory, true);
+            //}
 
             NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }
@@ -451,10 +451,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             string imgName = Path.GetFileName(path);
             string specificOutputDirectory = Path.Combine(OutputDirectory, dirParentParentParentName, dirParentParentName, dirParentName, dirName);
 
-            if (Directory.Exists(specificOutputDirectory))
-            {
-                Directory.Delete(specificOutputDirectory, true);
-            }
+            //if (Directory.Exists(specificOutputDirectory))
+            //{
+            //    Directory.Delete(specificOutputDirectory, true);
+            //}
 
             NewImageWrite.DirrectoryCreate(specificOutputDirectory, newImg, imgName);
         }

@@ -52,15 +52,23 @@
           "dependencies": {
             "Emgu.CV": {
               "target": "Package",
-              "version": "[4.8.1.5350, )"
+              "version": "[4.9.0.5494, )"
             },
             "Emgu.CV.runtime.windows": {
               "target": "Package",
-              "version": "[4.8.1.5350, )"
+              "version": "[4.9.0.5494, )"
+            },
+            "Keras.NET": {
+              "target": "Package",
+              "version": "[3.8.5, )"
             },
             "Kurukuru": {
               "target": "Package",
               "version": "[1.4.2, )"
+            },
+            "Python.Runtime": {
+              "target": "Package",
+              "version": "[2.7.9, )"
             },
             "ShellProgressBar": {
               "target": "Package",

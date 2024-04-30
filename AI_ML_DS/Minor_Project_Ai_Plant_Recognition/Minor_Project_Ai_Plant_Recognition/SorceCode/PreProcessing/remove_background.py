@@ -112,17 +112,17 @@ def img_writer(dirpath, new_img, img_name):
     If an IOError occurs during the image writing, it is caught and logged to the console.
     """
     path = dirpath
-    if os.path.exists(path):
-        shutil.rmtree(path)
-        try:
-            os.makedirs(path)
-        except Exception as e:
-            print(f"Failed to create directory: {e}")
-    else:
-        try:
-            os.makedirs(path)
-        except Exception as e:
-            print(f"Failed to create directory: {e}")
+    # if os.path.exists(path):
+    #     shutil.rmtree(path)
+    #     try:
+    #         os.makedirs(path)
+    #     except Exception as e:
+    #         print(f"Failed to create directory: {e}")
+    # else:
+    try:
+        os.makedirs(path, exist_ok=True)
+    except Exception as e:
+        print(f"Failed to create directory: {e}")
 
     new_path = os.path.join(path, img_name)
 
