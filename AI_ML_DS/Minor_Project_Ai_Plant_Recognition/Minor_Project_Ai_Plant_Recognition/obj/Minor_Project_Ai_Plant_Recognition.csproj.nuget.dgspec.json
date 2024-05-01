@@ -66,13 +66,17 @@
               "target": "Package",
               "version": "[1.4.2, )"
             },
-            "Python.Runtime": {
+            "Numpy": {
               "target": "Package",
-              "version": "[2.7.9, )"
+              "version": "[3.11.1.33, )"
             },
             "ShellProgressBar": {
               "target": "Package",
               "version": "[5.2.0, )"
+            },
+            "TensorFlow.NET": {
+              "target": "Package",
+              "version": "[0.150.0, )"
             },
             "pythonnet": {
               "target": "Package",

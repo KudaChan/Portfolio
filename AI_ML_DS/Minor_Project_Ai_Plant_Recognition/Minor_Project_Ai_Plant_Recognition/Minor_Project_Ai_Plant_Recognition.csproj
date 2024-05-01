@@ -26,11 +26,11 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
     <PackageReference Include="Keras.NET" Version="3.8.5" />
     <PackageReference Include="Kurukuru" Version="1.4.2" />
-    <PackageReference Include="Python.Runtime" Version="2.7.9" />
-    <!--<PackageReference Include="IronPython" Version="3.4.1" />-->
-    <!--<PackageReference Include="IronPython.StdLib" Version="3.4.1" />-->
+    <PackageReference Include="Numpy" Version="3.11.1.33" />
+    <!--<PackageReference Include="Python.Runtime" Version="2.7.9" />-->
     <PackageReference Include="pythonnet" Version="3.0.3" />
     <PackageReference Include="ShellProgressBar" Version="5.2.0" />
+    <PackageReference Include="TensorFlow.NET" Version="0.150.0" />
   </ItemGroup>
 
   <ItemGroup>

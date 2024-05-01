@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj": {}
+    "D:\\Project\\Basic_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj": {}
   },
   "projects": {
-    "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj": {
+    "D:\\Project\\Basic_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj",
+        "projectUniqueName": "D:\\Project\\Basic_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj",
         "projectName": "DataStructure",
-        "projectPath": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj",
+        "projectPath": "D:\\Project\\Basic_Learning\\DSA\\DataStructure\\DataStructure\\DataStructure.csproj",
         "packagesPath": "C:\\Users\\kumar\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\Basic_Tech_Learning\\DSA\\DataStructure\\DataStructure\\obj\\",
+        "outputPath": "D:\\Project\\Basic_Learning\\DSA\\DataStructure\\DataStructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
