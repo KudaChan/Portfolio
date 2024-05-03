@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AI_ML_DS",
+    "\\AI_ML_DS\\Crop-Recommendation-Model"
   ],
-  "SelectedNode": "\\Minor_Project_Ai_Plant_Recognition.sln",
+  "SelectedNode": "\\AI_ML_DS\\Crop-Recommendation-Model",
   "PreviewInSolutionExplorer": false
 }

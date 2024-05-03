@@ -8,189 +8,308 @@
     ".NETCoreApp,Version=v8.0": {
       "Minor_Project_Ai_Plant_Recognition/1.0.0": {
         "dependencies": {
-          "Emgu.CV": "4.8.1.5350",
-          "Emgu.CV.runtime.windows": "4.8.1.5350",
+          "Emgu.CV": "4.9.0.5494",
+          "Emgu.CV.runtime.windows": "4.9.0.5494",
+          "Keras.NET": "3.8.5",
           "Kurukuru": "1.4.2",
+          "Numpy": "3.11.1.33",
+          "SciSharp.TensorFlow.Redist-Windows-GPU": "2.10.3",
           "ShellProgressBar": "5.2.0",
-          "pythonnet": "3.0.3"
+          "TensorFlow.NET": "0.150.0",
+          "pythonnet": "3.0.3",
+          "SciSharp.TensorFlow.Redist": "2.16.0",
+          "TensorFlow.Keras": "0.15.0"
         },
         "runtime": {
           "Minor_Project_Ai_Plant_Recognition.dll": {}
         }
       },
-      "Emgu.CV/4.8.1.5350": {
+      "Emgu.CV/4.9.0.5494": {
         "dependencies": {
           "System.Drawing.Primitives": "4.3.0",
           "System.Runtime": "4.3.1",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
-          "System.Text.Json": "7.0.3"
+          "System.Text.Json": "8.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Emgu.CV.dll": {
-            "assemblyVersion": "4.8.1.5350",
-            "fileVersion": "4.8.1.5350"
+            "assemblyVersion": "4.9.0.5494",
+            "fileVersion": "4.9.0.5494"
           }
         }
       },
-      "Emgu.CV.runtime.windows/4.8.1.5350": {
+      "Emgu.CV.runtime.windows/4.9.0.5494": {
         "dependencies": {
-          "Emgu.CV": "4.8.1.5350",
-          "Emgu.runtime.windows.msvc.rt.arm64": "19.37.32825",
-          "Emgu.runtime.windows.msvc.rt.x64": "19.37.32825",
-          "Emgu.runtime.windows.msvc.rt.x86": "19.37.32825"
+          "Emgu.CV": "4.9.0.5494",
+          "Emgu.runtime.windows.msvc.rt.arm64": "19.39.33523",
+          "Emgu.runtime.windows.msvc.rt.x64": "19.39.33523",
+          "Emgu.runtime.windows.msvc.rt.x86": "19.39.33523"
         },
         "runtimeTargets": {
           "runtimes/win-arm64/native/cvextern.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "4.8.1.5350"
+            "fileVersion": "4.9.0.5494"
           },
           "runtimes/win-x64/native/cvextern.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "4.8.1.5350"
+            "fileVersion": "4.9.0.5494"
           },
-          "runtimes/win-x64/native/opencv_videoio_ffmpeg481_64.dll": {
+          "runtimes/win-x64/native/libusb-1.0.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "2023.6.0.0"
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/opencv_videoio_ffmpeg490_64.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2023.12.0.0"
           },
           "runtimes/win-x86/native/cvextern.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "4.8.1.5350"
+            "fileVersion": "4.9.0.5494"
           },
-          "runtimes/win-x86/native/opencv_videoio_ffmpeg481.dll": {
+          "runtimes/win-x86/native/libusb-1.0.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "2023.6.0.0"
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/opencv_videoio_ffmpeg490.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "2023.12.0.0"
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.arm64/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
         "runtimeTargets": {
           "runtimes/win-arm64/native/concrt140.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/msvcp140.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/msvcp140_1.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/msvcp140_2.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/msvcp140_atomic_wait.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/msvcp140_codecvt_ids.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/vcruntime140.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-arm64/native/vcruntime140_1.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.x64/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.x64/19.39.33523": {
         "runtimeTargets": {
           "runtimes/win-x64/native/concrt140.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/msvcp140.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/msvcp140_1.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/msvcp140_2.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/msvcp140_atomic_wait.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/msvcp140_codecvt_ids.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/vcruntime140.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x64/native/vcruntime140_1.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           }
         }
       },
-      "Emgu.runtime.windows.msvc.rt.x86/19.37.32825": {
+      "Emgu.runtime.windows.msvc.rt.x86/19.39.33523": {
         "runtimeTargets": {
           "runtimes/win-x86/native/concrt140.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/msvcp140.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/msvcp140_1.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/msvcp140_2.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/msvcp140_atomic_wait.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/msvcp140_codecvt_ids.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
           },
           "runtimes/win-x86/native/vcruntime140.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "14.36.32532.0"
+            "fileVersion": "14.38.33135.0"
+          }
+        }
+      },
+      "Fody/6.7.0": {},
+      "Google.Protobuf/3.21.12": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.21.12.0",
+            "fileVersion": "3.21.12.0"
+          }
+        }
+      },
+      "HDF.PInvoke.1.10/1.10.612": {
+        "runtime": {
+          "lib/netstandard2.0/HDF.PInvoke.1.10.dll": {
+            "assemblyVersion": "1.10.612.0",
+            "fileVersion": "1.10.612.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libhdf5.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libhdf5_hl.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5.103.2.0.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5.103.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.100.1.3.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.100.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/hdf5.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/hdf5_hl.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/hdf5.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/hdf5_hl.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "HDF5-CSharp/1.19.0": {
+        "dependencies": {
+          "HDF.PInvoke.1.10": "1.10.612",
+          "PureHDF": "1.0.0-beta.2",
+          "System.Resources.Extensions": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/HDF5CSharp.dll": {
+            "assemblyVersion": "1.19.0.0",
+            "fileVersion": "1.19.0.0"
+          }
+        }
+      },
+      "Keras.NET/3.8.5": {
+        "dependencies": {
+          "Numpy.Bare": "3.8.1.25"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Keras.dll": {
+            "assemblyVersion": "3.8.5.0",
+            "fileVersion": "3.8.5.0"
           }
         }
       },
@@ -202,9 +321,99 @@
           }
         }
       },
+      "MethodBoundaryAspect.Fody/2.0.149": {
+        "dependencies": {
+          "Fody": "6.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/MethodBoundaryAspect.dll": {
+            "assemblyVersion": "2.0.149.0",
+            "fileVersion": "2.0.149.0"
+          }
+        }
+      },
       "Microsoft.CSharp/4.7.0": {},
       "Microsoft.NETCore.Platforms/1.1.1": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
+      "Numpy/3.11.1.33": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Python.Included": "3.11.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Numpy.dll": {
+            "assemblyVersion": "3.10.0.0",
+            "fileVersion": "3.10.0.0"
+          }
+        }
+      },
+      "Numpy.Bare/3.8.1.25": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "pythonnet_netstandard_py38_win": "2.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {
+            "assemblyVersion": "3.7.1.4",
+            "fileVersion": "3.7.1.4"
+          }
+        }
+      },
+      "OneOf/3.0.263": {
+        "runtime": {
+          "lib/netstandard2.0/OneOf.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Protobuf.Text/0.7.2": {
+        "dependencies": {
+          "Google.Protobuf": "3.21.12"
+        },
+        "runtime": {
+          "lib/net6.0/Protobuf.Text.dll": {
+            "assemblyVersion": "0.7.2.0",
+            "fileVersion": "0.7.2.0"
+          }
+        }
+      },
+      "PureHDF/1.0.0-beta.2": {
+        "runtime": {
+          "lib/net7.0/PureHDF.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Python.Deployment/2.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Python.Deployment.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
+        }
+      },
+      "Python.Included/3.11.1": {
+        "dependencies": {
+          "Python.Deployment": "2.0.0",
+          "pythonnet": "3.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Python.Included.dll": {
+            "assemblyVersion": "3.10.0.0",
+            "fileVersion": "3.10.0.0"
+          }
+        }
+      },
       "pythonnet/3.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -217,10 +426,69 @@
           }
         }
       },
+      "pythonnet_netstandard_py38_win/2.5.1": {},
+      "Razorvine.Pickle/1.4.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Razorvine.Pickle.dll": {
+            "assemblyVersion": "1.4.0.0",
+            "fileVersion": "1.4.0.0"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.3"
+        }
+      },
+      "SciSharp.TensorFlow.Redist/2.16.0": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libtensorflow.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libtensorflow_framework.so.2": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/tensorflow.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SciSharp.TensorFlow.Redist-Windows-GPU/2.10.3": {},
+      "Serilog/2.10.0": {
+        "runtime": {
+          "lib/netstandard2.1/Serilog.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.10.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/4.1.0": {
+        "dependencies": {
+          "Serilog": "2.10.0"
+        },
+        "runtime": {
+          "lib/net5.0/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "SharpZipLib/1.4.2": {
+        "runtime": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "assemblyVersion": "1.4.2.13",
+            "fileVersion": "1.4.2.13"
+          }
         }
       },
       "ShellProgressBar/5.2.0": {
@@ -264,6 +532,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.Memory/4.5.5": {},
       "System.Reflection/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
@@ -302,6 +571,14 @@
           "Microsoft.NETCore.Platforms": "1.1.1",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.1"
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "runtime": {
+          "lib/net7.0/System.Resources.Extensions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -377,10 +654,10 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Text.Encodings.Web/7.0.0": {},
-      "System.Text.Json/7.0.3": {
+      "System.Text.Encodings.Web/8.0.0": {},
+      "System.Text.Json/8.0.1": {
         "dependencies": {
-          "System.Text.Encodings.Web": "7.0.0"
+          "System.Text.Encodings.Web": "8.0.0"
         }
       },
       "System.Threading/4.3.0": {
@@ -395,6 +672,36 @@
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.1"
         }
+      },
+      "TensorFlow.Keras/0.15.0": {
+        "dependencies": {
+          "HDF5-CSharp": "1.19.0",
+          "MethodBoundaryAspect.Fody": "2.0.149",
+          "SharpZipLib": "1.4.2",
+          "TensorFlow.NET": "0.150.0"
+        },
+        "runtime": {
+          "lib/net6.0/Tensorflow.Keras.dll": {
+            "assemblyVersion": "0.15.0.0",
+            "fileVersion": "0.15.0.0"
+          }
+        }
+      },
+      "TensorFlow.NET/0.150.0": {
+        "dependencies": {
+          "MethodBoundaryAspect.Fody": "2.0.149",
+          "Newtonsoft.Json": "13.0.3",
+          "OneOf": "3.0.263",
+          "Protobuf.Text": "0.7.2",
+          "Razorvine.Pickle": "1.4.0",
+          "Serilog.Sinks.Console": "4.1.0"
+        },
+        "runtime": {
+          "lib/net6.0/Tensorflow.Binding.dll": {
+            "assemblyVersion": "0.150.0.0",
+            "fileVersion": "0.150.0.0"
+          }
+        }
       }
     }
   },
@@ -404,40 +711,75 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Emgu.CV/4.8.1.5350": {
+    "Emgu.CV/4.9.0.5494": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1jOw9vu3z6uPEF3Z6ubDIYSrIYrv0h+ABINypNKEtKixMKU0ckUFsiX1AKXFE+kBz9vVFKXRVl94B1Mrf23tVA==",
-      "path": "emgu.cv/4.8.1.5350",
-      "hashPath": "emgu.cv.4.8.1.5350.nupkg.sha512"
+      "sha512": "sha512-arnHdpnI14Ov98BmiWOsijAO3qvs2Z5+nBD2uavJI24CRTRSvkCXKZoMmhJVA48QdCdWO8HkO4wMqEezL4Bz/A==",
+      "path": "emgu.cv/4.9.0.5494",
+      "hashPath": "emgu.cv.4.9.0.5494.nupkg.sha512"
     },
-    "Emgu.CV.runtime.windows/4.8.1.5350": {
+    "Emgu.CV.runtime.windows/4.9.0.5494": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GGjbAqjlHEDwEjxZnOJAmMEGTIV6KwLQKVgx+mzyHaFV+LK8gEuHW2bTW2VaHUmViONAUYho11VKsXf2CDEqiQ==",
-      "path": "emgu.cv.runtime.windows/4.8.1.5350",
-      "hashPath": "emgu.cv.runtime.windows.4.8.1.5350.nupkg.sha512"
+      "sha512": "sha512-sByLvyNCzQCScjKHLRm1NrghPUOClXRxVibCav3ou8scflQA28aWB1P+nBMjyBE1qIQ1CGA+h5UB9XGtBSf5xg==",
+      "path": "emgu.cv.runtime.windows/4.9.0.5494",
+      "hashPath": "emgu.cv.runtime.windows.4.9.0.5494.nupkg.sha512"
     },
-    "Emgu.runtime.windows.msvc.rt.arm64/19.37.32825": {
+    "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/ToNhZ/R+hYcuKYXBeJ6D7f+rHYGiELjwYAyOh+zpDks5iNYEzjL8ZLKCem/mX62F/UNDDyWGldofwPwfmM8oA==",
-      "path": "emgu.runtime.windows.msvc.rt.arm64/19.37.32825",
-      "hashPath": "emgu.runtime.windows.msvc.rt.arm64.19.37.32825.nupkg.sha512"
+      "sha512": "sha512-idtjLwgIM9eSdOSv9vB320N+5ha647ByAD20cx9mQ5bf1/pqOPg4+YIVy2Z5Yh/S1DxfIfn8kWHA9QbtKjDeCQ==",
+      "path": "emgu.runtime.windows.msvc.rt.arm64/19.39.33523",
+      "hashPath": "emgu.runtime.windows.msvc.rt.arm64.19.39.33523.nupkg.sha512"
     },
-    "Emgu.runtime.windows.msvc.rt.x64/19.37.32825": {
+    "Emgu.runtime.windows.msvc.rt.x64/19.39.33523": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/T6r8qNrUa3YwXhHavxToFrcfI9OfapPzdW9u8e1VpJsDiMbTlowYtBZQL8f6TTDEwlAgfJRfdNCT+bdZwFs7w==",
-      "path": "emgu.runtime.windows.msvc.rt.x64/19.37.32825",
-      "hashPath": "emgu.runtime.windows.msvc.rt.x64.19.37.32825.nupkg.sha512"
+      "sha512": "sha512-P6ibPhYDbQbDykWrgpvelZRjdc0tU6F6YcdRe3DEtKfdi5A+QXNuyg0HcMsUcQBvZMIVzezjohHhWbwamTDGLw==",
+      "path": "emgu.runtime.windows.msvc.rt.x64/19.39.33523",
+      "hashPath": "emgu.runtime.windows.msvc.rt.x64.19.39.33523.nupkg.sha512"
     },
-    "Emgu.runtime.windows.msvc.rt.x86/19.37.32825": {
+    "Emgu.runtime.windows.msvc.rt.x86/19.39.33523": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z/w5IOhqZ8SpExhuEmqHyoZjFiVVmdjNUBKuvtwda4Hla6QSm7q/CxQVPxn7c1z5Qgg7AbrQ3e7r7Uf+jaxyIg==",
-      "path": "emgu.runtime.windows.msvc.rt.x86/19.37.32825",
-      "hashPath": "emgu.runtime.windows.msvc.rt.x86.19.37.32825.nupkg.sha512"
+      "sha512": "sha512-WwCxayYRgG+o7sZ16NEaIsOajRytEtjJ8/bnqKziomZahp9LkWUwxfeSvttAYSCKNFCMQUoDS90Fa0NaIm10Pg==",
+      "path": "emgu.runtime.windows.msvc.rt.x86/19.39.33523",
+      "hashPath": "emgu.runtime.windows.msvc.rt.x86.19.39.33523.nupkg.sha512"
+    },
+    "Fody/6.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-apsA8Hp9sAuOVmn9byPnCuqiQEjhAApqwNfEG+Gu0OyHUZfjHhLwvNQnAaONDdHWDXP/pBgpGXuscVwfEym8zQ==",
+      "path": "fody/6.7.0",
+      "hashPath": "fody.6.7.0.nupkg.sha512"
+    },
+    "Google.Protobuf/3.21.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1TXWxQy0PDDM1NC/LojlX4YVh7NhOvvyriCfERzeUVTp0XNXv8mo/AyWxDYCvMQ9xRZHUVdWoE4/B8ridP8Btg==",
+      "path": "google.protobuf/3.21.12",
+      "hashPath": "google.protobuf.3.21.12.nupkg.sha512"
+    },
+    "HDF.PInvoke.1.10/1.10.612": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cclJvJQJwVLZZ7Qwp2507/ML3KYN10Kk069kg1+6DYLfoN410SiOxRn4lztZipcyot4pi26dTiGi9vnSWoB77Q==",
+      "path": "hdf.pinvoke.1.10/1.10.612",
+      "hashPath": "hdf.pinvoke.1.10.1.10.612.nupkg.sha512"
+    },
+    "HDF5-CSharp/1.19.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eWDi9FqnNKww7d/EWijIOsnypN8Wlw0Rjaq4v8GwGYcscC/UXu3QkQZi2Q4A0Cx3N1PVCmoc/nXQXCYUUA+G7g==",
+      "path": "hdf5-csharp/1.19.0",
+      "hashPath": "hdf5-csharp.1.19.0.nupkg.sha512"
+    },
+    "Keras.NET/3.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NFUV194GVq87ZBrUNMrFXy/pMPchh0clyShr4HHoKY+NYaCOIr9kvcRS1hE0rs8S9Adbvt2+gIG9HfNCWikIAg==",
+      "path": "keras.net/3.8.5",
+      "hashPath": "keras.net.3.8.5.nupkg.sha512"
     },
     "Kurukuru/1.4.2": {
       "type": "package",
@@ -445,6 +787,13 @@
       "sha512": "sha512-OpfXP8piJFx8hEG+z2Gw2/VWvj96RkzDvtjfAxJnZRuREDasW8Is9kjwm/E8oXmyq6TjSStBzkSwdAJLlqG3Dg==",
       "path": "kurukuru/1.4.2",
       "hashPath": "kurukuru.1.4.2.nupkg.sha512"
+    },
+    "MethodBoundaryAspect.Fody/2.0.149": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sKKEdwd/ETEbp0XTM5vhdXsGiKRQbmsgPmt3mpqM/Emzu3UHqyBMyO/1JicCp+AQ5pVozjC2Nlv/0KvriVi2ZA==",
+      "path": "methodboundaryaspect.fody/2.0.149",
+      "hashPath": "methodboundaryaspect.fody.2.0.149.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -467,6 +816,62 @@
       "path": "microsoft.netcore.targets/1.1.3",
       "hashPath": "microsoft.netcore.targets.1.1.3.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
+    "Numpy/3.11.1.33": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+sYpF3JL0OhG1UriBOhkTY4zzBzwtzBKgO4E14rx31vE87NaqaCObvjdnKfwEufsukYHXUzzNK35kMuEpf2Txg==",
+      "path": "numpy/3.11.1.33",
+      "hashPath": "numpy.3.11.1.33.nupkg.sha512"
+    },
+    "Numpy.Bare/3.8.1.25": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YqbpafFbck+JI0/guhaiJqAqTOKJXGbCfre6PZH+eeQbg27rllyTNPCdw36oLSNzagBIzJjmsGDE61lfSvairg==",
+      "path": "numpy.bare/3.8.1.25",
+      "hashPath": "numpy.bare.3.8.1.25.nupkg.sha512"
+    },
+    "OneOf/3.0.263": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2xXFnUxkAA0rJ2sJz9FPeW/gzJIBvyj+xIvfTIkz42pz9JlcYse4/rwRnkmCsYxw6osy1whnBO6Ox6HBKEqDMw==",
+      "path": "oneof/3.0.263",
+      "hashPath": "oneof.3.0.263.nupkg.sha512"
+    },
+    "Protobuf.Text/0.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xwhiptA+8dMgFX8N3V3FD6SD5N9jMsx/9OHw9+xWgRTaSjsLUDSuw2u94D8IBDS2z7s7ESLTOUqSyLZggE0p4w==",
+      "path": "protobuf.text/0.7.2",
+      "hashPath": "protobuf.text.0.7.2.nupkg.sha512"
+    },
+    "PureHDF/1.0.0-beta.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Zbfy5FnLAyuVBUWFi8Gea+8BBQB+wbzs6mpGeldnZVhiqIAOenYSkwSOgt2LtLRVBs97LN7d7AXx6xjs+MBL3Q==",
+      "path": "purehdf/1.0.0-beta.2",
+      "hashPath": "purehdf.1.0.0-beta.2.nupkg.sha512"
+    },
+    "Python.Deployment/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-if4M/aBaQWx1ENSUy12XKYTz2zKWpJiHhOXLhOdYj+g3UQy70sOplSyTrw5aNOMvUXkPbGrKNGfWXRB5ffevjQ==",
+      "path": "python.deployment/2.0.0",
+      "hashPath": "python.deployment.2.0.0.nupkg.sha512"
+    },
+    "Python.Included/3.11.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RTXUIfyie6ekfKGOCXppfuZWaAtw891r6EHJtIhEI/WtlJtCo3SmcRlhElIEZZ284WE96e1q6I3RiLqw1fm8dg==",
+      "path": "python.included/3.11.1",
+      "hashPath": "python.included.3.11.1.nupkg.sha512"
+    },
     "pythonnet/3.0.3": {
       "type": "package",
       "serviceable": true,
@@ -474,12 +879,61 @@
       "path": "pythonnet/3.0.3",
       "hashPath": "pythonnet.3.0.3.nupkg.sha512"
     },
+    "pythonnet_netstandard_py38_win/2.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y8D5KG5Z5pFUzxBINwaN6LuM50LpkRV3TD8Lrn9jz1spbT1mBSCeYAzyA8MSo9+Jb3R/evXq0m3+d1KiDGGYUg==",
+      "path": "pythonnet_netstandard_py38_win/2.5.1",
+      "hashPath": "pythonnet_netstandard_py38_win.2.5.1.nupkg.sha512"
+    },
+    "Razorvine.Pickle/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Muw+ehQ80owJ45blZIsHG9MNVZJd+kFmbpwm9z07XPXMqlEU3lvOOPVxvCZAK0Gc/gvKju7p4vw2jqfAQGCDHQ==",
+      "path": "razorvine.pickle/1.4.0",
+      "hashPath": "razorvine.pickle.1.4.0.nupkg.sha512"
+    },
     "runtime.native.System/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "path": "runtime.native.system/4.3.0",
       "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
+    },
+    "SciSharp.TensorFlow.Redist/2.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2RFkGfdTIoo8ineDUhQyjTNjXzrVLvPmgI4IaRLxqXy2TeepCmRLKG4CTN71IGC2hkPnnKyPIaXv3jkN+QcTFw==",
+      "path": "scisharp.tensorflow.redist/2.16.0",
+      "hashPath": "scisharp.tensorflow.redist.2.16.0.nupkg.sha512"
+    },
+    "SciSharp.TensorFlow.Redist-Windows-GPU/2.10.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vVtpqqnNEmsZGzXgBoUfpS0i+1OJlvcfAAxRlUuSRZkYzRD3E/D4z4JHOKR6rB5ZHpMhvnF4LopA5psh1l5gtg==",
+      "path": "scisharp.tensorflow.redist-windows-gpu/2.10.3",
+      "hashPath": "scisharp.tensorflow.redist-windows-gpu.2.10.3.nupkg.sha512"
+    },
+    "Serilog/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K6N5q+5fetjnJPvCmkWOpJ/V8IEIoMIB1s86OzBrbxwTyHxdx3pmz4H+8+O/Dc/ftUX12DM1aynx/dDowkwzqg==",
+      "path": "serilog.sinks.console/4.1.0",
+      "hashPath": "serilog.sinks.console.4.1.0.nupkg.sha512"
+    },
+    "SharpZipLib/1.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A==",
+      "path": "sharpziplib/1.4.2",
+      "hashPath": "sharpziplib.1.4.2.nupkg.sha512"
     },
     "ShellProgressBar/5.2.0": {
       "type": "package",
@@ -516,6 +970,13 @@
       "path": "system.io/4.3.0",
       "hashPath": "system.io.4.3.0.nupkg.sha512"
     },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
     "System.Reflection/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -550,6 +1011,13 @@
       "sha512": "sha512-5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Resources.Extensions/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-65ufm9ABXvxRkQ//hMcUDrQXbGWkC7z0WWZAvHlQ6Qv+JmrIwHH1lmX8aXlNlXpIrT9KxDpuZPqJTVqqwzMD8Q==",
+      "path": "system.resources.extensions/7.0.0",
+      "hashPath": "system.resources.extensions.7.0.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
@@ -607,19 +1075,19 @@
       "path": "system.text.encoding.codepages/4.0.1",
       "hashPath": "system.text.encoding.codepages.4.0.1.nupkg.sha512"
     },
-    "System.Text.Encodings.Web/7.0.0": {
+    "System.Text.Encodings.Web/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OP6umVGxc0Z0MvZQBVigj4/U31Pw72ITihDWP9WiWDm+q5aoe0GaJivsfYGq53o6dxH7DcXWiCTl7+0o2CGdmg==",
-      "path": "system.text.encodings.web/7.0.0",
-      "hashPath": "system.text.encodings.web.7.0.0.nupkg.sha512"
+      "sha512": "sha512-yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "path": "system.text.encodings.web/8.0.0",
+      "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
     },
-    "System.Text.Json/7.0.3": {
+    "System.Text.Json/8.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
-      "path": "system.text.json/7.0.3",
-      "hashPath": "system.text.json.7.0.3.nupkg.sha512"
+      "sha512": "sha512-7AWk2za1hSEJBppe/Lg+uDcam2TrDqwIKa9XcPssSwyjC2xa39EKEGul3CO5RWNF+hMuZG4zlBDrvhBdDTg4lg==",
+      "path": "system.text.json/8.0.1",
+      "hashPath": "system.text.json.8.0.1.nupkg.sha512"
     },
     "System.Threading/4.3.0": {
       "type": "package",
@@ -634,6 +1102,20 @@
       "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
+    },
+    "TensorFlow.Keras/0.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-viQAIDf+fEjdazXi9xPIvd1Kx9rsxzutWcsdsSH/Q5GQJ8XhUnZrWwiHSvcWdO1TIoSfPyyxFoQFIULyKeOcNg==",
+      "path": "tensorflow.keras/0.15.0",
+      "hashPath": "tensorflow.keras.0.15.0.nupkg.sha512"
+    },
+    "TensorFlow.NET/0.150.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oWGYeA9btwWKEBGhmD9Y7mlOhdGimjYKFl5WyiYMAHmxlgtvWtfvI1GSV9BI4qzy2rP/AjVhByS/4w0pOJ3ePw==",
+      "path": "tensorflow.net/0.150.0",
+      "hashPath": "tensorflow.net.0.150.0.nupkg.sha512"
     }
   }
 }

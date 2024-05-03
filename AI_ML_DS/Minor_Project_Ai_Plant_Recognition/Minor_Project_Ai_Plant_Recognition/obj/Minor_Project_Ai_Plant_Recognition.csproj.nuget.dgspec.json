@@ -58,10 +58,6 @@
               "target": "Package",
               "version": "[4.9.0.5494, )"
             },
-            "Keras.NET": {
-              "target": "Package",
-              "version": "[3.8.5, )"
-            },
             "Kurukuru": {
               "target": "Package",
               "version": "[1.4.2, )"
@@ -69,6 +65,10 @@
             "Numpy": {
               "target": "Package",
               "version": "[3.11.1.33, )"
+            },
+            "SciSharp.TensorFlow.Redist-Windows-GPU": {
+              "target": "Package",
+              "version": "[2.10.3, )"
             },
             "ShellProgressBar": {
               "target": "Package",
@@ -81,6 +81,18 @@
             "pythonnet": {
               "target": "Package",
               "version": "[3.0.3, )"
+            },
+            "scisharp.tensorflow.redist": {
+              "target": "Package",
+              "version": "[2.16.0, )"
+            },
+            "sharpcv": {
+              "target": "Package",
+              "version": "[0.14.0, )"
+            },
+            "tensorflow.keras": {
+              "target": "Package",
+              "version": "[0.15.0, )"
             }
           },
           "imports": [

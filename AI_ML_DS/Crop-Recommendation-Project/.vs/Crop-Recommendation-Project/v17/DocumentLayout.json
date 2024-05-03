@@ -1,0 +1,127 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-project\\src\\datapreprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:src\\datapreprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:src\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\generalfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:src\\generalfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 180,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataPreprocessor.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\DataPreprocessor.cs",
+              "RelativeDocumentMoniker": "src\\DataPreprocessor.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\DataPreprocessor.cs",
+              "RelativeToolTip": "src\\DataPreprocessor.cs",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAQwKcAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T19:58:55.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DatabaseConnector.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\DatabaseConnector.cs",
+              "RelativeDocumentMoniker": "src\\DatabaseConnector.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\DatabaseConnector.cs",
+              "RelativeToolTip": "src\\DatabaseConnector.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAAAEAAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T23:16:45.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Crop_recommendation.csv",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Dataset\\Crop_recommendation.csv",
+              "RelativeDocumentMoniker": "Dataset\\Crop_recommendation.csv",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Dataset\\Crop_recommendation.csv",
+              "RelativeToolTip": "Dataset\\Crop_recommendation.csv",
+              "ViewState": "AQIAALAHAAAAAAAAAAAgwJkIAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2024-05-02T19:25:55.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:54:35.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GeneralFunc.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\GeneralFunc.cs",
+              "RelativeDocumentMoniker": "src\\GeneralFunc.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\GeneralFunc.cs",
+              "RelativeToolTip": "src\\GeneralFunc.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAYwG8AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T06:43:06.722Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

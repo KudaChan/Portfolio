@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Crop-Recommendation-Project": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project",
+      "environmentVariables": {
+        "DB_HOST": "localhost",
+        "DB_USER": "kumar",
+        "DB_NAME": "CropDB",
+        "DB_PORT": "5432",
+        "DB_PASSWORD": "chan05dan"
+      }
+    }
+  }
+}

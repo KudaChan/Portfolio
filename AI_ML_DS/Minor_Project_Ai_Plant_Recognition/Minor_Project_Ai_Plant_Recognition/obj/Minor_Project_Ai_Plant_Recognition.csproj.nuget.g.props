@@ -13,4 +13,8 @@
     <SourceRoot Include="C:\Users\kumar\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)scisharp.tensorflow.redist-windows-gpu\2.10.3\build\netstandard2.0\SciSharp.TensorFlow.Redist-Windows-GPU.props" Condition="Exists('$(NuGetPackageRoot)scisharp.tensorflow.redist-windows-gpu\2.10.3\build\netstandard2.0\SciSharp.TensorFlow.Redist-Windows-GPU.props')" />
+    <Import Project="$(NuGetPackageRoot)scisharp.tensorflow.redist\2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props" Condition="Exists('$(NuGetPackageRoot)scisharp.tensorflow.redist\2.16.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props')" />
+  </ImportGroup>
 </Project>

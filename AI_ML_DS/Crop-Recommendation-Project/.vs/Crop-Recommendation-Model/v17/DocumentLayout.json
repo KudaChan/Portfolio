@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-model\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-model\\src\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|solutionrelative:src\\databaseconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-model\\dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Model.csproj|solutionrelative:dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 438,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Crop_recommendation.csv",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\Dataset\\Crop_recommendation.csv",
+              "RelativeDocumentMoniker": "Dataset\\Crop_recommendation.csv",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\Dataset\\Crop_recommendation.csv",
+              "RelativeToolTip": "Dataset\\Crop_recommendation.csv",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAIIIAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2024-05-02T16:11:53.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseConnector.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\src\\DatabaseConnector.cs",
+              "RelativeDocumentMoniker": "src\\DatabaseConnector.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\src\\DatabaseConnector.cs",
+              "RelativeToolTip": "src\\DatabaseConnector.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T16:28:01.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Model\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T16:10:24.052Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 334,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

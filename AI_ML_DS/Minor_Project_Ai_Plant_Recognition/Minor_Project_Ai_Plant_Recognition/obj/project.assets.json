@@ -186,16 +186,77 @@
           }
         }
       },
-      "Keras.NET/3.8.5": {
+      "HDF.PInvoke.1.10/1.10.612": {
         "type": "package",
-        "dependencies": {
-          "Numpy.Bare": "3.8.1.25"
-        },
         "compile": {
-          "lib/netstandard2.0/Keras.dll": {}
+          "lib/netstandard2.0/HDF.PInvoke.1.10.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Keras.dll": {}
+          "lib/netstandard2.0/HDF.PInvoke.1.10.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libhdf5.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libhdf5_hl.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5.103.2.0.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5.103.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.100.1.3.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.100.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libhdf5_hl.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/hdf5.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/hdf5_hl.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/hdf5.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/hdf5_hl.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "HDF5-CSharp/1.19.0": {
+        "type": "package",
+        "dependencies": {
+          "HDF.PInvoke.1.10": "1.10.612",
+          "PureHDF": "1.0.0-beta.2",
+          "System.Resources.Extensions": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/HDF5CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/HDF5CSharp.dll": {}
         }
       },
       "Kurukuru/1.4.2": {
@@ -275,19 +336,6 @@
           "lib/netstandard2.0/Numpy.dll": {}
         }
       },
-      "Numpy.Bare/3.8.1.25": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "pythonnet_netstandard_py38_win": "2.5.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/Numpy.Bare.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Numpy.Bare.dll": {}
-        }
-      },
       "OneOf/3.0.263": {
         "type": "package",
         "compile": {
@@ -307,6 +355,19 @@
         },
         "runtime": {
           "lib/net6.0/Protobuf.Text.dll": {}
+        }
+      },
+      "PureHDF/1.0.0-beta.2": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/PureHDF.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/PureHDF.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Python.Deployment/2.0.0": {
@@ -348,19 +409,6 @@
           }
         }
       },
-      "pythonnet_netstandard_py38_win/2.5.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Python.Runtime.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Python.Runtime.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Razorvine.Pickle/1.4.0": {
         "type": "package",
         "dependencies": {
@@ -384,6 +432,42 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "SciSharp.TensorFlow.Redist/2.16.0": {
+        "type": "package",
+        "build": {
+          "build/netstandard2.0/SciSharp.TensorFlow.Redist.props": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libtensorflow.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libtensorflow_framework.so.2": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/_._": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/tensorflow.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
+      "SciSharp.TensorFlow.Redist-Windows-GPU/2.10.3": {
+        "type": "package",
+        "build": {
+          "build/netstandard2.0/SciSharp.TensorFlow.Redist-Windows-GPU.props": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-x64/native/tensorflow.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
         }
       },
       "Serilog/2.10.0": {
@@ -412,6 +496,31 @@
         "runtime": {
           "lib/net5.0/Serilog.Sinks.Console.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "SharpCV/0.14.0": {
+        "type": "package",
+        "dependencies": {
+          "TensorFlow.NET": "0.150.0"
+        },
+        "compile": {
+          "lib/net6.0/SharpCV.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/SharpCV.dll": {}
+        }
+      },
+      "SharpZipLib/1.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -569,6 +678,22 @@
           "ref/netstandard1.0/System.Reflection.Primitives.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -780,6 +905,25 @@
           }
         }
       },
+      "TensorFlow.Keras/0.15.0": {
+        "type": "package",
+        "dependencies": {
+          "HDF5-CSharp": "1.19.0",
+          "MethodBoundaryAspect.Fody": "2.0.149",
+          "SharpZipLib": "1.4.2",
+          "TensorFlow.NET": "0.150.0"
+        },
+        "compile": {
+          "lib/net6.0/Tensorflow.Keras.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Tensorflow.Keras.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "TensorFlow.NET/0.150.0": {
         "type": "package",
         "dependencies": {
@@ -968,17 +1112,48 @@
         "lib/netstandard2.0/Google.Protobuf.xml"
       ]
     },
-    "Keras.NET/3.8.5": {
-      "sha512": "NFUV194GVq87ZBrUNMrFXy/pMPchh0clyShr4HHoKY+NYaCOIr9kvcRS1hE0rs8S9Adbvt2+gIG9HfNCWikIAg==",
+    "HDF.PInvoke.1.10/1.10.612": {
+      "sha512": "cclJvJQJwVLZZ7Qwp2507/ML3KYN10Kk069kg1+6DYLfoN410SiOxRn4lztZipcyot4pi26dTiGi9vnSWoB77Q==",
       "type": "package",
-      "path": "keras.net/3.8.5",
+      "path": "hdf.pinvoke.1.10/1.10.612",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE",
-        "keras.net.3.8.5.nupkg.sha512",
-        "keras.net.nuspec",
-        "lib/netstandard2.0/Keras.dll"
+        "COPYING",
+        "build/net461/HDF.PInvoke.1.10.targets",
+        "buildTransitive/net461/HDF.PInvoke.1.10.targets",
+        "hdf.pinvoke.1.10.1.10.612.nupkg.sha512",
+        "hdf.pinvoke.1.10.nuspec",
+        "lib/netstandard2.0/HDF.PInvoke.1.10.dll",
+        "runtimes/linux-x64/native/libhdf5.so",
+        "runtimes/linux-x64/native/libhdf5_hl.so",
+        "runtimes/osx-x64/native/libhdf5.103.2.0.dylib",
+        "runtimes/osx-x64/native/libhdf5.103.dylib",
+        "runtimes/osx-x64/native/libhdf5.dylib",
+        "runtimes/osx-x64/native/libhdf5_hl.100.1.3.dylib",
+        "runtimes/osx-x64/native/libhdf5_hl.100.dylib",
+        "runtimes/osx-x64/native/libhdf5_hl.dylib",
+        "runtimes/win-x64/native/hdf5.dll",
+        "runtimes/win-x64/native/hdf5_hl.dll",
+        "runtimes/win-x86/native/hdf5.dll",
+        "runtimes/win-x86/native/hdf5_hl.dll"
+      ]
+    },
+    "HDF5-CSharp/1.19.0": {
+      "sha512": "eWDi9FqnNKww7d/EWijIOsnypN8Wlw0Rjaq4v8GwGYcscC/UXu3QkQZi2Q4A0Cx3N1PVCmoc/nXQXCYUUA+G7g==",
+      "type": "package",
+      "path": "hdf5-csharp/1.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "hdf5-csharp.1.19.0.nupkg.sha512",
+        "hdf5-csharp.nuspec",
+        "hdf5Wrapper.png",
+        "lib/net6.0/HDF5CSharp.dll",
+        "lib/net7.0/HDF5CSharp.dll",
+        "lib/netstandard2.0/HDF5CSharp.dll",
+        "lib/netstandard2.1/HDF5CSharp.dll"
       ]
     },
     "Kurukuru/1.4.2": {
@@ -1152,18 +1327,6 @@
         "numpy.nuspec"
       ]
     },
-    "Numpy.Bare/3.8.1.25": {
-      "sha512": "YqbpafFbck+JI0/guhaiJqAqTOKJXGbCfre6PZH+eeQbg27rllyTNPCdw36oLSNzagBIzJjmsGDE61lfSvairg==",
-      "type": "package",
-      "path": "numpy.bare/3.8.1.25",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Numpy.Bare.dll",
-        "numpy.bare.3.8.1.25.nupkg.sha512",
-        "numpy.bare.nuspec"
-      ]
-    },
     "OneOf/3.0.263": {
       "sha512": "2xXFnUxkAA0rJ2sJz9FPeW/gzJIBvyj+xIvfTIkz42pz9JlcYse4/rwRnkmCsYxw6osy1whnBO6Ox6HBKEqDMw==",
       "type": "package",
@@ -1190,6 +1353,27 @@
         "lib/netstandard2.0/Protobuf.Text.dll",
         "protobuf.text.0.7.2.nupkg.sha512",
         "protobuf.text.nuspec"
+      ]
+    },
+    "PureHDF/1.0.0-beta.2": {
+      "sha512": "Zbfy5FnLAyuVBUWFi8Gea+8BBQB+wbzs6mpGeldnZVhiqIAOenYSkwSOgt2LtLRVBs97LN7d7AXx6xjs+MBL3Q==",
+      "type": "package",
+      "path": "purehdf/1.0.0-beta.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/PureHDF.dll",
+        "lib/net6.0/PureHDF.xml",
+        "lib/net7.0/PureHDF.dll",
+        "lib/net7.0/PureHDF.xml",
+        "lib/netstandard2.0/PureHDF.dll",
+        "lib/netstandard2.0/PureHDF.xml",
+        "lib/netstandard2.1/PureHDF.dll",
+        "lib/netstandard2.1/PureHDF.xml",
+        "nuget.png",
+        "purehdf.1.0.0-beta.2.nupkg.sha512",
+        "purehdf.nuspec"
       ]
     },
     "Python.Deployment/2.0.0": {
@@ -1234,19 +1418,6 @@
         "pythonnet.nuspec"
       ]
     },
-    "pythonnet_netstandard_py38_win/2.5.1": {
-      "sha512": "y8D5KG5Z5pFUzxBINwaN6LuM50LpkRV3TD8Lrn9jz1spbT1mBSCeYAzyA8MSo9+Jb3R/evXq0m3+d1KiDGGYUg==",
-      "type": "package",
-      "path": "pythonnet_netstandard_py38_win/2.5.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Python.Runtime.dll",
-        "lib/netstandard2.0/Python.Runtime.xml",
-        "pythonnet_netstandard_py38_win.2.5.1.nupkg.sha512",
-        "pythonnet_netstandard_py38_win.nuspec"
-      ]
-    },
     "Razorvine.Pickle/1.4.0": {
       "sha512": "Muw+ehQ80owJ45blZIsHG9MNVZJd+kFmbpwm9z07XPXMqlEU3lvOOPVxvCZAK0Gc/gvKju7p4vw2jqfAQGCDHQ==",
       "type": "package",
@@ -1271,6 +1442,39 @@
         "lib/netstandard1.0/_._",
         "runtime.native.system.4.3.0.nupkg.sha512",
         "runtime.native.system.nuspec"
+      ]
+    },
+    "SciSharp.TensorFlow.Redist/2.16.0": {
+      "sha512": "2RFkGfdTIoo8ineDUhQyjTNjXzrVLvPmgI4IaRLxqXy2TeepCmRLKG4CTN71IGC2hkPnnKyPIaXv3jkN+QcTFw==",
+      "type": "package",
+      "path": "scisharp.tensorflow.redist/2.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD_PARTY_NOTICES.txt",
+        "build/netstandard2.0/SciSharp.TensorFlow.Redist.props",
+        "runtimes/linux-x64/native/libtensorflow.so",
+        "runtimes/linux-x64/native/libtensorflow_framework.so.2",
+        "runtimes/osx-x64/native/_._",
+        "runtimes/win-x64/native/tensorflow.dll",
+        "scisharp.tensorflow.redist.2.16.0.nupkg.sha512",
+        "scisharp.tensorflow.redist.nuspec"
+      ]
+    },
+    "SciSharp.TensorFlow.Redist-Windows-GPU/2.10.3": {
+      "sha512": "vVtpqqnNEmsZGzXgBoUfpS0i+1OJlvcfAAxRlUuSRZkYzRD3E/D4z4JHOKR6rB5ZHpMhvnF4LopA5psh1l5gtg==",
+      "type": "package",
+      "path": "scisharp.tensorflow.redist-windows-gpu/2.10.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD_PARTY_NOTICES.txt",
+        "build/netstandard2.0/SciSharp.TensorFlow.Redist-Windows-GPU.props",
+        "runtimes/win-x64/native/tensorflow.dll",
+        "scisharp.tensorflow.redist-windows-gpu.2.10.3.nupkg.sha512",
+        "scisharp.tensorflow.redist-windows-gpu.nuspec"
       ]
     },
     "Serilog/2.10.0": {
@@ -1315,6 +1519,40 @@
         "lib/netstandard2.0/Serilog.Sinks.Console.xml",
         "serilog.sinks.console.4.1.0.nupkg.sha512",
         "serilog.sinks.console.nuspec"
+      ]
+    },
+    "SharpCV/0.14.0": {
+      "sha512": "zLXJZ/WOq3NqUKG4tmImaemdwEJYeGRaEpL26pkD5A+Ew5PTpt7BPcHXYiNk2+yw3MBZtUXH1HvPA7O3aVoK0g==",
+      "type": "package",
+      "path": "sharpcv/0.14.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/SharpCV.dll",
+        "lib/netstandard2.0/SharpCV.dll",
+        "sharpcv.0.14.0.nupkg.sha512",
+        "sharpcv.nuspec"
+      ]
+    },
+    "SharpZipLib/1.4.2": {
+      "sha512": "yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A==",
+      "type": "package",
+      "path": "sharpziplib/1.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/sharpziplib-nuget-256x256.png",
+        "lib/net6.0/ICSharpCode.SharpZipLib.dll",
+        "lib/net6.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/net6.0/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.1/ICSharpCode.SharpZipLib.xml",
+        "sharpziplib.1.4.2.nupkg.sha512",
+        "sharpziplib.nuspec"
       ]
     },
     "ShellProgressBar/5.2.0": {
@@ -1877,6 +2115,33 @@
         "ref/xamarinwatchos10/_._",
         "system.reflection.primitives.4.3.0.nupkg.sha512",
         "system.reflection.primitives.nuspec"
+      ]
+    },
+    "System.Resources.Extensions/7.0.0": {
+      "sha512": "65ufm9ABXvxRkQ//hMcUDrQXbGWkC7z0WWZAvHlQ6Qv+JmrIwHH1lmX8aXlNlXpIrT9KxDpuZPqJTVqqwzMD8Q==",
+      "type": "package",
+      "path": "system.resources.extensions/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Resources.Extensions.targets",
+        "buildTransitive/net462/System.Resources.Extensions.targets",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Resources.Extensions.targets",
+        "lib/net462/System.Resources.Extensions.dll",
+        "lib/net462/System.Resources.Extensions.xml",
+        "lib/net6.0/System.Resources.Extensions.dll",
+        "lib/net6.0/System.Resources.Extensions.xml",
+        "lib/net7.0/System.Resources.Extensions.dll",
+        "lib/net7.0/System.Resources.Extensions.xml",
+        "lib/netstandard2.0/System.Resources.Extensions.dll",
+        "lib/netstandard2.0/System.Resources.Extensions.xml",
+        "system.resources.extensions.7.0.0.nupkg.sha512",
+        "system.resources.extensions.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
@@ -2629,6 +2894,22 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "TensorFlow.Keras/0.15.0": {
+      "sha512": "viQAIDf+fEjdazXi9xPIvd1Kx9rsxzutWcsdsSH/Q5GQJ8XhUnZrWwiHSvcWdO1TIoSfPyyxFoQFIULyKeOcNg==",
+      "type": "package",
+      "path": "tensorflow.keras/0.15.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net6.0/Tensorflow.Keras.dll",
+        "lib/net6.0/Tensorflow.Keras.xml",
+        "lib/netstandard2.0/Tensorflow.Keras.dll",
+        "lib/netstandard2.0/Tensorflow.Keras.xml",
+        "tensorflow.keras.0.15.0.nupkg.sha512",
+        "tensorflow.keras.nuspec"
+      ]
+    },
     "TensorFlow.NET/0.150.0": {
       "sha512": "oWGYeA9btwWKEBGhmD9Y7mlOhdGimjYKFl5WyiYMAHmxlgtvWtfvI1GSV9BI4qzy2rP/AjVhByS/4w0pOJ3ePw==",
       "type": "package",
@@ -2650,12 +2931,15 @@
     "net8.0": [
       "Emgu.CV >= 4.9.0.5494",
       "Emgu.CV.runtime.windows >= 4.9.0.5494",
-      "Keras.NET >= 3.8.5",
       "Kurukuru >= 1.4.2",
       "Numpy >= 3.11.1.33",
+      "SciSharp.TensorFlow.Redist-Windows-GPU >= 2.10.3",
       "ShellProgressBar >= 5.2.0",
       "TensorFlow.NET >= 0.150.0",
-      "pythonnet >= 3.0.3"
+      "pythonnet >= 3.0.3",
+      "scisharp.tensorflow.redist >= 2.16.0",
+      "sharpcv >= 0.14.0",
+      "tensorflow.keras >= 0.15.0"
     ]
   },
   "packageFolders": {
@@ -2716,10 +3000,6 @@
             "target": "Package",
             "version": "[4.9.0.5494, )"
           },
-          "Keras.NET": {
-            "target": "Package",
-            "version": "[3.8.5, )"
-          },
           "Kurukuru": {
             "target": "Package",
             "version": "[1.4.2, )"
@@ -2727,6 +3007,10 @@
           "Numpy": {
             "target": "Package",
             "version": "[3.11.1.33, )"
+          },
+          "SciSharp.TensorFlow.Redist-Windows-GPU": {
+            "target": "Package",
+            "version": "[2.10.3, )"
           },
           "ShellProgressBar": {
             "target": "Package",
@@ -2739,6 +3023,18 @@
           "pythonnet": {
             "target": "Package",
             "version": "[3.0.3, )"
+          },
+          "scisharp.tensorflow.redist": {
+            "target": "Package",
+            "version": "[2.16.0, )"
+          },
+          "sharpcv": {
+            "target": "Package",
+            "version": "[0.14.0, )"
+          },
+          "tensorflow.keras": {
+            "target": "Package",
+            "version": "[0.15.0, )"
           }
         },
         "imports": [

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "GUOLxJHdZEp4Yu6ziClZr43SdYbw2UryUqAlkMLcBdoG8vs1/CZMwZiHH/K1YC3A85T7BQYvj787C5+1etoOqQ==",
+  "success": true,
+  "projectFilePath": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Crop-Recommendation-Project.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
