@@ -5,3 +5,5 @@
 *.gif
 *.mp4
 *.txt
+*.dll
+*.so
