@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Crop-Recommendation-Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5a5ccc490d818d820e2ba46475df5442a9a4ab2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9717aa5d269d819df8ff9e61818ddb2c7a55b78c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Crop-Recommendation-Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Crop-Recommendation-Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

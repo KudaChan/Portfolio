@@ -1,5 +1,6 @@
 ﻿using Crop_Recommendation_Project.src.DBManupulator;
 using Crop_Recommendation_Project.src.GeneralFunction;
+using ScottPlot;
 using System.Data;
 using System.Data.Common;
 
@@ -10,10 +11,8 @@ namespace Crop_Recommendation_Project.src.Preprocessor
         public static void Preprocessor()
         {
             //DataInfoExtractor();
-            //OutlierDetector();
-            Normalizer();
-            //FeatureEncoder();
-            //FeatureSelector();
+            OutlierDetector();
+            //Normalizer();
             //DataSplitter();
         }
 
@@ -170,16 +169,52 @@ namespace Crop_Recommendation_Project.src.Preprocessor
             dbconnector.CloseConnection();
         }
 
-        private static void FeatureEncoder()
-        {
-        }
-
-        private static void FeatureSelector()
-        {
-        }
-
         private static void DataSplitter()
         {
+            DatabaseConnector dbconnector = new DatabaseConnector();
+            string createQuery = "Create table if not exists TrainData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real);";
+            dbconnector.Create(createQuery);
+            createQuery = "Create table if not exists TestData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real);";
+            dbconnector.Create(createQuery);
+
+            string selectQuery = "Select * from NormalizedDB;";
+            using (var reader = dbconnector.Read(selectQuery))
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+
+                Random random = new Random();
+                List<int> trainIndices = new List<int>();
+                List<int> testIndices = new List<int>();
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (random.NextDouble() < 0.8)
+                    {
+                        trainIndices.Add(i);
+                    }
+                    else
+                    {
+                        testIndices.Add(i);
+                    }
+                }
+
+                foreach (var idx in trainIndices)
+                {
+                    Console.WriteLine("Train: " + idx);
+                    string insertQuery = String.Format("Insert into TrainData (N, P, K, temperature, humidity, ph, rainfall, label_idx) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", dt.Rows[idx][0], dt.Rows[idx][1], dt.Rows[idx][2], dt.Rows[idx][3], dt.Rows[idx][4], dt.Rows[idx][5], dt.Rows[idx][6], dt.Rows[idx][7]);
+                    dbconnector.Create(insertQuery);
+                }
+
+                foreach (var idx in testIndices)
+                {
+                    Console.WriteLine("Test: " + idx);
+                    string insertQuery = String.Format("Insert into TestData (N, P, K, temperature, humidity, ph, rainfall, label_idx) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", dt.Rows[idx][0], dt.Rows[idx][1], dt.Rows[idx][2], dt.Rows[idx][3], dt.Rows[idx][4], dt.Rows[idx][5], dt.Rows[idx][6], dt.Rows[idx][7]);
+                    dbconnector.Create(insertQuery);
+                }
+            }
+
+            dbconnector.CloseConnection();
         }
     }
 }
