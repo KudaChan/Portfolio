@@ -50,6 +50,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "ScottPlot": {
+              "target": "Package",
+              "version": "[5.0.33, )"
+            },
             "npgsql": {
               "target": "Package",
               "version": "[8.0.2, )"
