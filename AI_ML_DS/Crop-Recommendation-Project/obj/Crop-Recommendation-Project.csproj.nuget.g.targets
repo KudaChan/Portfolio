@@ -3,5 +3,11 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.ml\3.0.1\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.ml\3.0.1\build\netstandard2.0\Microsoft.ML.targets')" />
+    <Import Project="$(NuGetPackageRoot)cntk.deps.opencv.zip\2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets" Condition="Exists('$(NuGetPackageRoot)cntk.deps.opencv.zip\2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets')" />
+    <Import Project="$(NuGetPackageRoot)cntk.deps.mkl\2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets" Condition="Exists('$(NuGetPackageRoot)cntk.deps.mkl\2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets')" />
+    <Import Project="$(NuGetPackageRoot)cntk.deps.cudnn\2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets" Condition="Exists('$(NuGetPackageRoot)cntk.deps.cudnn\2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets')" />
+    <Import Project="$(NuGetPackageRoot)cntk.deps.cuda\2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets" Condition="Exists('$(NuGetPackageRoot)cntk.deps.cuda\2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets')" />
+    <Import Project="$(NuGetPackageRoot)cntk.gpu\2.7.0\build\netstandard2.0\CNTK.GPU.targets" Condition="Exists('$(NuGetPackageRoot)cntk.gpu\2.7.0\build\netstandard2.0\CNTK.GPU.targets')" />
+    <Import Project="$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets" Condition="Exists('$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets')" />
   </ImportGroup>
 </Project>

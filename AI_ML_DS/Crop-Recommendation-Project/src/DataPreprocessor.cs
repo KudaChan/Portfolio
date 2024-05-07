@@ -11,7 +11,7 @@ namespace Crop_Recommendation_Project.src.Preprocessor
         public static void Preprocessor()
         {
             //DataInfoExtractor();
-            OutlierDetector();
+            //OutlierDetector();
             //Normalizer();
             //DataSplitter();
         }
@@ -19,23 +19,22 @@ namespace Crop_Recommendation_Project.src.Preprocessor
         private static void DataInfoExtractor()
         {
             DatabaseConnector dbConnector = new DatabaseConnector();
-            string query = " Create table if not exists DataStatInfo (field_name varchar(50), data_type varchar(50), mean real, median real, mode real, varience real, std_deviation real)";
+            string query = "CREATE TABLE IF NOT EXISTS DataStatInfo (field_name varchar(50), data_type varchar(50), mean real, median real, mode real, variance real, std_deviation real)";
             dbConnector.Create(query);
 
-            string selectQuery = "Select * from CropData;";
+            string selectQuery = "SELECT * FROM CropData;";
             var reader = dbConnector.Read(selectQuery);
-
-            List<string> fieldNames = new List<string>();
-            List<string> dataTypes = new List<string>();
-            List<double> data = new List<double>();
-            List<double> mean = new List<double>();
-            List<double> median = new List<double>();
-            List<double> mode = new List<double>();
-            List<double> varience = new List<double>();
-            List<double> stdDeviation = new List<double>();
 
             DataTable dt = new DataTable();
             dt.Load(reader);
+
+            List<string> fieldNames = new List<string>();
+            List<string> dataTypes = new List<string>();
+            List<double> mean = new List<double>();
+            List<double> median = new List<double>();
+            List<double> mode = new List<double>();
+            List<double> variance = new List<double>();
+            List<double> stdDeviation = new List<double>();
 
             foreach (DataColumn column in dt.Columns)
             {
@@ -45,22 +44,18 @@ namespace Crop_Recommendation_Project.src.Preprocessor
 
             for (int i = 0; i < dt.Columns.Count - 1; i++)
             {
-                data.Clear();
-                foreach (DataRow row in dt.Rows)
-                {
-                    data.Add(Convert.ToDouble(row[i]));
-                }
+                List<double> data = dt.AsEnumerable().Select(row => Convert.ToDouble(row[i])).ToList();
 
                 mean.Add(data.Average());
                 median.Add(data[data.Count / 2]);
                 mode.Add(data.GroupBy(v => v).OrderByDescending(g => g.Count()).Select(g => g.Key).First());
-                varience.Add(data.Select(v => (v - mean[i]) * (v - mean[i])).Sum() / data.Count);
-                stdDeviation.Add(Math.Sqrt(varience[i]));
+                variance.Add(data.Select(v => (v - mean[i]) * (v - mean[i])).Sum() / data.Count);
+                stdDeviation.Add(Math.Sqrt(variance[i]));
             }
 
             for (int i = 0; i < dt.Columns.Count - 1; i++)
             {
-                string insertQuery = String.Format("Insert into DataStatInfo (field_name, data_type, mean, median, mode, varience, std_deviation) values ('{0}', '{1}', {2}, {3}, {4}, {5}, {6})", fieldNames[i], dataTypes[i], mean[i], median[i], mode[i], varience[i], stdDeviation[i]);
+                string insertQuery = $"INSERT INTO DataStatInfo (field_name, data_type, mean, median, mode, variance, std_deviation) VALUES ('{fieldNames[i]}', '{dataTypes[i]}', {mean[i]}, {median[i]}, {mode[i]}, {variance[i]}, {stdDeviation[i]})";
                 dbConnector.Create(insertQuery);
             }
 
@@ -71,22 +66,17 @@ namespace Crop_Recommendation_Project.src.Preprocessor
         {
             DatabaseConnector dbConnector = new DatabaseConnector();
 
-            string selectQuery = "Select label_idx from lbidx;";
+            string selectQuery = "SELECT label_idx FROM lbidx;";
             var reader = dbConnector.Read(selectQuery);
 
             DataTable dt = new DataTable();
             dt.Load(reader);
 
-            List<int> labelIdx = new List<int>();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                labelIdx.Add(Convert.ToInt32(row[0]));
-            }
+            List<int> labelIdx = dt.AsEnumerable().Select(row => Convert.ToInt32(row[0])).ToList();
 
             foreach (var idx in labelIdx)
             {
-                selectQuery = "Select * from idxlbcropdb where label_idx = " + idx + ";";
+                selectQuery = $"SELECT * FROM idxlbcropdb WHERE label_idx = {idx};";
                 reader = dbConnector.Read(selectQuery);
 
                 dt = new DataTable();
@@ -99,11 +89,7 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                         continue;
                     }
 
-                    List<double> data = new List<double>();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        data.Add(Convert.ToDouble(row[column.ColumnName]));
-                    }
+                    List<double> data = dt.AsEnumerable().Select(row => Convert.ToDouble(row[column.ColumnName])).ToList();
 
                     data.Sort();
                     double q1 = data[data.Count / 4];
@@ -111,6 +97,7 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                     double iqr = q3 - q1;
                     double lowerBound = q1 - 1.5 * iqr;
                     double upperBound = q3 + 1.5 * iqr;
+                    double median = data[data.Count / 2];
 
                     var outliers = data.Where(x => x < lowerBound || x > upperBound).ToList();
 
@@ -124,15 +111,64 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                     }
                 }
             }
+
+            foreach (DataColumn column in dt.Columns)
+            {
+                if (column.DataType.Name != "Double")
+                {
+                    continue;
+                }
+
+                ScottPlot.Plot outlierPlot = new();
+                double overallMin = double.MaxValue;
+                double overallMax = double.MinValue;
+
+                foreach (var idx in labelIdx)
+                {
+                    selectQuery = $"SELECT {column.ColumnName} FROM idxlbcropdb WHERE label_idx = {idx};";
+                    reader = dbConnector.Read(selectQuery);
+
+                    dt = new DataTable();
+                    dt.Load(reader);
+
+                    List<double> data = dt.AsEnumerable().Select(row => Convert.ToDouble(row[0])).ToList();
+
+                    data.Sort();
+                    double q1 = data[data.Count / 4];
+                    double q3 = data[data.Count * 3 / 4];
+                    double iqr = q3 - q1;
+                    double lowerBound = q1 - 1.5 * iqr;
+                    double upperBound = q3 + 1.5 * iqr;
+                    double median = data[data.Count / 2];
+
+                    ScottPlot.Box boxPlot = new()
+                    {
+                        Position = idx,
+                        BoxMin = q1,
+                        BoxMax = q3,
+                        WhiskerMin = lowerBound,
+                        WhiskerMax = upperBound,
+                        BoxMiddle = median,
+                    };
+
+                    outlierPlot.Add.Box(boxPlot);
+                }
+
+                outlierPlot.Axes.SetLimits(0, labelIdx.Max() + 1, -1, 145);
+
+                // Save the plot as a JPEG image
+                outlierPlot.SaveJpeg($"boxplot_{column.ColumnName}.jpeg", 600, 400);
+            }
         }
 
         private static void Normalizer()
         {
-            DatabaseConnector dbconnector = new DatabaseConnector();
-            string createQuery = "Create table if not exists NormalizedDB (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real);";
-            dbconnector.Create(createQuery);
-            string selectQuery = "Select * from idxlbcropdb;";
-            using (var reader = dbconnector.Read(selectQuery))
+            DatabaseConnector dbConnector = new DatabaseConnector();
+            string createQuery = "CREATE TABLE IF NOT EXISTS NormalizedDB (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real)";
+            dbConnector.Create(createQuery);
+
+            string selectQuery = "SELECT * FROM idxlbcropdb;";
+            using (var reader = dbConnector.Read(selectQuery))
             {
                 DataTable dt = new DataTable();
                 dt.Load(reader);
@@ -145,7 +181,7 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                         continue;
                     }
 
-                    var data = dt.AsEnumerable().Select(r => r.Field<double>(column.ColumnName)).ToList();
+                    var data = dt.AsEnumerable().Select(row => row.Field<double>(column.ColumnName)).ToList();
 
                     double min = data.Min();
                     double max = data.Max();
@@ -159,26 +195,26 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                     }
                 }
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    string insertQuery = String.Format("Insert into NormalizedDB (N, P, K, temperature, humidity, ph, rainfall, label_idx) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][2], dt.Rows[i][3], dt.Rows[i][4], dt.Rows[i][5], dt.Rows[i][6], dt.Rows[i][7]);
-                    dbconnector.Create(insertQuery);
-                }
+                //for (int i = 0; i < dt.Rows.Count; i++)
+                //{
+                //    string insertQuery = $"INSERT INTO NormalizedDB (N, P, K, temperature, humidity, ph, rainfall, label_idx) VALUES ({dt.Rows[i][0]}, {dt.Rows[i][1]}, {dt.Rows[i][2]}, {dt.Rows[i][3]}, {dt.Rows[i][4]}, {dt.Rows[i][5]}, {dt.Rows[i][6]}, {dt.Rows[i][7]})";
+                //    dbConnector.Create(insertQuery);
+                //}
             }
 
-            dbconnector.CloseConnection();
+            dbConnector.CloseConnection();
         }
 
         private static void DataSplitter()
         {
-            DatabaseConnector dbconnector = new DatabaseConnector();
-            string createQuery = "Create table if not exists TrainData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real);";
-            dbconnector.Create(createQuery);
-            createQuery = "Create table if not exists TestData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real);";
-            dbconnector.Create(createQuery);
+            DatabaseConnector dbConnector = new DatabaseConnector();
+            string createQuery = "CREATE TABLE IF NOT EXISTS TrainData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real)";
+            dbConnector.Create(createQuery);
+            createQuery = "CREATE TABLE IF NOT EXISTS TestData (N real, P real, K real, temperature real, humidity real, ph real, rainfall real, label_idx real)";
+            dbConnector.Create(createQuery);
 
-            string selectQuery = "Select * from NormalizedDB;";
-            using (var reader = dbconnector.Read(selectQuery))
+            string selectQuery = "SELECT * FROM NormalizedDB;";
+            using (var reader = dbConnector.Read(selectQuery))
             {
                 DataTable dt = new DataTable();
                 dt.Load(reader);
@@ -199,22 +235,76 @@ namespace Crop_Recommendation_Project.src.Preprocessor
                     }
                 }
 
-                foreach (var idx in trainIndices)
-                {
-                    Console.WriteLine("Train: " + idx);
-                    string insertQuery = String.Format("Insert into TrainData (N, P, K, temperature, humidity, ph, rainfall, label_idx) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", dt.Rows[idx][0], dt.Rows[idx][1], dt.Rows[idx][2], dt.Rows[idx][3], dt.Rows[idx][4], dt.Rows[idx][5], dt.Rows[idx][6], dt.Rows[idx][7]);
-                    dbconnector.Create(insertQuery);
-                }
+                //foreach (var idx in trainIndices)
+                //{
+                //    Console.WriteLine("Train: " + idx);
+                //    string insertQuery = $"INSERT INTO TrainData (N, P, K, temperature, humidity, ph, rainfall, label_idx) VALUES ({dt.Rows[idx][0]}, {dt.Rows[idx][1]}, {dt.Rows[idx][2]}, {dt.Rows[idx][3]}, {dt.Rows[idx][4]}, {dt.Rows[idx][5]}, {dt.Rows[idx][6]}, {dt.Rows[idx][7]})";
+                //    dbConnector.Create(insertQuery);
+                //}
 
-                foreach (var idx in testIndices)
-                {
-                    Console.WriteLine("Test: " + idx);
-                    string insertQuery = String.Format("Insert into TestData (N, P, K, temperature, humidity, ph, rainfall, label_idx) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", dt.Rows[idx][0], dt.Rows[idx][1], dt.Rows[idx][2], dt.Rows[idx][3], dt.Rows[idx][4], dt.Rows[idx][5], dt.Rows[idx][6], dt.Rows[idx][7]);
-                    dbconnector.Create(insertQuery);
-                }
+                //foreach (var idx in testIndices)
+                //{
+                //    Console.WriteLine("Test: " + idx);
+                //    string insertQuery = $"INSERT INTO TestData (N, P, K, temperature, humidity, ph, rainfall, label_idx) VALUES ({dt.Rows[idx][0]}, {dt.Rows[idx][1]}, {dt.Rows[idx][2]}, {dt.Rows[idx][3]}, {dt.Rows[idx][4]}, {dt.Rows[idx][5]}, {dt.Rows[idx][6]}, {dt.Rows[idx][7]})";
+                //    dbConnector.Create(insertQuery);
+                //}
             }
 
-            dbconnector.CloseConnection();
+            PlotData();
+
+            dbConnector.CloseConnection();
+        }
+
+        private static void PlotData()
+        {
+            DatabaseConnector dbConnector = new DatabaseConnector();
+
+            // Get the count of each label in the training dataset
+            string selectQuery = "SELECT label_idx, COUNT(*) FROM TrainData GROUP BY label_idx;";
+            var reader = dbConnector.Read(selectQuery);
+            DataTable dtTrain = new DataTable();
+            dtTrain.Load(reader);
+
+            // Get the count of each label in the test dataset
+            selectQuery = "SELECT label_idx, COUNT(*) FROM TestData GROUP BY label_idx;";
+            reader = dbConnector.Read(selectQuery);
+            DataTable dtTest = new DataTable();
+            dtTest.Load(reader);
+
+            // Create the plot
+            var plt = new ScottPlot.Plot();
+
+            // Add the bar series for the training dataset
+            float[] trainLabels = dtTrain.AsEnumerable().Select(row => row.Field<float>("label_idx")).ToArray();
+            long[] trainCounts = dtTrain.AsEnumerable().Select(row => row.Field<long>("count")).ToArray();
+            var bars1 = plt.Add.Bars(trainLabels.Select(x => (double)x).ToArray(), trainCounts.Select(x => (double)x).ToArray());
+            bars1.LegendText = "train";
+
+            // Add the bar series for the test dataset
+            float[] testLabels = dtTest.AsEnumerable().Select(row => row.Field<float>("label_idx")).ToArray();
+            long[] testCounts = dtTest.AsEnumerable().Select(row => -row.Field<long>("count")).ToArray();
+            var bars2 = plt.Add.Bars(testLabels.Select(x => (double)x).ToArray(), testCounts.Select(x => (double)x).ToArray());
+            bars2.LegendText = "test";
+
+            plt.HideLegend();
+
+            ScottPlot.Panels.LegendPanel pan = new(plt.Legend)
+            {
+                Edge = Edge.Right,
+                Alignment = Alignment.UpperCenter,
+            };
+            // Customize the plot
+            plt.Title("Train/Test Dataset Entries by Label");
+            plt.XLabel("Label");
+            plt.YLabel("Number of Entries");
+            //plt.ShowLegend(Alignment.UpperLeft, Orientation.Horizontal);
+            plt.Axes.Margins(bottom: 0);
+            plt.Axes.AddPanel(pan);
+
+            // Save the plot as a PNG image
+            plt.SaveJpeg("barplot.png", 1080, 720);
+
+            dbConnector.CloseConnection();
         }
     }
 }

@@ -48,11 +48,9 @@ D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Re
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Google.Protobuf.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\HDF.PInvoke.1.10.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\HDF5CSharp.dll
-D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Keras.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\MethodBoundaryAspect.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Numpy.dll
-D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Numpy.Bare.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\OneOf.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Protobuf.Text.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\PureHDF.dll
@@ -84,3 +82,7 @@ D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Re
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\runtimes\linux-x64\native\libtensorflow.so
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\runtimes\linux-x64\native\libtensorflow_framework.so.2
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\runtimes\win-x64\native\tensorflow.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\SharpCV.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll

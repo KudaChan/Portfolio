@@ -50,17 +50,49 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Accord.Statistics": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "CNTK.GPU": {
+              "target": "Package",
+              "version": "[2.7.0, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.ML": {
               "target": "Package",
               "version": "[3.0.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.1, )"
             },
             "ScottPlot": {
               "target": "Package",
               "version": "[5.0.33, )"
             },
+            "accord": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "keras.net": {
+              "target": "Package",
+              "version": "[3.8.5, )"
+            },
             "npgsql": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "numsharp": {
+              "target": "Package",
+              "version": "[0.30.0, )"
+            },
+            "tensorflow.net": {
+              "target": "Package",
+              "version": "[0.150.0, )"
             }
           },
           "imports": [

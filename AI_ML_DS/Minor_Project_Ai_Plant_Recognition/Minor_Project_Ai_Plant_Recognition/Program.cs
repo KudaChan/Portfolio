@@ -2,6 +2,8 @@
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageParsing;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.ModelTraining;
+using TensorFlowNET.Examples;
+using Emgu.CV.CvEnum;
 
 namespace Minor_Project_Ai_Plant_Recognition
 {
@@ -197,10 +199,13 @@ namespace Minor_Project_Ai_Plant_Recognition
             //dataSpliting.SplitData();
             //WriteLine("Data Spliting Done");
 
-            WriteLine("Model Training Started");
-            ModelTraining modelTraining = new ModelTraining();
-            modelTraining.TrainModel();
-            WriteLine("Model Training Done");
+            //WriteLine("Model Training Started");
+            //ModelTraining modelTraining = new ModelTraining();
+            //modelTraining.TrainModel();
+            //WriteLine("Model Training Done");
+
+            ImageRecognitionInception tempimp = new ImageRecognitionInception();
+            tempimp.Run();
         }
     }
 }

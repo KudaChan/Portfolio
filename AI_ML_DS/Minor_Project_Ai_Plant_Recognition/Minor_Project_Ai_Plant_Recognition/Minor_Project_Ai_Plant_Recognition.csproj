@@ -26,6 +26,8 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
     <!--<PackageReference Include="Keras.NET" Version="3.8.5" />-->
     <PackageReference Include="Kurukuru" Version="1.4.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.5.1" />
+    <PackageReference Include="npgsql" Version="8.0.2" />
     <PackageReference Include="Numpy" Version="3.11.1.33" />
     <!--<PackageReference Include="Python.Runtime" Version="2.7.9" />-->
     <PackageReference Include="pythonnet" Version="3.0.3" />
@@ -43,6 +45,21 @@
     <Folder Include="Dataset\DataTestTrainValid\Dataset%28test%29\" />
     <Folder Include="Dataset\DataTestTrainValid\Dataset%28validate%29\" />
     <Folder Include="Dataset\DataTxtFile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
