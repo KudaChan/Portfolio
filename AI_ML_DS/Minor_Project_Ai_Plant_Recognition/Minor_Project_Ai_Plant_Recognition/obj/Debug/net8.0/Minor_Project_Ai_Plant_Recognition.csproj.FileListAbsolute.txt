@@ -86,3 +86,8 @@ D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Re
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Npgsql.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\obj\Debug\net8.0\Minor_Project_Ai_Plant_Recognition.Properties.Resources.resources
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\obj\Debug\net8.0\Minor_Project_Ai_Plant_Recognition.csproj.GenerateResource.cache

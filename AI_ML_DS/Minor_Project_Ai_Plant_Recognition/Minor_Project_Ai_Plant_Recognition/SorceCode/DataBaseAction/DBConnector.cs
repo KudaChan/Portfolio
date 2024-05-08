@@ -46,6 +46,54 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
             return connection;
         }
+
+        public void CloseConnection()
+        {
+            if (this.connection != null)
+            {
+                this.connection.Close();
+                Console.WriteLine("Connection closed.");
+            }
+        }
+
+        public void Create(string query)
+        {
+            using (var cmd = new NpgsqlCommand(query, this.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public NpgsqlDataReader Read(string query)
+        {
+            using (var cmd = new NpgsqlCommand(query, this.connection))
+            {
+                return cmd.ExecuteReader();
+            }
+        }
+
+        public void Update(string query)
+        {
+            using (var cmd = new NpgsqlCommand(query, this.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(string query)
+        {
+            using (var cmd = new NpgsqlCommand(query, this.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ExecuteQuery(string query)
+        {
+            using (var cmd = new NpgsqlCommand(query, this.connection))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
-}
 }

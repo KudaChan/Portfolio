@@ -1,9 +1,10 @@
-﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing;
-using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageParsing;
+﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageParsing;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.ModelTraining;
-using TensorFlowNET.Examples;
-using Emgu.CV.CvEnum;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing;
+using System.Security.Cryptography;
 
 namespace Minor_Project_Ai_Plant_Recognition
 {
@@ -204,8 +205,14 @@ namespace Minor_Project_Ai_Plant_Recognition
             //modelTraining.TrainModel();
             //WriteLine("Model Training Done");
 
-            ImageRecognitionInception tempimp = new ImageRecognitionInception();
-            tempimp.Run();
+            WriteLine("Database Connection Started");
+            //DBInitiator dbInitiator = new DBInitiator();
+            //dbInitiator.DataPaserFromOrignalDirAndFeeder();
+
+            Preprocessing preprocessing = new Preprocessing();
+            preprocessing.PreProcessing();
+
+            WriteLine("thanks for you corpuration...");
         }
     }
 }

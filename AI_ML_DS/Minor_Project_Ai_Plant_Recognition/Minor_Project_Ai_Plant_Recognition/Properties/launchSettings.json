@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Minor_Project_Ai_Plant_Recognition": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition",
+      "environmentVariables": {
+        "DB_HOST": "localhost",
+        "DB_USER": "kumar",
+        "DB_NAME": "medai",
+        "DB_PORT": "5432",
+        "DB_PASSWORD": "chan05dan"
+      }
+    }
+  }
+}
