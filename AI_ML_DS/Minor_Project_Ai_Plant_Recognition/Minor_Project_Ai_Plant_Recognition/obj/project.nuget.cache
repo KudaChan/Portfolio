@@ -1,11 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "pQyA5/pCaYT6U1s9u59qZ2jD5axPtX8LTrDJdfo4Cj3zWH93V3MKw+zGPzK+TfuaYyrXthXmiuESTt2jEFsaVg==",
+  "dgSpecHash": "NJONcD7GpAfQI6N5GRLU2n4y2pfrwtC0ZFALMLaf0r1C8ZD22fkp/1beJj4aROtOptwNNr0JRBk4+2pH3JmHvQ==",
   "success": true,
   "projectFilePath": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kumar\\.nuget\\packages\\emgu.cv\\4.9.0.5494\\emgu.cv.4.9.0.5494.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\emgu.cv.runtime.windows\\4.9.0.5494\\emgu.cv.runtime.windows.4.9.0.5494.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.cv.runtime.windows.cuda\\4.4.0.4099\\emgu.cv.runtime.windows.cuda.4.4.0.4099.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.blas\\11.1.218\\emgu.runtime.windows.cuda.blas.11.1.218.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.dnn\\8.0.1\\emgu.runtime.windows.cuda.dnn.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.dnn.adv\\8.0.1\\emgu.runtime.windows.cuda.dnn.adv.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.dnn.cnn\\8.0.1\\emgu.runtime.windows.cuda.dnn.cnn.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.dnn.ops\\8.0.1\\emgu.runtime.windows.cuda.dnn.ops.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.fft\\11.1.218\\emgu.runtime.windows.cuda.fft.11.1.218.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.npp\\11.1.218\\emgu.runtime.windows.cuda.npp.11.1.218.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.cuda.rt\\11.1.218\\emgu.runtime.windows.cuda.rt.11.1.218.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.arm64\\19.39.33523\\emgu.runtime.windows.msvc.rt.arm64.19.39.33523.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.x64\\19.39.33523\\emgu.runtime.windows.msvc.rt.x64.19.39.33523.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.x86\\19.39.33523\\emgu.runtime.windows.msvc.rt.x86.19.39.33523.nupkg.sha512",
@@ -67,5 +76,16 @@
     "C:\\Users\\kumar\\.nuget\\packages\\tensorflow.keras\\0.15.0\\tensorflow.keras.0.15.0.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\tensorflow.net\\0.150.0\\tensorflow.net.0.150.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Emgu.CV.runtime.windows.cuda 4.4.0.4099 requires Emgu.CV (>= 4.4.0 && < 4.4.1) but version Emgu.CV 4.9.0.5494 was resolved.",
+      "libraryId": "Emgu.CV",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

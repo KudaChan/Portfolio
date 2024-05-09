@@ -30,7 +30,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
         private NpgsqlConnection GetConnection()
         {
-            string connString = $"Host={Host};Username={User};Password={Password};Database={DBname};Port={Port}";
+            string connString = $"Host={Host};Username={User};Password={Password};Database={DBname};Port={Port};Include Error Detail = True";
             var connection = new NpgsqlConnection(connString);
 
             try

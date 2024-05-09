@@ -48,5 +48,30 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
             _dbConnector.CloseConnection();
         }
+
+        public void preprocessedImgPathReader(string SQLQuery, List<PreprocessedPath.ImgPathPreprocessed> imgPathList)
+        {
+            DBConnector _dbConnector = new DBConnector();
+
+            using (var reader = _dbConnector.Read(SQLQuery))
+            {
+                while (reader.Read())
+                {
+                    PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new PreprocessedPath.ImgPathPreprocessed
+                    {
+                        catagoryId = reader.GetInt16(0),
+                        speciesId = reader.GetInt32(1),
+                        preprocessedId = reader.GetInt32(2),
+                        modifierId = reader.GetInt32(3),
+                        imgPath = reader.GetString(4)
+                    };
+
+                    imgPathList.Add(imgPathPreprocessed);
+                }
+                reader.Close();
+            }
+
+            _dbConnector.CloseConnection();
+        }
     }
 }

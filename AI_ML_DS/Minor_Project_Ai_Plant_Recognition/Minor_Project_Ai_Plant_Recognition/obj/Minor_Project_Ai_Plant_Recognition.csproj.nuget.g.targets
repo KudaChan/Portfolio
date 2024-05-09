@@ -3,5 +3,12 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.text.json\8.0.1\buildTransitive\net6.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\8.0.1\buildTransitive\net6.0\System.Text.Json.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.npp\11.1.218\build\Emgu.runtime.windows.cuda.npp.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.npp\11.1.218\build\Emgu.runtime.windows.cuda.npp.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.fft\11.1.218\build\Emgu.runtime.windows.cuda.fft.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.fft\11.1.218\build\Emgu.runtime.windows.cuda.fft.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn\8.0.1\build\Emgu.runtime.windows.cuda.dnn.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn\8.0.1\build\Emgu.runtime.windows.cuda.dnn.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn.ops\8.0.1\build\Emgu.runtime.windows.cuda.dnn.ops.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn.ops\8.0.1\build\Emgu.runtime.windows.cuda.dnn.ops.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn.cnn\8.0.1\build\Emgu.runtime.windows.cuda.dnn.cnn.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.dnn.cnn\8.0.1\build\Emgu.runtime.windows.cuda.dnn.cnn.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.runtime.windows.cuda.blas\11.1.218\build\Emgu.runtime.windows.cuda.blas.targets" Condition="Exists('$(NuGetPackageRoot)emgu.runtime.windows.cuda.blas\11.1.218\build\Emgu.runtime.windows.cuda.blas.targets')" />
+    <Import Project="$(NuGetPackageRoot)emgu.cv.runtime.windows.cuda\4.4.0.4099\build\Emgu.CV.runtime.windows.cuda.targets" Condition="Exists('$(NuGetPackageRoot)emgu.cv.runtime.windows.cuda\4.4.0.4099\build\Emgu.CV.runtime.windows.cuda.targets')" />
   </ImportGroup>
 </Project>

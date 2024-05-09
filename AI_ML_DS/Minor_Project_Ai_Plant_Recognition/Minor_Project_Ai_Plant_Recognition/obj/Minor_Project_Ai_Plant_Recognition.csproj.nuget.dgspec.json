@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[4.9.0.5494, )"
             },
+            "Emgu.CV.runtime.windows.cuda": {
+              "target": "Package",
+              "version": "[4.4.0.4099, )"
+            },
             "Kurukuru": {
               "target": "Package",
               "version": "[1.4.2, )"

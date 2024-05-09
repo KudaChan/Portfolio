@@ -10,6 +10,7 @@
         "dependencies": {
           "Emgu.CV": "4.9.0.5494",
           "Emgu.CV.runtime.windows": "4.9.0.5494",
+          "Emgu.CV.runtime.windows.cuda": "4.4.0.4099",
           "Kurukuru": "1.4.2",
           "Microsoft.IdentityModel.Tokens": "7.5.1",
           "Numpy": "3.11.1.33",
@@ -85,6 +86,42 @@
           }
         }
       },
+      "Emgu.CV.runtime.windows.cuda/4.4.0.4099": {
+        "dependencies": {
+          "Emgu.CV": "4.9.0.5494",
+          "Emgu.runtime.windows.cuda.blas": "11.1.218",
+          "Emgu.runtime.windows.cuda.dnn": "8.0.1",
+          "Emgu.runtime.windows.cuda.dnn.adv": "8.0.1",
+          "Emgu.runtime.windows.cuda.dnn.cnn": "8.0.1",
+          "Emgu.runtime.windows.cuda.dnn.ops": "8.0.1",
+          "Emgu.runtime.windows.cuda.fft": "11.1.218",
+          "Emgu.runtime.windows.cuda.npp": "11.1.218"
+        }
+      },
+      "Emgu.runtime.windows.cuda.blas/11.1.218": {},
+      "Emgu.runtime.windows.cuda.dnn/8.0.1": {
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.rt": "11.1.218"
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.adv/8.0.1": {
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "8.0.1"
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.cnn/8.0.1": {
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "8.0.1"
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.ops/8.0.1": {
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "8.0.1"
+        }
+      },
+      "Emgu.runtime.windows.cuda.fft/11.1.218": {},
+      "Emgu.runtime.windows.cuda.npp/11.1.218": {},
+      "Emgu.runtime.windows.cuda.rt/11.1.218": {},
       "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
         "runtimeTargets": {
           "runtimes/win-arm64/native/concrt140.dll": {
@@ -773,6 +810,69 @@
       "sha512": "sha512-sByLvyNCzQCScjKHLRm1NrghPUOClXRxVibCav3ou8scflQA28aWB1P+nBMjyBE1qIQ1CGA+h5UB9XGtBSf5xg==",
       "path": "emgu.cv.runtime.windows/4.9.0.5494",
       "hashPath": "emgu.cv.runtime.windows.4.9.0.5494.nupkg.sha512"
+    },
+    "Emgu.CV.runtime.windows.cuda/4.4.0.4099": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5LDnE7qcVPg6IiugkmEvsxEroHRN3VIyLmvm81KciVWhTnbOz66kg6pRSVT4BwaKFraE2RmM+4YdMwpp0iN9RQ==",
+      "path": "emgu.cv.runtime.windows.cuda/4.4.0.4099",
+      "hashPath": "emgu.cv.runtime.windows.cuda.4.4.0.4099.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.blas/11.1.218": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4zQruo8yyvFZUQQRCpxW1/wnS2ugVXQOglg+3fCy88cUwidl0SeM1k7fO+Sd6H+7NI39wurVFpvS5xMn0Cunpg==",
+      "path": "emgu.runtime.windows.cuda.blas/11.1.218",
+      "hashPath": "emgu.runtime.windows.cuda.blas.11.1.218.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.dnn/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HSdrc+peLEPvlg2odU+J66G2wZ+AkvSTky8UM9GXJVeiEdpe1n04v5+GM6qw2NHs8CSF5pCuRAfcs5zTRLUzpQ==",
+      "path": "emgu.runtime.windows.cuda.dnn/8.0.1",
+      "hashPath": "emgu.runtime.windows.cuda.dnn.8.0.1.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.dnn.adv/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3922O+RzuLVYCwLajpWLuz+DxHJv9DlT1Hm3GUstZoYhrZikdgW3qWUVAmY9lpsFh4E2SRmtW4laRaIrmsktfQ==",
+      "path": "emgu.runtime.windows.cuda.dnn.adv/8.0.1",
+      "hashPath": "emgu.runtime.windows.cuda.dnn.adv.8.0.1.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.dnn.cnn/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FmSUAr4LKLhqHXo/HdS4hXDrgYrLPDxmoKU3Lu3qYrvhMOkGKe3VkSVA3VwZPZWHN0Pe2MFqW0lxNz0GUk52EA==",
+      "path": "emgu.runtime.windows.cuda.dnn.cnn/8.0.1",
+      "hashPath": "emgu.runtime.windows.cuda.dnn.cnn.8.0.1.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.dnn.ops/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lBR7wd+3ULEo5zxZepyQIH3IpAlStyBAi5Lz1fyrMFxG2Px2djEBgbQcCit6XcEbk4ZnTiB0WtxQc9uk8zKDWA==",
+      "path": "emgu.runtime.windows.cuda.dnn.ops/8.0.1",
+      "hashPath": "emgu.runtime.windows.cuda.dnn.ops.8.0.1.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.fft/11.1.218": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IOH6JsQ5A9NoCGP/6wcLnfigNPIbunTxjeUKInXBsUsrv0hK7tUn36LSw0tZ0JWyqp3HgXvbQsZf42kt/vqdhg==",
+      "path": "emgu.runtime.windows.cuda.fft/11.1.218",
+      "hashPath": "emgu.runtime.windows.cuda.fft.11.1.218.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.npp/11.1.218": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PNMht/ZnWYqOeE6QMp0sG9VZNcfomTYVdq/fX8S8zatEFKQQ5jJJEh0QO+nZ6YJ2yU7w2D8v6HvmN0OqUsBgiw==",
+      "path": "emgu.runtime.windows.cuda.npp/11.1.218",
+      "hashPath": "emgu.runtime.windows.cuda.npp.11.1.218.nupkg.sha512"
+    },
+    "Emgu.runtime.windows.cuda.rt/11.1.218": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b+4R7UV1Aeju51rNJxmIffZ6IzewXUZVdzvISU9qJLU5/8rgzjc9rnBZHJBKAJhhIkV92ZL68mVZVCjwDNO9AA==",
+      "path": "emgu.runtime.windows.cuda.rt/11.1.218",
+      "hashPath": "emgu.runtime.windows.cuda.rt.11.1.218.nupkg.sha512"
     },
     "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
       "type": "package",

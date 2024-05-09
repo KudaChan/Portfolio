@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Emgu.CV" Version="4.9.0.5494" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.runtime.windows.cuda" Version="4.4.0.4099" />
     <!--<PackageReference Include="Keras.NET" Version="3.8.5" />-->
     <PackageReference Include="Kurukuru" Version="1.4.2" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.5.1" />

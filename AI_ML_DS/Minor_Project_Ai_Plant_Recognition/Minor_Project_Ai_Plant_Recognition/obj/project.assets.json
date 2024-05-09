@@ -60,6 +60,76 @@
           }
         }
       },
+      "Emgu.CV.runtime.windows.cuda/4.4.0.4099": {
+        "type": "package",
+        "dependencies": {
+          "Emgu.CV": "[4.4.0, 4.4.1)",
+          "Emgu.runtime.windows.cuda.blas": "[11.1.218]",
+          "Emgu.runtime.windows.cuda.dnn": "[8.0.1]",
+          "Emgu.runtime.windows.cuda.dnn.adv": "[8.0.1]",
+          "Emgu.runtime.windows.cuda.dnn.cnn": "[8.0.1]",
+          "Emgu.runtime.windows.cuda.dnn.ops": "[8.0.1]",
+          "Emgu.runtime.windows.cuda.fft": "[11.1.218]",
+          "Emgu.runtime.windows.cuda.npp": "[11.1.218]"
+        },
+        "build": {
+          "build/Emgu.CV.runtime.windows.cuda.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.blas/11.1.218": {
+        "type": "package",
+        "build": {
+          "build/Emgu.runtime.windows.cuda.blas.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.rt": "[11.1.218]"
+        },
+        "build": {
+          "build/Emgu.runtime.windows.cuda.dnn.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.adv/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "[8.0.1]"
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.cnn/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "[8.0.1]"
+        },
+        "build": {
+          "build/Emgu.runtime.windows.cuda.dnn.cnn.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.dnn.ops/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Emgu.runtime.windows.cuda.dnn": "[8.0.1]"
+        },
+        "build": {
+          "build/Emgu.runtime.windows.cuda.dnn.ops.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.fft/11.1.218": {
+        "type": "package",
+        "build": {
+          "build/Emgu.runtime.windows.cuda.fft.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.npp/11.1.218": {
+        "type": "package",
+        "build": {
+          "build/Emgu.runtime.windows.cuda.npp.targets": {}
+        }
+      },
+      "Emgu.runtime.windows.cuda.rt/11.1.218": {
+        "type": "package"
+      },
       "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
         "type": "package",
         "runtimeTargets": {
@@ -1088,6 +1158,223 @@
         "runtimes/win-x86/native/cvextern.dll",
         "runtimes/win-x86/native/libusb-1.0.dll",
         "runtimes/win-x86/native/opencv_videoio_ffmpeg490.dll"
+      ]
+    },
+    "Emgu.CV.runtime.windows.cuda/4.4.0.4099": {
+      "sha512": "5LDnE7qcVPg6IiugkmEvsxEroHRN3VIyLmvm81KciVWhTnbOz66kg6pRSVT4BwaKFraE2RmM+4YdMwpp0iN9RQ==",
+      "type": "package",
+      "path": "emgu.cv.runtime.windows.cuda/4.4.0.4099",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "build/Emgu.CV.runtime.windows.cuda.targets",
+        "build/x64/concrt140.dll",
+        "build/x64/cvextern.dll",
+        "build/x64/freetype.dll",
+        "build/x64/harfbuzz.dll",
+        "build/x64/msvcp140.dll",
+        "build/x64/msvcp140_1.dll",
+        "build/x64/msvcp140_2.dll",
+        "build/x64/msvcp140_codecvt_ids.dll",
+        "build/x64/opencv_alphamat440.dll",
+        "build/x64/opencv_aruco440.dll",
+        "build/x64/opencv_bgsegm440.dll",
+        "build/x64/opencv_bioinspired440.dll",
+        "build/x64/opencv_calib3d440.dll",
+        "build/x64/opencv_core440.dll",
+        "build/x64/opencv_cudaarithm440.dll",
+        "build/x64/opencv_cudabgsegm440.dll",
+        "build/x64/opencv_cudacodec440.dll",
+        "build/x64/opencv_cudafeatures2d440.dll",
+        "build/x64/opencv_cudafilters440.dll",
+        "build/x64/opencv_cudaimgproc440.dll",
+        "build/x64/opencv_cudalegacy440.dll",
+        "build/x64/opencv_cudaobjdetect440.dll",
+        "build/x64/opencv_cudaoptflow440.dll",
+        "build/x64/opencv_cudastereo440.dll",
+        "build/x64/opencv_cudawarping440.dll",
+        "build/x64/opencv_cudev440.dll",
+        "build/x64/opencv_datasets440.dll",
+        "build/x64/opencv_dnn440.dll",
+        "build/x64/opencv_dnn_objdetect440.dll",
+        "build/x64/opencv_dnn_superres440.dll",
+        "build/x64/opencv_dpm440.dll",
+        "build/x64/opencv_face440.dll",
+        "build/x64/opencv_features2d440.dll",
+        "build/x64/opencv_flann440.dll",
+        "build/x64/opencv_freetype440.dll",
+        "build/x64/opencv_fuzzy440.dll",
+        "build/x64/opencv_hfs440.dll",
+        "build/x64/opencv_highgui440.dll",
+        "build/x64/opencv_img_hash440.dll",
+        "build/x64/opencv_imgcodecs440.dll",
+        "build/x64/opencv_imgproc440.dll",
+        "build/x64/opencv_intensity_transform440.dll",
+        "build/x64/opencv_ml440.dll",
+        "build/x64/opencv_objdetect440.dll",
+        "build/x64/opencv_optflow440.dll",
+        "build/x64/opencv_phase_unwrapping440.dll",
+        "build/x64/opencv_photo440.dll",
+        "build/x64/opencv_plot440.dll",
+        "build/x64/opencv_quality440.dll",
+        "build/x64/opencv_rapid440.dll",
+        "build/x64/opencv_saliency440.dll",
+        "build/x64/opencv_shape440.dll",
+        "build/x64/opencv_stereo440.dll",
+        "build/x64/opencv_stitching440.dll",
+        "build/x64/opencv_superres440.dll",
+        "build/x64/opencv_surface_matching440.dll",
+        "build/x64/opencv_text440.dll",
+        "build/x64/opencv_tracking440.dll",
+        "build/x64/opencv_video440.dll",
+        "build/x64/opencv_videoio440.dll",
+        "build/x64/opencv_videoio_ffmpeg440_64.dll",
+        "build/x64/opencv_videostab440.dll",
+        "build/x64/opencv_viz440.dll",
+        "build/x64/opencv_xfeatures2d440.dll",
+        "build/x64/opencv_ximgproc440.dll",
+        "build/x64/opencv_xobjdetect440.dll",
+        "build/x64/opencv_xphoto440.dll",
+        "build/x64/vcruntime140.dll",
+        "build/x64/vcruntime140_1.dll",
+        "emgu.cv.runtime.windows.cuda.4.4.0.4099.nupkg.sha512",
+        "emgu.cv.runtime.windows.cuda.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.blas/11.1.218": {
+      "sha512": "4zQruo8yyvFZUQQRCpxW1/wnS2ugVXQOglg+3fCy88cUwidl0SeM1k7fO+Sd6H+7NI39wurVFpvS5xMn0Cunpg==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.blas/11.1.218",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CUDA_EULA.txt",
+        "build/Emgu.runtime.windows.cuda.blas.targets",
+        "build/x64/cublas64_11.dll",
+        "build/x64/cublasLt64_11.dll",
+        "emgu.runtime.windows.cuda.blas.11.1.218.nupkg.sha512",
+        "emgu.runtime.windows.cuda.blas.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.dnn/8.0.1": {
+      "sha512": "HSdrc+peLEPvlg2odU+J66G2wZ+AkvSTky8UM9GXJVeiEdpe1n04v5+GM6qw2NHs8CSF5pCuRAfcs5zTRLUzpQ==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.dnn/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Emgu.runtime.windows.cuda.dnn.targets",
+        "build/x64/cudnn64_8.dll",
+        "cuDNN_SLA.txt",
+        "emgu.runtime.windows.cuda.dnn.8.0.1.nupkg.sha512",
+        "emgu.runtime.windows.cuda.dnn.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.dnn.adv/8.0.1": {
+      "sha512": "3922O+RzuLVYCwLajpWLuz+DxHJv9DlT1Hm3GUstZoYhrZikdgW3qWUVAmY9lpsFh4E2SRmtW4laRaIrmsktfQ==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.dnn.adv/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/x64/cudnn_adv_infer64_8.dll",
+        "build/x64/cudnn_adv_train64_8.dll",
+        "cuDNN_SLA.txt",
+        "emgu.runtime.windows.cuda.dnn.adv.8.0.1.nupkg.sha512",
+        "emgu.runtime.windows.cuda.dnn.adv.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.dnn.cnn/8.0.1": {
+      "sha512": "FmSUAr4LKLhqHXo/HdS4hXDrgYrLPDxmoKU3Lu3qYrvhMOkGKe3VkSVA3VwZPZWHN0Pe2MFqW0lxNz0GUk52EA==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.dnn.cnn/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Emgu.runtime.windows.cuda.dnn.cnn.targets",
+        "build/x64/cudnn_cnn_infer64_8.dll",
+        "build/x64/cudnn_cnn_train64_8.dll",
+        "cuDNN_SLA.txt",
+        "emgu.runtime.windows.cuda.dnn.cnn.8.0.1.nupkg.sha512",
+        "emgu.runtime.windows.cuda.dnn.cnn.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.dnn.ops/8.0.1": {
+      "sha512": "lBR7wd+3ULEo5zxZepyQIH3IpAlStyBAi5Lz1fyrMFxG2Px2djEBgbQcCit6XcEbk4ZnTiB0WtxQc9uk8zKDWA==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.dnn.ops/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Emgu.runtime.windows.cuda.dnn.ops.targets",
+        "build/x64/cudnn_ops_infer64_8.dll",
+        "build/x64/cudnn_ops_train64_8.dll",
+        "cuDNN_SLA.txt",
+        "emgu.runtime.windows.cuda.dnn.ops.8.0.1.nupkg.sha512",
+        "emgu.runtime.windows.cuda.dnn.ops.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.fft/11.1.218": {
+      "sha512": "IOH6JsQ5A9NoCGP/6wcLnfigNPIbunTxjeUKInXBsUsrv0hK7tUn36LSw0tZ0JWyqp3HgXvbQsZf42kt/vqdhg==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.fft/11.1.218",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CUDA_EULA.txt",
+        "build/Emgu.runtime.windows.cuda.fft.targets",
+        "build/x64/cufft64_10.dll",
+        "build/x64/cufftw64_10.dll",
+        "emgu.runtime.windows.cuda.fft.11.1.218.nupkg.sha512",
+        "emgu.runtime.windows.cuda.fft.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.npp/11.1.218": {
+      "sha512": "PNMht/ZnWYqOeE6QMp0sG9VZNcfomTYVdq/fX8S8zatEFKQQ5jJJEh0QO+nZ6YJ2yU7w2D8v6HvmN0OqUsBgiw==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.npp/11.1.218",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CUDA_EULA.txt",
+        "build/Emgu.runtime.windows.cuda.npp.targets",
+        "build/x64/nppc64_11.dll",
+        "build/x64/nppial64_11.dll",
+        "build/x64/nppicc64_11.dll",
+        "build/x64/nppidei64_11.dll",
+        "build/x64/nppif64_11.dll",
+        "build/x64/nppig64_11.dll",
+        "build/x64/nppim64_11.dll",
+        "build/x64/nppist64_11.dll",
+        "build/x64/nppisu64_11.dll",
+        "build/x64/nppitc64_11.dll",
+        "build/x64/npps64_11.dll",
+        "emgu.runtime.windows.cuda.npp.11.1.218.nupkg.sha512",
+        "emgu.runtime.windows.cuda.npp.nuspec",
+        "icon.png"
+      ]
+    },
+    "Emgu.runtime.windows.cuda.rt/11.1.218": {
+      "sha512": "b+4R7UV1Aeju51rNJxmIffZ6IzewXUZVdzvISU9qJLU5/8rgzjc9rnBZHJBKAJhhIkV92ZL68mVZVCjwDNO9AA==",
+      "type": "package",
+      "path": "emgu.runtime.windows.cuda.rt/11.1.218",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CUDA_EULA.txt",
+        "build/x64/cudart64_110.dll",
+        "build/x64/curand64_10.dll",
+        "emgu.runtime.windows.cuda.rt.11.1.218.nupkg.sha512",
+        "emgu.runtime.windows.cuda.rt.nuspec",
+        "icon.png"
       ]
     },
     "Emgu.runtime.windows.msvc.rt.arm64/19.39.33523": {
@@ -3224,6 +3511,7 @@
     "net8.0": [
       "Emgu.CV >= 4.9.0.5494",
       "Emgu.CV.runtime.windows >= 4.9.0.5494",
+      "Emgu.CV.runtime.windows.cuda >= 4.4.0.4099",
       "Kurukuru >= 1.4.2",
       "Microsoft.IdentityModel.Tokens >= 7.5.1",
       "Numpy >= 3.11.1.33",
@@ -3295,6 +3583,10 @@
             "target": "Package",
             "version": "[4.9.0.5494, )"
           },
+          "Emgu.CV.runtime.windows.cuda": {
+            "target": "Package",
+            "version": "[4.4.0.4099, )"
+          },
           "Kurukuru": {
             "target": "Package",
             "version": "[1.4.2, )"
@@ -3359,5 +3651,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: Emgu.CV.runtime.windows.cuda 4.4.0.4099 requires Emgu.CV (>= 4.4.0 && < 4.4.1) but version Emgu.CV 4.9.0.5494 was resolved.",
+      "libraryId": "Emgu.CV",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

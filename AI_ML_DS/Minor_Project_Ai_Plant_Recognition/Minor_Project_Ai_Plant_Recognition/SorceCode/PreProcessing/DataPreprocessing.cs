@@ -5,7 +5,7 @@ using Python.Runtime;
 using System.Drawing;
 using Minor_Project_Ai_Plant_Recognition.SorceCode.DataParse_Sampling.ImageWriter;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
+namespace Minor_Project_Ai_Plant_Recognition.SorceCode.Processing
 {
     /// <summary>
     /// This class is responsible for resizing images.

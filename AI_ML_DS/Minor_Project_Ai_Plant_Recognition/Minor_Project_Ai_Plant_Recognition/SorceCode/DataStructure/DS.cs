@@ -26,16 +26,14 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure
         public int speciesId { get; set; }
         public int preprocessedId { get; set; }
         public int modifierId { get; set; }
-        public int dimensionId { get; set; }
         public string? imgPath { get; set; }
 
-        private struct ImgPathPreprocessed
+        public struct ImgPathPreprocessed
         {
             public int catagoryId;
             public int speciesId;
             public int preprocessedId;
             public int modifierId;
-            public int dimensionId;
             public string imgPath;
         }
     }
