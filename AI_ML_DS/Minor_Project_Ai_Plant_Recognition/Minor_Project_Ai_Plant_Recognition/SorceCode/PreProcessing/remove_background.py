@@ -1,11 +1,14 @@
-﻿from rembg import remove
+﻿from rembg.bg import remove, new_session
+import warnings
 from PIL import Image
-from io import BytesIO
-
-# import onnxruntime as ort
-import numpy as np
+from concurrent.futures import ThreadPoolExecutor
 import psycopg2
 import os
+
+warnings.filterwarnings(
+    "ignore", category=UserWarning, module="onnxruntime.capi.onnxruntime_validation"
+)
+
 
 class ImgPathOrignal:
     def __init__(self, img_path, species_id, catagory_id):
@@ -35,6 +38,8 @@ def db_connector_and_retriver():
 
         cursor = conn.cursor()
 
+        print("Connected to the database")
+
         idx_query = "SELECT * FROM species_idx"
         cursor.execute(idx_query)
         rows = cursor.fetchall()
@@ -60,36 +65,58 @@ def db_connector_and_retriver():
             cursor.close()
         if conn is not None:
             conn.close()
+            print("Database connection closed.")
 
-def remove_bck(species_dict, img_data):
-    action = "bgrndremove"
-    for img in img_data:
-        output_path = r"D:\Dataset\medai\PreProcessed"
-        species = species_dict[img.species_id]
-        if img.catagory_id == 1:
-            cur_base_dir = os.path.join(output_path, "leaf")
-        else:
-            cur_base_dir = os.path.join(output_path, "plant")
+def process_image(img, species_dict, output_path, action):
 
-        new_dir = os.path.join(cur_base_dir, species, action, "nomod")
+    print("Processing image: ", img.img_path)
 
-        file_name = os.path.basename(img.img_path)
+    species = species_dict[img.species_id]
+    if img.catagory_id == 1:
+        cur_base_dir = os.path.join(output_path, "leaf")
+    else:
+        cur_base_dir = os.path.join(output_path, "plant")
 
-        if not os.path.exists(new_dir):
-            os.makedirs(new_dir)
+    new_dir = os.path.join(cur_base_dir, species, action, "nomod")
 
-        input = Image.open(img.img_path)
-        output_path = os.path.join(new_dir, file_name)
+    file_name = os.path.basename(img.img_path)
+
+    if not os.path.exists(new_dir):
+        os.makedirs(new_dir)
+
+    input = Image.open(img.img_path)
+    input.load()
+    output_path = os.path.join(new_dir, file_name)
+
+    try:
         output = remove(
             input,
             alpha_matting=True,
-            alpha_matting_foreground_threshold=270,
-            alpha_matting_background_threshold=20,
-            alpha_matting_erode_size=11,
+            alpha_matting_foreground_threshold=500,
+            alpha_matting_background_threshold=50,
+            alpha_matting_erode_size=15,
             post_process_mask=True,
+            session=new_session("isnet"),
         )
+    except Exception as e:
+        print(f"Failed to process image {file_name}: {e}")
+        return
 
-        output.save(output_path)
+    output = output.convert("RGB")
+    output.save(output_path)
+
+def remove_bck(species_dict, img_data):
+    action = "bgrndremove"
+    output_path = r"D:\Dataset\medai\PreProcessed"
+
+    with ThreadPoolExecutor(os.cpu_count()) as executor:
+        executor.map(
+            process_image,
+            img_data,
+            [species_dict] * len(img_data),
+            [output_path] * len(img_data),
+            [action] * len(img_data),
+        )
 
 if __name__ == "__main__":
     img_data, species_dict = db_connector_and_retriver()

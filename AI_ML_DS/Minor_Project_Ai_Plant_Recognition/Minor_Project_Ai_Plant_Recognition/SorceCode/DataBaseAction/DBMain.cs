@@ -93,6 +93,8 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
             dbFeeder.DataFeederToOrignalPathtable(imgData);
 
+            WriteLine("Total img count" + imgData.Count);
+
             WriteLine("Data Feeding to Orignal Path Table: done");
         }
 
@@ -185,6 +187,8 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
             dbFeeder.DataFeederToPathtable(imgData);
 
+            WriteLine("Total img count" + imgData.Count);
+
             WriteLine("Data Feeding to Preprocessed Path Table: done");
         }
 
@@ -196,11 +200,11 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
             WriteLine("Data Parsing from Orignal Path Table: done");
         }
 
-        public void DataParseFromPreprocessedPathTable(List<PreprocessedPath.ImgPathPreprocessed> imgPath, int process)
+        public void DataParseFromPreprocessedPathTable(List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocesseds, int process)
         {
             DBReader dbReader = new DBReader();
-            string SQLQuery = $"SELECT catagory, species, preprocessed, modifier, imgpath FROM pathtable WHERE process = 1;";
-            dbReader.preprocessedImgPathReader(SQLQuery, imgPath);
+            string SQLQuery = $"SELECT catagory, species, preprocess, modifier, imgpath FROM pathtable WHERE preprocess = {process};";
+            dbReader.preprocessedImgPathReader(SQLQuery, imgDataPreprocesseds);
             WriteLine("Data Parsing from Preprocessed Path Table: done");
         }
     }
