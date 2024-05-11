@@ -1,13 +1,12 @@
-﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
-using Npgsql;
+﻿using Minor_Project_Ai_Plant_Recognition.SourceCode.DataStructure;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction
 {
     internal class DBFeeder
     {
-        public void DataFeederToOrignalPathtable(List<OrignalImgPath.ImgPathOrignal> imgData)
+        public static void DataFeederToOrignalPathtable(List<OrignalImgPath.ImgPathOrignal> imgData)
         {
-            DBConnector _dbConnector = new DBConnector();
+            DBConnector _dbConnector = new();
             string baseSQLQuery = "INSERT INTO pathtableorignal (catagory, species, imgpath) VALUES ";
             foreach (OrignalImgPath.ImgPathOrignal img in imgData)
             {
@@ -19,9 +18,9 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
             _dbConnector.CloseConnection();
         }
 
-        public void DataFeederToPathtable(List<PreprocessedPath.ImgPathPreprocessed> imgData)
+        public static void DataFeederToPathtable(List<PreprocessedPath.ImgPathPreprocessed> imgData)
         {
-            DBConnector _dbConnector = new DBConnector();
+            DBConnector _dbConnector = new();
             string baseSQLQuery = "INSERT INTO pathtable (catagory, species, preprocess, modifier, imgpath) VALUES ";
             foreach (PreprocessedPath.ImgPathPreprocessed img in imgData)
             {

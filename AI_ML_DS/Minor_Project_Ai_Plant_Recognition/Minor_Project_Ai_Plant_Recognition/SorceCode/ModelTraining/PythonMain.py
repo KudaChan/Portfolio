@@ -1,1 +1,0 @@
-"""This is the Staring point of the python script."""

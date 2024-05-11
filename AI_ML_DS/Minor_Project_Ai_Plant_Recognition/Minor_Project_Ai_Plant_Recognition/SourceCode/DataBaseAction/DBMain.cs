@@ -1,61 +1,61 @@
-﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
+﻿using Minor_Project_Ai_Plant_Recognition.SourceCode.DataStructure;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction
 {
     internal class DBMain
     {
-        private Dictionary<int, string> speciesDictIdx = new Dictionary<int, string>();
-        private Dictionary<int, string> processDictIdx = new Dictionary<int, string>();
-        private Dictionary<int, string> modifierDictIdx = new Dictionary<int, string>();
+        private readonly Dictionary<int, string> speciesDictIdx = new();
+        private readonly Dictionary<int, string> processDictIdx = new();
+        private readonly Dictionary<int, string> modifierDictIdx = new();
 
-        public void SpeciesDictInit(Dictionary<int, string> speciesDict)
+        public static void SpeciesDictInit(Dictionary<int, string> speciesDict)
         {
-            DBReader dbReader = new DBReader();
+            _ = new DBReader();
 
-            string speceisIDXDuery = "SELECT idx, sname FROM species_idx;";
+            string speciesIDXQuery = "SELECT idx, sname FROM species_idx;";
 
-            dbReader.IndexReader(speceisIDXDuery, speciesDict);
+            DBReader.IndexReader(speciesIDXQuery, speciesDict);
 
             WriteLine("SpeciesIdx to Dict: done");
         }
 
-        public void ProcessDictInit(Dictionary<int, string> processDict)
+        public static void ProcessDictInit(Dictionary<int, string> processDict)
         {
-            DBReader dbReader = new DBReader();
+            _ = new DBReader();
 
-            string processIDXDuery = "SELECT idx, pname FROM process_idx;";
+            string processIDXQuery = "SELECT idx, pname FROM process_idx;";
 
-            dbReader.IndexReader(processIDXDuery, processDict);
+            DBReader.IndexReader(processIDXQuery, processDict);
 
             WriteLine("ProcessIdx to Dict: done");
         }
 
-        public void ModifierDictInit(Dictionary<int, string> modifierDict)
+        public static void ModifierDictInit(Dictionary<int, string> modifierDict)
         {
-            DBReader dbReader = new DBReader();
+            _ = new DBReader();
 
-            string modifierIDXDuery = "SELECT idx, mname FROM modifier_idx;";
+            string modifierIDXQuery = "SELECT idx, mname FROM modifier_idx;";
 
-            dbReader.IndexReader(modifierIDXDuery, modifierDict);
+            DBReader.IndexReader(modifierIDXQuery, modifierDict);
 
             WriteLine("ModifierIdx to Dict: done");
         }
 
-        public void DataPaserFromOrignalDirAndFeeder()
+        public void DataParserFromOrignalDirAndFeeder()
         {
             SpeciesDictInit(speciesDictIdx);
-            DBFeeder dbFeeder = new DBFeeder();
+            _ = new DBFeeder();
             string path = "D:\\Dataset\\medai\\DataOrignal";
             string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
 
-            List<OrignalImgPath.ImgPathOrignal> imgData = new List<OrignalImgPath.ImgPathOrignal>();
+            List<OrignalImgPath.ImgPathOrignal> imgData = [];
 
             foreach (string file in files)
             {
                 string[] parts = file.Split('\\');
 
-                string species = parts[parts.Length - 2];
-                string catagory = parts[parts.Length - 3];
+                string species = parts[^2];
+                string catagory = parts[^3];
 
                 int speciesID = 0;
                 int catagoryID = 0;
@@ -81,7 +81,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
                     WriteLine("Invalid catagory");
                 }
 
-                OrignalImgPath.ImgPathOrignal imgPathOrignal = new OrignalImgPath.ImgPathOrignal
+                OrignalImgPath.ImgPathOrignal imgPathOrignal = new()
                 {
                     catagoryId = catagoryID,
                     speciesId = speciesID,
@@ -91,7 +91,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
                 imgData.Add(imgPathOrignal);
             }
 
-            dbFeeder.DataFeederToOrignalPathtable(imgData);
+            DBFeeder.DataFeederToOrignalPathtable(imgData);
 
             WriteLine("Total img count" + imgData.Count);
 
@@ -113,20 +113,21 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
                 ModifierDictInit(modifierDictIdx);
             }
 
-            DBFeeder dbFeeder = new DBFeeder();
+            _ = new
+            DBFeeder();
             string path = "D:\\Dataset\\medai\\PreProcessed";
             string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
 
-            List<PreprocessedPath.ImgPathPreprocessed> imgData = new List<PreprocessedPath.ImgPathPreprocessed>();
+            List<PreprocessedPath.ImgPathPreprocessed> imgData = new();
 
             foreach (string file in files)
             {
                 string[] parts = file.Split('\\');
 
-                string species = parts[parts.Length - 4];
-                string catagory = parts[parts.Length - 5];
-                string process = parts[parts.Length - 3];
-                string modifier = parts[parts.Length - 2];
+                string species = parts[^4];
+                string catagory = parts[^5];
+                string process = parts[^3];
+                string modifier = parts[^2];
 
                 int speciesID = 0;
                 int catagoryID = 0;
@@ -173,7 +174,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
                     WriteLine("Invalid catagory");
                 }
 
-                PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new PreprocessedPath.ImgPathPreprocessed
+                PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new()
                 {
                     catagoryId = catagoryID,
                     speciesId = speciesID,
@@ -185,26 +186,26 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
                 imgData.Add(imgPathPreprocessed);
             }
 
-            dbFeeder.DataFeederToPathtable(imgData);
+            DBFeeder.DataFeederToPathtable(imgData);
 
             WriteLine("Total img count" + imgData.Count);
 
             WriteLine("Data Feeding to Preprocessed Path Table: done");
         }
 
-        public void DataParseFromOrignalPathTable(List<OrignalImgPath.ImgPathOrignal> imgPath)
+        public static void DataParseFromOrignalPathTable(List<OrignalImgPath.ImgPathOrignal> imgPath)
         {
-            DBReader dbReader = new DBReader();
+            _ = new DBReader();
             string SQLQuery = "SELECT catagory, species, imgpath FROM pathtableorignal WHERE species < 6;";
-            dbReader.orignalImgPathReader(SQLQuery, imgPath);
+            DBReader.OrignalImgPathReader(SQLQuery, imgPath);
             WriteLine("Data Parsing from Orignal Path Table: done");
         }
 
-        public void DataParseFromPreprocessedPathTable(List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocesseds, int process)
+        public static void DataParseFromPreprocessedPathTable(List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocessed, int process)
         {
-            DBReader dbReader = new DBReader();
+            _ = new DBReader();
             string SQLQuery = $"SELECT catagory, species, preprocess, modifier, imgpath FROM pathtable WHERE preprocess = {process};";
-            dbReader.preprocessedImgPathReader(SQLQuery, imgDataPreprocesseds);
+            DBReader.PreprocessedImgPathReader(SQLQuery, imgDataPreprocessed);
             WriteLine("Data Parsing from Preprocessed Path Table: done");
         }
     }

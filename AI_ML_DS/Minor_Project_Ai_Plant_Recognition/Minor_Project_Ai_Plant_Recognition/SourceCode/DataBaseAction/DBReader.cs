@@ -1,17 +1,12 @@
-﻿using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Minor_Project_Ai_Plant_Recognition.SourceCode.DataStructure;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction
 {
     internal class DBReader
     {
-        public void IndexReader(string SQLQuery, Dictionary<int, string> dict, int c1 = 0, int c2 = 0)
+        public static void IndexReader(string SQLQuery, Dictionary<int, string> dict)
         {
-            DBConnector _dbConnector = new DBConnector();
+            DBConnector _dbConnector = new();
 
             using (var reader = _dbConnector.Read(SQLQuery))
             {
@@ -26,15 +21,15 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
             _dbConnector.CloseConnection();
         }
 
-        public void orignalImgPathReader(string SQLQuery, List<OrignalImgPath.ImgPathOrignal> imgPathList)
+        public static void OrignalImgPathReader(string SQLQuery, List<OrignalImgPath.ImgPathOrignal> imgPathList)
         {
-            DBConnector _dbConnector = new DBConnector();
+            DBConnector _dbConnector = new();
 
             using (var reader = _dbConnector.Read(SQLQuery))
             {
                 while (reader.Read())
                 {
-                    OrignalImgPath.ImgPathOrignal imgPathOrignal = new OrignalImgPath.ImgPathOrignal
+                    OrignalImgPath.ImgPathOrignal imgPathOrignal = new()
                     {
                         catagoryId = reader.GetInt16(0),
                         speciesId = reader.GetInt32(1),
@@ -49,15 +44,15 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
             _dbConnector.CloseConnection();
         }
 
-        public void preprocessedImgPathReader(string SQLQuery, List<PreprocessedPath.ImgPathPreprocessed> imgPathList)
+        public static void PreprocessedImgPathReader(string SQLQuery, List<PreprocessedPath.ImgPathPreprocessed> imgPathList)
         {
-            DBConnector _dbConnector = new DBConnector();
+            DBConnector _dbConnector = new();
 
             using (var reader = _dbConnector.Read(SQLQuery))
             {
                 while (reader.Read())
                 {
-                    PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new PreprocessedPath.ImgPathPreprocessed
+                    PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new()
                     {
                         catagoryId = reader.GetInt16(0),
                         speciesId = reader.GetInt32(1),

@@ -9,10 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dataset\**" />
     <Compile Remove="SampledData\**" />
     <Compile Remove="Temp\**" />
+    <EmbeddedResource Remove="Dataset\**" />
     <EmbeddedResource Remove="SampledData\**" />
     <EmbeddedResource Remove="Temp\**" />
+    <None Remove="Dataset\**" />
     <None Remove="SampledData\**" />
     <None Remove="Temp\**" />
   </ItemGroup>
@@ -38,15 +41,6 @@
     <PackageReference Include="ShellProgressBar" Version="5.2.0" />
     <PackageReference Include="tensorflow.keras" Version="0.15.0" />
     <PackageReference Include="TensorFlow.NET" Version="0.150.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dataset\DataPreProcessed\" />
-    <Folder Include="Dataset\DataTestTrainValid\Dataset%28train%29\" />
-    <Folder Include="Dataset\DataTestTrainValid\Dataset%28test%29\" />
-    <Folder Include="Dataset\DataTestTrainValid\Dataset%28validate%29\" />
-    <Folder Include="Dataset\DataTxtFile\" />
-    <Folder Include="SorceCode\ModelTraining\" />
   </ItemGroup>
 
   <ItemGroup>

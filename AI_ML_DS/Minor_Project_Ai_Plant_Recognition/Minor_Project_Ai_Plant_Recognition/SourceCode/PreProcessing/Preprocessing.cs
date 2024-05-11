@@ -1,28 +1,28 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Python.Runtime;
-using Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction;
-using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
+using Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction;
+using Minor_Project_Ai_Plant_Recognition.SourceCode.DataStructure;
 using System.Drawing;
 using Emgu.CV.Cuda;
 using Tensorflow;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.PreProcessing
 {
     internal class DataAugmentation
     {
-        private Dictionary<int, string> speciesDict = new Dictionary<int, string>();
-        private List<OrignalImgPath.ImgPathOrignal> imgData = new List<OrignalImgPath.ImgPathOrignal>();
-        private List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocesseds = new List<PreprocessedPath.ImgPathPreprocessed>();
+        private readonly Dictionary<int, string> speciesDict = new();
+        private readonly List<OrignalImgPath.ImgPathOrignal> imgData = new();
+        private readonly List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocessed = new();
 
         public string _baseDir = "D:\\Dataset\\medai\\PreProcessed";
 
         private void DataLoaderFromDB()
         {
-            DBMain dbMain = new DBMain();
-            dbMain.SpeciesDictInit(speciesDict);
+            _ = new DBMain();
+            DBMain.SpeciesDictInit(speciesDict);
 
-            dbMain.DataParseFromOrignalPathTable(imgData);
+            DBMain.DataParseFromOrignalPathTable(imgData);
 
             WriteLine(imgData.Count);
         }
@@ -34,7 +34,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat rotatedImage = new Mat();
+                Mat rotatedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -76,7 +76,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat translatedImage = new Mat();
+                Mat translatedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
                 //Matrix<float> shiftMatrix = new Matrix<float>(2, 3);
                 string curBaseDir;
@@ -94,7 +94,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
                 {
                     for (int j = -50; j <= 50; j += 10)
                     {
-                        Matrix<float> shiftMatrix = new Matrix<float>(2, 3);
+                        Matrix<float> shiftMatrix = new(2, 3);
                         shiftMatrix[0, 0] = 1;  // Identity element
                         shiftMatrix[1, 1] = 1;  // Identity element
                         shiftMatrix[0, 2] = i;  // Shift in x direction
@@ -123,7 +123,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat scaledImage = new Mat();
+                Mat scaledImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -163,7 +163,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat flippedImage = new Mat();
+                Mat flippedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -199,7 +199,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat contrastImage = new Mat();
+                Mat contrastImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -239,7 +239,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat zoomedImage = new Mat();
+                Mat zoomedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -279,7 +279,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat grayImage = new Mat();
+                Mat grayImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -295,14 +295,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
 
                 if (CudaInvoke.HasCuda)  // Check for CUDA compatible GPU
                 {
-                    using (GpuMat gpuImage = new GpuMat(image))  // Upload image to GPU
-                    {
-                        using (GpuMat gpuResult = new GpuMat())  // Create GPU matrix for result
-                        {
-                            CudaInvoke.CvtColor(gpuImage, gpuResult, ColorConversion.Bgr2Gray);  // Perform operation on GPU
-                            grayImage = gpuResult.ToMat();  // Download result from GPU
-                        }
-                    }
+                    using GpuMat gpuImage = new(image);  // Upload image to GPU
+                    using GpuMat gpuResult = new();  // Create GPU matrix for result
+                    CudaInvoke.CvtColor(gpuImage, gpuResult, ColorConversion.Bgr2Gray);  // Perform operation on GPU
+                    grayImage = gpuResult.ToMat();  // Download result from GPU
                 }
                 else
                 {
@@ -329,7 +325,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat gaussianBlurredImage = new Mat();
+                Mat gaussianBlurredImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -380,7 +376,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
 
     internal class BckRemove()
     {
-        public void RemoveBackground()
+        public static void RemoveBackground()
         {
             try
             {
@@ -396,7 +392,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
                 using (Py.GIL())
                 {
                     // Read the Python script
-                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\remove_background.py");
+                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PreProcessing\remove_background.py");
                     // Run the Python script
                     PythonEngine.RunSimpleString(pythonScript);
                 }
@@ -415,17 +411,17 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
 
     internal class Augmentation_BckRem
     {
-        private Dictionary<int, string> speciesDict = new Dictionary<int, string>();
-        private List<PreprocessedPath.ImgPathPreprocessed> imgData = new List<PreprocessedPath.ImgPathPreprocessed>();
+        private readonly Dictionary<int, string> speciesDict = new();
+        private readonly List<PreprocessedPath.ImgPathPreprocessed> imgData = new();
 
         public string _baseDir = "D:\\Dataset\\medai\\PreProcessed";
 
         private void DataLoaderFromDB()
         {
-            DBMain dbMain = new DBMain();
-            dbMain.SpeciesDictInit(speciesDict);
+            _ = new DBMain();
+            DBMain.SpeciesDictInit(speciesDict);
 
-            dbMain.DataParseFromPreprocessedPathTable(imgData, 2);
+            DBMain.DataParseFromPreprocessedPathTable(imgData, 2);
 
             WriteLine(imgData.Count);
         }
@@ -437,7 +433,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat rotatedImage = new Mat();
+                Mat rotatedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -479,7 +475,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat translatedImage = new Mat();
+                Mat translatedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
                 //Matrix<float> shiftMatrix = new Matrix<float>(2, 3);
                 string curBaseDir;
@@ -497,7 +493,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
                 {
                     for (int j = -50; j <= 50; j += 10)
                     {
-                        Matrix<float> shiftMatrix = new Matrix<float>(2, 3);
+                        Matrix<float> shiftMatrix = new(2, 3);
                         shiftMatrix[0, 0] = 1;  // Identity element
                         shiftMatrix[1, 1] = 1;  // Identity element
                         shiftMatrix[0, 2] = i;  // Shift in x direction
@@ -526,7 +522,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat scaledImage = new Mat();
+                Mat scaledImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -566,7 +562,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat flippedImage = new Mat();
+                Mat flippedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -602,7 +598,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat contrastImage = new Mat();
+                Mat contrastImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -642,7 +638,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat zoomedImage = new Mat();
+                Mat zoomedImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -682,7 +678,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat grayImage = new Mat();
+                Mat grayImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;
@@ -698,14 +694,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
 
                 if (CudaInvoke.HasCuda)  // Check for CUDA compatible GPU
                 {
-                    using (GpuMat gpuImage = new GpuMat(image))  // Upload image to GPU
-                    {
-                        using (GpuMat gpuResult = new GpuMat())  // Create GPU matrix for result
-                        {
-                            CudaInvoke.CvtColor(gpuImage, gpuResult, ColorConversion.Bgr2Gray);  // Perform operation on GPU
-                            grayImage = gpuResult.ToMat();  // Download result from GPU
-                        }
-                    }
+                    using GpuMat gpuImage = new(image);  // Upload image to GPU
+                    using GpuMat gpuResult = new();  // Create GPU matrix for result
+                    CudaInvoke.CvtColor(gpuImage, gpuResult, ColorConversion.Bgr2Gray);  // Perform operation on GPU
+                    grayImage = gpuResult.ToMat();  // Download result from GPU
                 }
                 else
                 {
@@ -732,7 +724,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing
             {
                 string species = speciesDict[img.speciesId];
                 Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
-                Mat gaussianBlurredImage = new Mat();
+                Mat gaussianBlurredImage = new();
                 var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
 
                 string curBaseDir;

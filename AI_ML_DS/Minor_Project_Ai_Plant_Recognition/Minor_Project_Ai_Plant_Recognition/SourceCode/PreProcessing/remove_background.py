@@ -1,9 +1,10 @@
-﻿from rembg.bg import remove, new_session
+﻿import os
 import warnings
-from PIL import Image
 from concurrent.futures import ThreadPoolExecutor
+
 import psycopg2
-import os
+from PIL import Image
+from rembg.bg import new_session, remove
 
 warnings.filterwarnings(
     "ignore", category=UserWarning, module="onnxruntime.capi.onnxruntime_validation"
@@ -15,6 +16,7 @@ class ImgPathOrignal:
         self.img_path = img_path
         self.species_id = species_id
         self.catagory_id = catagory_id
+
 
 def db_connector_and_retriver():
     """
@@ -57,7 +59,7 @@ def db_connector_and_retriver():
 
         return img_data, species_dict
 
-    except Exception as e:
+    except psycopg2.Error as e:
         print(f"Failed to connect to the database: {e}")
 
     finally:
@@ -66,6 +68,7 @@ def db_connector_and_retriver():
         if conn is not None:
             conn.close()
             print("Database connection closed.")
+
 
 def process_image(img, species_dict, output_path, action):
 
@@ -84,13 +87,13 @@ def process_image(img, species_dict, output_path, action):
     if not os.path.exists(new_dir):
         os.makedirs(new_dir)
 
-    input = Image.open(img.img_path)
+    input_img = Image.open(img.img_path)
     input.load()
     output_path = os.path.join(new_dir, file_name)
 
     try:
         output = remove(
-            input,
+            input_img,
             alpha_matting=True,
             alpha_matting_foreground_threshold=500,
             alpha_matting_background_threshold=50,
@@ -105,6 +108,7 @@ def process_image(img, species_dict, output_path, action):
     output = output.convert("RGB")
     output.save(output_path)
 
+
 def remove_bck(species_dict, img_data):
     action = "bgrndremove"
     output_path = r"D:\Dataset\medai\PreProcessed"
@@ -118,6 +122,7 @@ def remove_bck(species_dict, img_data):
             [action] * len(img_data),
         )
 
+
 if __name__ == "__main__":
-    img_data, species_dict = db_connector_and_retriver()
-    remove_bck(species_dict, img_data)
+    img_dataset, species_dict = db_connector_and_retriver()
+    remove_bck(species_dict, img_dataset)

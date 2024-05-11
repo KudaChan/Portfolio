@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NJONcD7GpAfQI6N5GRLU2n4y2pfrwtC0ZFALMLaf0r1C8ZD22fkp/1beJj4aROtOptwNNr0JRBk4+2pH3JmHvQ==",
+  "dgSpecHash": "wNTwBpVHdSNI9tTao9tkfuUXT+S7Wyu2mNwKl0vxO18esPBILSzoLgtxxAWacQf1tUuv7b2HgZ27LlHRJ5F2KA==",
   "success": true,
   "projectFilePath": "D:\\Project\\AI_ML_DS\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition\\Minor_Project_Ai_Plant_Recognition.csproj",
   "expectedPackageFiles": [
@@ -74,7 +74,11 @@
     "C:\\Users\\kumar\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\kumar\\.nuget\\packages\\tensorflow.keras\\0.15.0\\tensorflow.keras.0.15.0.nupkg.sha512",
-    "C:\\Users\\kumar\\.nuget\\packages\\tensorflow.net\\0.150.0\\tensorflow.net.0.150.0.nupkg.sha512"
+    "C:\\Users\\kumar\\.nuget\\packages\\tensorflow.net\\0.150.0\\tensorflow.net.0.150.0.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.1\\microsoft.netcore.app.ref.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.1\\microsoft.windowsdesktop.app.ref.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.1\\microsoft.aspnetcore.app.ref.8.0.1.nupkg.sha512",
+    "C:\\Users\\kumar\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.1\\microsoft.netcore.app.host.win-x64.8.0.1.nupkg.sha512"
   ],
   "logs": [
     {
@@ -83,6 +87,16 @@
       "warningLevel": 1,
       "message": "Detected package version outside of dependency constraint: Emgu.CV.runtime.windows.cuda 4.4.0.4099 requires Emgu.CV (>= 4.4.0 && < 4.4.1) but version Emgu.CV 4.9.0.5494 was resolved.",
       "libraryId": "Emgu.CV",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Npgsql' 8.0.2 has a known high severity vulnerability, https://github.com/advisories/GHSA-x9vc-6hfv-hg8c",
+      "libraryId": "Npgsql",
       "targetGraphs": [
         "net8.0"
       ]

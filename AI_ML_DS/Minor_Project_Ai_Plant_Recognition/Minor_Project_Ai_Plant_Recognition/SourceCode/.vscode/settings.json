@@ -1,0 +1,8 @@
+{
+    "cSpell.words": [
+        "pathtable"
+    ],
+    "editor.guides.indentation": false,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic"
+}

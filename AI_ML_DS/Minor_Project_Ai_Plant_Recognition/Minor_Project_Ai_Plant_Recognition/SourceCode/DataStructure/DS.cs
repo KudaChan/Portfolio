@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataStructure
 {
     internal class OrignalImgPath
     {

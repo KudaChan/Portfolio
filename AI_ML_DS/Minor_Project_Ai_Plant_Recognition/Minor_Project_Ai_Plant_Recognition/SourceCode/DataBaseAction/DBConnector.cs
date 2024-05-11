@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
+﻿using Npgsql;
 
-namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
+namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction
 {
     internal class DBConnector
     {
@@ -15,7 +10,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
         public string Password { get; private set; }
         public string Port { get; private set; }
 
-        private NpgsqlConnection? connection;
+        private readonly NpgsqlConnection? connection;
 
         public DBConnector()
         {
@@ -25,7 +20,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
             Port = Environment.GetEnvironmentVariable("DB_PORT")!;
             Password = Environment.GetEnvironmentVariable("DB_PASSWORD")!;
 
-            this.connection = GetConnection();
+            connection = GetConnection();
         }
 
         private NpgsqlConnection GetConnection()
@@ -49,51 +44,41 @@ namespace Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction
 
         public void CloseConnection()
         {
-            if (this.connection != null)
+            if (connection != null)
             {
-                this.connection.Close();
-                Console.WriteLine("Connection closed.");
+                connection.Close();
+                WriteLine("Connection closed.");
             }
         }
 
         public void Create(string query)
         {
-            using (var cmd = new NpgsqlCommand(query, this.connection))
-            {
-                cmd.ExecuteNonQuery();
-            }
+            using var cmd = new NpgsqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
         }
 
         public NpgsqlDataReader Read(string query)
         {
-            using (var cmd = new NpgsqlCommand(query, this.connection))
-            {
-                return cmd.ExecuteReader();
-            }
+            using var cmd = new NpgsqlCommand(query, connection);
+            return cmd.ExecuteReader();
         }
 
         public void Update(string query)
         {
-            using (var cmd = new NpgsqlCommand(query, this.connection))
-            {
-                cmd.ExecuteNonQuery();
-            }
+            using var cmd = new NpgsqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
         }
 
         public void Delete(string query)
         {
-            using (var cmd = new NpgsqlCommand(query, this.connection))
-            {
-                cmd.ExecuteNonQuery();
-            }
+            using var cmd = new NpgsqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
         }
 
         public void ExecuteQuery(string query)
         {
-            using (var cmd = new NpgsqlCommand(query, this.connection))
-            {
-                cmd.ExecuteNonQuery();
-            }
+            using var cmd = new NpgsqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
         }
     }
 }
