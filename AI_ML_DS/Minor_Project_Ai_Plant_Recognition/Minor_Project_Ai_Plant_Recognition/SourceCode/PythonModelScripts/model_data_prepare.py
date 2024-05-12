@@ -2,7 +2,9 @@
 imports
 """
 import os
+import pandas as pd
 import random
+from sklearn.model_selection import train_test_split
 import psycopg2
 
 
@@ -138,8 +140,8 @@ class DBConnector:
         img_data_list = []
         species_dict = {}
 
-        idx_query = "SELECT * FROM species_idx WHERE idx < %s;"
-        rows = self.execute_sql(idx_query, (6,))
+        idx_query = "SELECT * FROM species_idx;"
+        rows = self.execute_sql(idx_query)
         species_dict = {row[0]: row[1] for row in rows}
 
         rows = self.execute_sql(sql_query)
@@ -271,11 +273,13 @@ class Main:
         method to split the data into training and testing sets.
         """
         if process == 0:
+            pname = "Orignal Data"
             print("Orignal Data :")
-            sql_query = "Select catagory, species, imgpath FROM pathtableorignal WHERE species < 6"
+            sql_query = "Select catagory, species, imgpath FROM pathtableorignal"
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 1:
+            pname = "Augmented Data"
             print("Augmented Data:")
             sql_query = (
                 "SELECT catagory, species, imgpath FROM pathtable where preprocess = 1"
@@ -283,6 +287,7 @@ class Main:
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 2:
+            pname = "Background Removed Data(orignal)"
             print("Background Removed Data(orignal) :")
             sql_query = (
                 "SELECT catagory, species, imgpath FROM pathtable where preprocess = 2"
@@ -290,6 +295,7 @@ class Main:
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 3:
+            pname = "Background Removed Data(augmented)"
             print("Background Removed Data(augmented) :")
             sql_query = (
                 "SELECT catagory, species, imgpath FROM pathtable where preprocess = 3"
@@ -297,13 +303,14 @@ class Main:
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 4:
-            print("Background Removed Data(augmented) :")
+            pname = "All Data Together"
+            print("All Data Together :")
             sql_query = "SELECT catagory, species, imgpath FROM pathtable"
 
             train_data, test_data = self.data_split_per_process(sql_query)
         else:
             print("Invalid process.")
-            return None, None
+            return None, None, None
 
         print("Data preparation complete.")
-        return train_data, test_data
+        return train_data, test_data, pname
