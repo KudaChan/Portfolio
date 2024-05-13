@@ -13,7 +13,9 @@
     "imagenet",
     "Imgdir",
     "Npgsql",
+    "ONEDNN",
     "onnxruntime",
+    "optim",
     "pathtable",
     "pname",
     "preprocess",
@@ -24,6 +26,8 @@
     "sname",
     "softmax",
     "suptitle",
+    "swin",
+    "torchvision",
     "traindata",
     "xlabel",
     "ylabel"

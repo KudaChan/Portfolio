@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "d:/Project/AI_ML_DS/Minor_Project_Ai_Plant_Recognition/Minor_Project_Ai_Plant_Recognition",
-      "program": "d:/Project/AI_ML_DS/Minor_Project_Ai_Plant_Recognition/Minor_Project_Ai_Plant_Recognition/build/Debug/outDebug",
+      "program": "d:/Project/AI_ML_DS/Minor_Project_Ai_Plant_Recognition/Minor_Project_Ai_Plant_Recognition/build/Release/outRelease",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

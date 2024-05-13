@@ -1,24 +1,34 @@
 ﻿"""_summary_
 This is the implementation of inception model.
 """
-from tensorflow.keras.applications.inception_v3 import InceptionV3  # type: ignore
-from tensorflow.keras.models import Model  # type: ignore
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D  # type: ignore
-from tensorflow.keras.utils import to_categorical  # type: ignore
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint  # type: ignore
-from keras.layers import Dense, Dropout, BatchNormalization  # type: ignore
-from keras.optimizers import Adam  # type: ignore
-import matplotlib.pyplot as plt
-from PIL import Image
+
 import numpy as np
-import sys
+from PIL import Image
+import matplotlib.pyplot as plt
+from keras.optimizers import Adam  # type: ignore
+from keras.layers import Dense, Dropout, BatchNormalization  # type: ignore
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint  # type: ignore
+from tensorflow.keras.utils import to_categorical  # type: ignore
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D  # type: ignore
+from tensorflow.keras.models import Model  # type: ignore
+from tensorflow.keras.applications.inception_v3 import InceptionV3  # type: ignore
+from sklearn.metrics import r2_score, mean_squared_error
+import os
+import tensorflow as tf
 
-try:
-    sys.path.append('SourceCode/PythonModelScripts')
-    import model_data_prepare as mdp
-except ImportError:
-    print("Unable to import model_data_prepare")
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+# import sys
 
+# try:
+#     sys.path.append('SourceCode/PythonModelScripts')
+#     import model_data_prepare as mdp
+# except ImportError:
+#     print("Unable to import model_data_prepare")
+
+# import os
+# import tensorflow as tf
+
+# os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 class InceptionModel:
     def __init__(self, train_data, test_data, i):
@@ -36,7 +46,7 @@ class InceptionModel:
             image = np.array(image, dtype='float16') / 255.0
             x_train.append(image)
 
-            y_train.append(to_categorical(img.species_id-1, num_classes=89))
+            y_train.append(to_categorical(img.species_id-1, num_classes=10))
 
         x_test = []
         y_test = []
@@ -49,7 +59,7 @@ class InceptionModel:
             x_test.append(image)
 
             # Convert label to one-hot encoding
-            y_test.append(to_categorical(img.species_id-1, num_classes=89))
+            y_test.append(to_categorical(img.species_id-1, num_classes=10))
 
         return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
@@ -63,22 +73,13 @@ class InceptionModel:
         x = BatchNormalization()(x)  # Add batch normalization layer
         x = Dropout(0.5)(x)  # Add dropout layer to prevent overfitting
 
-        x = Dense(1024, activation='relu')(x)
-        x = BatchNormalization()(x)  # Add batch normalization layer
-        x = Dropout(0.5)(x)
-
-        x = Dense(512, activation='relu')(x)
-        x = BatchNormalization()(x)  # Add batch normalization layer
-        x = Dropout(0.5)(x)
-
-        predictions = Dense(89, activation='softmax')(x)
-
+        predictions = Dense(10, activation='softmax')(x)
         model = Model(inputs=base_model.input, outputs=predictions)
 
         for layer in base_model.layers:
-            layer.trainable = True
+            layer.trainable = False
 
-        optimizer = Adam(learning_rate=0.0001)
+        optimizer = Adam(learning_rate=0.01)
 
         model.compile(optimizer=optimizer,
                       loss='categorical_crossentropy', metrics=['accuracy'])
@@ -89,19 +90,43 @@ class InceptionModel:
         model = self.model()
 
         # Early stopping
-        early_stop = EarlyStopping(monitor='val_loss', patience=10)
+        early_stop = EarlyStopping(monitor='val_loss', patience=5)
 
         # Reduce learning rate when a metric has stopped improving
         lr_reduce = ReduceLROnPlateau(
-            monitor='val_loss', factor=0.1, patience=2, verbose=1, min_delta=1e-4)
+            monitor='val_loss', factor=0.1, patience=2, verbose=1, min_delta=1e-4, min_lr=0.0001)
 
         # Save the best model after every epoch
         checkpoint = ModelCheckpoint(
-            f'{self.processed_data_type}.keras', verbose=1, save_best_only=True)
+            f'InceptionV3_{self.processed_data_type}.keras', monitor='val_loss', verbose=1, save_best_only=True)
 
         # Train the model
         history = model.fit(x_train, y_train, validation_data=(
             x_test, y_test), epochs=100, batch_size=32, callbacks=[early_stop, lr_reduce, checkpoint])
+
+        # After training the model
+        y_pred_train = model.predict(x_train)
+        y_pred_test = model.predict(x_test)
+
+        # Calculate R-squared and mean R-squared value for the training set
+        r2_train = r2_score(y_train, y_pred_train)
+        mean_r2_train = mean_squared_error(y_train, y_pred_train)
+
+        # Calculate R-squared and mean R-squared value for the test set
+        r2_test = r2_score(y_test, y_pred_test)
+        mean_r2_test = mean_squared_error(y_test, y_pred_test)
+
+        print(f'Training R2: {r2_train}, Mean R2: {mean_r2_train}')
+        print(f'Test R2: {r2_test}, Mean R2: {mean_r2_test}')
+
+        # Evaluate the model's performance on the training set
+        train_score = model.evaluate(x_train, y_train, verbose=0)
+        print(f'Train loss: {train_score[0]
+                             }, Train accuracy: {train_score[1]}')
+
+        # Evaluate the model's performance on the test set
+        test_score = model.evaluate(x_test, y_test, verbose=0)
+        print(f'Test loss: {test_score[0]}, Test accuracy: {test_score[1]}')
 
         # Plot training & validation accuracy values
         plt.figure(figsize=(12, 4))
@@ -126,11 +151,11 @@ class InceptionModel:
         plt.suptitle(self.processed_data_type, fontsize=16)
 
         save_path = r"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Results"
-        name = f"model_accuracy_loss_{self.processed_data_type}.png"
+        name = f"InceptionV3_model_accuracy_loss_{
+            self.processed_data_type}.png"
         save_path = save_path + "/" + name
         plt.savefig(save_path)
         plt.close()
-
 
 # if __name__ == "__main__":
 #     data_parser = mdp.Main()

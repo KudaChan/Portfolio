@@ -1,12 +1,12 @@
 """_summary_
 imports
 """
+
 import os
 import pandas as pd
 import random
 from sklearn.model_selection import train_test_split
 import psycopg2
-
 
 class ImgData:
     """
@@ -25,7 +25,6 @@ class ImgData:
         self.img_path = img_path
         self.species_id = species_id
         self.catagory_id = catagory_id
-
 
 class DBConnector:
     """
@@ -140,7 +139,7 @@ class DBConnector:
         img_data_list = []
         species_dict = {}
 
-        idx_query = "SELECT * FROM species_idx;"
+        idx_query = "SELECT * FROM species_idx WHERE idx < 11;"
         rows = self.execute_sql(idx_query)
         species_dict = {row[0]: row[1] for row in rows}
 
@@ -149,7 +148,6 @@ class DBConnector:
             img_data_list.append(ImgData(row[2], row[1], row[0]))
 
         return img_data_list, species_dict
-
 
 class DataSplitter:
     """_summary_
@@ -204,7 +202,6 @@ class DataSplitter:
             test_data.extend(temp_list[split_index:])
 
         return train_data, test_data
-
 
 class Main:
     """_summary_
@@ -275,7 +272,7 @@ class Main:
         if process == 0:
             pname = "Orignal Data"
             print("Orignal Data :")
-            sql_query = "Select catagory, species, imgpath FROM pathtableorignal"
+            sql_query = "SELECT catagory, species, imgpath FROM pathtableorignal WHERE catagory = 1 AND species < 11"
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 1:

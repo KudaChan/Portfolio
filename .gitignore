@@ -8,3 +8,8 @@
 *.dll
 *.so
 *.zip
+*.keras
+*.h5
+*.npy
+*.npz
+*.pth

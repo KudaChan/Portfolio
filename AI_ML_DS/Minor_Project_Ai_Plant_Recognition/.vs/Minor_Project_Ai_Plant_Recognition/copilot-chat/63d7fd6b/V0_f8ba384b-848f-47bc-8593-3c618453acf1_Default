@@ -1,0 +1,1565 @@
+Ü®DateTime◊ˇŸfû–f>Kø™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$08578949-3680-4530-b11d-32123f6c9eedŸ$13b33d64-3291-4613-84ec-02e4905ce63aôÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸª
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;ØOriginalContent¿™Selectionsê®FilePathŸ~D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\DataBaseAction\DBReader.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»êdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸB
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;ØOriginalContent¿™Selectionsê®FilePathŸ|D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\DataBaseAction\DBMain.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»ºdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸÜ
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.PreProcessing;ØOriginalContent¿™Selectionsê®FilePathŸdD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Program.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»XdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄
+using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Python.Runtime;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataBaseAction;
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
+using System.Drawing;
+using Emgu.CV.Cuda;
+using Tensorflow;ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»°dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸQ
+using Minor_Project_Ai_Plant_Recognition.SorceCode.DataStructure;
+using Npgsql;ØOriginalContent¿™Selectionsê®FilePathŸ~D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\DataBaseAction\DBFeeder.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»ÚdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄ª
+public static void Main(string[] args)
+        {
+            WriteLine("Database Connection Started");
+            DBMain dBMain = new DBMain();
+            dBMain.DataPaserFromOrignalDirAndFeeder();
+
+            DataAugmentation preprocessing = new DataAugmentation();
+            preprocessing.DataAugmentationMain();
+
+            BckRemove bckRemove = new BckRemove();
+            bckRemove.RemoveBackground();
+
+            Augmentation_BckRem augmentation_BckRem = new Augmentation_BckRem();
+            augmentation_BckRem.DataAugmentationMain();
+
+            dBMain.DataParserFromPreprocessedDirAndFeeder();
+
+            WriteLine("thanks for you corpuration...");
+        }ØOriginalContent¿™Selectionsê®FilePathŸdD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Program.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»'dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄⁄/// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+
+[global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Minor_Project_Ai_Plant_Recognition.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }ØOriginalContent¿™Selectionsê®FilePathŸzD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Properties\Resources.Designer.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»âdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄4
+public void RemoveBackground()
+        {
+            try
+            {
+                // Path to the Python DLL
+                Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+                // Setting the PYTHONHOME environment variable
+                Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
+
+                // Initialize the Python Engine
+                PythonEngine.Initialize();
+                //PythonScriptRemoveBackground();
+
+                using (Py.GIL())
+                {
+                    // Read the Python script
+                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\remove_background.py");
+                    // Run the Python script
+                    PythonEngine.RunSimpleString(pythonScript);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine($"Failed to remove background: {e.Message}");
+            }
+            finally
+            {
+                // Shutdown the Python Engine
+                PythonEngine.Shutdown();
+            }
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$08578949-3680-4530-b11d-32123f6c9eed©Reference©#solution•Value»rdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄%/// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+
+[global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }ØOriginalContent¿™Selectionsê®FilePathŸzD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Properties\Resources.Designer.cs®Language¢C#ëíìÅ•Value Ÿ4#solution hows my project looks to you up untill now¿®ResponseÖßContent⁄ÌAs an AI, I don't have personal opinions. However, I can provide a technical analysis of your project based on the provided context.
+
+Your project appears to be a plant recognition system, which is a fascinating application of AI. Here are some observations:
+
+1. **Organization**: Your project seems well-structured. You have separated different functionalities into their respective classes, such as `DBMain`, `DBFeeder`, `DBReader` for database actions, and `Preprocessing` for image preprocessing. This separation of concerns enhances the maintainability and readability of your code.
+
+2. **Libraries**: You're using a variety of libraries like Emgu.CV, Python.Runtime, Tensorflow, and Npgsql, which are powerful tools for image processing, machine learning, and database management respectively. This shows that you're leveraging existing tools effectively.
+
+3. **Python Integration**: You're using the Python.NET library to run Python scripts from your C# code. This is a good approach when you want to use Python's rich set of libraries in a .NET environment.
+
+4. **Error Handling**: You have included error handling in your `RemoveBackground` method, which is a good practice. It helps to catch and handle potential errors that might occur during the execution of your program.
+
+5. **Resource Management**: You're using a ResourceManager to manage resources in your application, which is a good practice for handling resources efficiently.
+
+However, there are a few things you might want to consider:
+
+1. **Hardcoded Paths**: You have hardcoded file paths in your `RemoveBackground` method. This might cause issues if the file or directory structure changes. Consider using relative paths or configuration files to manage these paths.
+
+2. **Comments**: While your code is quite clean, it could benefit from more comments explaining what each part does. This would make it easier for others (or future you) to understand what's going on.
+
+3. **Unit Tests**: There's no mention of unit tests in the provided context. If you haven't already, consider adding unit tests to ensure your code works as expected and to prevent regressions in the future.
+
+Remember, these are just observations based on the provided context. There might be other aspects of your project not covered here.§Type ¶StatusØFollowUpPromptsíŸ-How can I implement unit tests in my project?ŸRCan you provide an example of how to use configuration files to manage file paths?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ¬‡…∞f>L,™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$3aabf34a-8c78-408d-9197-962ef43dfc13Ÿ$89e4d7db-3ee9-4492-aacb-86fe09f729beêëíìÅ•Value Ÿ+comment and unit test i will do that later.¿®ResponseÖßContent⁄GThat sounds like a good plan! Writing comments and unit tests are important aspects of software development that improve code maintainability and reliability.
+
+1. **Comments**: They help other developers (including your future self) understand your code. They can explain the purpose of a piece of code, the behavior of a function, or the meaning of a variable. Remember to keep your comments concise and relevant.
+
+2. **Unit Tests**: They help ensure that your code works as expected and can catch potential bugs or regressions. A good unit test is independent, repeatable, and tests a single 'unit' of code (like a function or method). 
+
+Remember, it's often easier to write tests and comments as you go, rather than leaving them all until the end. But every developer has their own workflow, so do what works best for you. Happy coding!§Type ¶StatusØFollowUpPromptsíŸOHow can I implement relative paths instead of hardcoded paths in my C# project?Ÿ@Can you provide an example of a unit test for one of my methods?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇèœPf>M<™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$9ffcc755-d4bf-44b8-97ce-b59955aefb12Ÿ$995ddd51-d4e9-44f6-8846-8d3b81c55d38êëíìÅ•Value Ÿ˛right now lets start some model training game to push the project further. mu final goal is to to implement vit and swim model but this is last step right now i am thinking lilke what model i implement first. resnet, inception, vgg16 or any better model.¿®ResponseÖßContent⁄ÇChoosing the right model for your project depends on your specific requirements, including the complexity of your task, the amount of data you have, and the computational resources at your disposal. Here's a brief overview of the models you mentioned:
+
+1. **ResNet**: ResNet, or Residual Network, is a popular model that introduced the concept of "skip connections" or "shortcuts" to prevent the problem of vanishing gradients in deep networks. It's a good choice for tasks that benefit from very deep networks.
+
+2. **Inception (GoogLeNet)**: The Inception model, also known as GoogLeNet, uses a network-in-network architecture that allows it to extract features at multiple scales. It's a good choice if you need a balance between computational efficiency and model performance.
+
+3. **VGG16**: VGG16 is a model known for its simplicity and depth. It uses only 3x3 convolutions, but it's quite deep, which makes it computationally intensive. It's a good choice if you have plenty of computational resources and need a model that's easy to understand.
+
+Before moving to more complex models like ViT (Vision Transformer) and SWIN (Shifted Window Transformer), it might be beneficial to start with a simpler model like ResNet or VGG16. These models are easier to understand and debug, and they might already give you good results for your task.
+
+Once you have a baseline model, you can then experiment with more complex models and see if they give you a significant improvement in performance.
+
+Remember, the choice of model is just one part of the puzzle. You also need to consider other aspects like data augmentation, learning rate scheduling, and model fine-tuning.§Type ¶StatusØFollowUpPromptsíŸ(How do I implement ResNet in my project?Ÿ:What are some best practices for fine-tuning these models?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇå†0f>M´™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$60fb321d-93b6-44b2-8681-063e8ab9fac4Ÿ$6a405296-0b46-41ca-9ff3-3aecacc6d7d8êëíìÅ•Value Ÿìi have total of around 350000 picture conssist of orignal, augmented, without back and withoutback augmented and i have lenovo legion 5 pro laptop.¿®ResponseÖßContent⁄	Given your dataset size and the computational resources of your Lenovo Legion 5 Pro laptop, you should be able to train any of the models you mentioned (ResNet, Inception, VGG16). 
+
+Here are some considerations:
+
+1. **ResNet**: ResNet models are relatively efficient and perform well on a wide range of tasks. They are a good starting point and can provide a strong baseline.
+
+2. **Inception (GoogLeNet)**: Inception models are more computationally efficient than VGG16 but slightly less so than ResNet. They might provide a good balance between performance and computational efficiency.
+
+3. **VGG16**: VGG16 models are computationally intensive and might take longer to train. However, they are straightforward and easy to understand, which can be beneficial when starting out.
+
+Remember, the choice of model also depends on the nature of your task. For example, if your task involves recognizing fine-grained details, a deeper model like VGG16 or ResNet might be more suitable. On the other hand, if your task involves recognizing larger patterns, an Inception model might be more suitable.
+
+Once you have chosen a model, you can start with a pre-trained version of the model and fine-tune it on your dataset. This is usually more efficient and performs better than training a model from scratch, especially when you have a limited amount of data.
+
+Finally, remember to set aside a portion of your data for validation and testing. This will allow you to monitor the performance of your model during training and evaluate its final performance.§Type ¶StatusØFollowUpPromptsíŸ5How do I fine-tune a pre-trained model on my dataset?Ÿ_What are some good practices for splitting my data into training, validation, and testing sets?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇzÁRf>O¸™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$8c994d17-0dcb-4191-9eb1-d00a002eeaaaŸ$52f85b41-3b73-4bdf-8893-26e2a0930a30êëíìÅ•Value Ÿ/is there any good model that can be implemented¿®ResponseÖßContent⁄¡Yes, there are many other models you could consider. Here are a few:
+
+1. **EfficientNet**: EfficientNet models are designed to be efficient in terms of both accuracy and computational resources. They use a compound scaling method that uniformly scales all dimensions of the network (depth, width, and resolution).
+
+2. **MobileNet**: MobileNet models are designed for mobile and embedded vision applications. They are lightweight and efficient while still providing good performance.
+
+3. **DenseNet**: DenseNet models connect each layer to every other layer in a feed-forward fashion, which can improve the flow of information and gradients throughout the network.
+
+4. **Xception**: Xception models use depthwise separable convolutions, which are a more efficient operation than standard convolutions. They can provide similar or better performance than Inception models with less computational cost.
+
+Remember, the best model for your task depends on your specific requirements and constraints. It's often a good idea to start with a simpler model and then try more complex models if necessary. You can also consider using ensemble methods, which combine the predictions of multiple models to improve performance.
+
+Here's a simple example of how you might implement a pre-trained EfficientNet model in TensorFlow:
+
+```python
+import tensorflow as tf
+from tensorflow.keras.applications import EfficientNetB0
+
+# Load pre-trained EfficientNetB0
+base_model = EfficientNetB0(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+
+# Add a new top layer
+x = base_model.output
+x = tf.keras.layers.GlobalAveragePooling2D()(x)
+predictions = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
+
+# This is the model we will train
+model = tf.keras.models.Model(inputs=base_model.input, outputs=predictions)
+
+# First: train only the top layers
+for layer in base_model.layers:
+    layer.trainable = False
+
+model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Train the model
+model.fit(train_data, train_labels)
+```
+
+This code loads a pre-trained EfficientNetB0 model, adds a new top layer for your specific task, and then trains the model on your data. You can adjust this code to suit your needs.§Type ¶StatusØFollowUpPromptsíŸNHow can I fine-tune the pre-trained EfficientNet model on my specific dataset?Ÿ?What are the steps to implement ensemble methods in my project?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇH≤a–f?G˘™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$a1162ee5-eb39-4b3b-b34f-f39ff8b04f15Ÿ$fe4f828d-83a1-4fb1-a32e-2c487e4d3007ëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$a1162ee5-eb39-4b3b-b34f-f39ff8b04f15©Reference¿•Value»:dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸ import model_data_prepare as mdp
+
+
+if __name__ == "__main__":
+    print("Hello, world!")
+
+    data_prepare = mdp.Main()
+
+    for i in range(0, 6):
+        data_prepare.data_prepare_starter(i)
+ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÃ»®FilePathŸÖD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py®Language¶PythonëíìÅ•Value Ÿrwhy it is giving   File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'model_data_prepare'¿®ResponseÖßContent⁄The error message you're seeing, `ModuleNotFoundError: No module named 'model_data_prepare'`, means that Python can't find a module named `model_data_prepare` in your current directory or in the list of directories where it usually looks for modules.
+
+Here are a few things you can check:
+
+1. **Check the file location**: Make sure that the `model_data_prepare.py` file is in the same directory as your `python_main.py` file. Python looks for imported modules in the same directory as the script that's being run.
+
+2. **Check the file name**: Make sure the file is named `model_data_prepare.py` and not something else. Python is case-sensitive, so make sure the case matches as well.
+
+3. **Check your PYTHONPATH**: Python also looks for modules in the directories listed in your PYTHONPATH environment variable. If `model_data_prepare.py` is in a different directory, you can add that directory to your PYTHONPATH.
+
+4. **Check for virtual environments**: If you're using a virtual environment, make sure you're running your script in the correct environment where `model_data_prepare` module is installed or located.
+
+5. **Check for init file**: If `model_data_prepare` is in a different directory and you're trying to import it as a package, make sure that directory contains an `__init__.py` file. This file, which can be empty, tells Python that the directory should be treated as a package.
+
+If you've checked all these things and you're still getting the error, there might be something else going on, and I'd be happy to help you troubleshoot further.§Type ¶StatusØFollowUpPromptsíŸ@How can I add a directory to my PYTHONPATH environment variable?ŸAWhat is the purpose of the `__init__.py` file in Python packages?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇp^¥êf?I™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$116434f1-16d6-4d3e-a551-3a0599e1b1daŸ$092708ac-a774-4332-b530-61b8a6209acaêëíìÅ•Value Ÿpwhen i am runing this file in vd code independently it is running file but in vs through C# it is throwinf error¿®ResponseÖßContent⁄∆The issue you're experiencing might be due to the working directory being different when you run your Python script from C# in Visual Studio compared to when you run it directly in VS Code.
+
+When you run the Python script from C#, it uses the working directory of the C# process, which might be different from the directory where your Python script and `model_data_prepare` module are located.
+
+To fix this, you can specify the working directory in your C# code when you start the Python process. Here's an example of how you can do this:
+
+```csharp
+using System.Diagnostics;
+
+var start = new ProcessStartInfo
+{
+    FileName = "python",
+    Arguments = "python_main.py",
+    UseShellExecute = false,
+    RedirectStandardOutput = true,
+    WorkingDirectory = @"path\to\your\python\scripts"
+};
+using(var process = Process.Start(start))
+{
+    using(var reader = process.StandardOutput)
+    {
+        string result = reader.ReadToEnd();
+        Console.Write(result);
+    }
+}
+```
+
+In the `WorkingDirectory` property, replace `"path\to\your\python\scripts"` with the actual path to the directory where your Python scripts are located. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsê≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ/*Á f?In™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$510a19f4-859b-4c03-870c-fe70673bff15Ÿ$44ce3e4e-d968-466a-930d-b001d87f4709öÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»ødŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄j
+private Dictionary<int, string> speciesDict = new Dictionary<int, string>();
+private List<OrignalImgPath.ImgPathOrignal> imgData = new List<OrignalImgPath.ImgPathOrignal>();
+private List<PreprocessedPath.ImgPathPreprocessed> imgDataPreprocesseds = new List<PreprocessedPath.ImgPathPreprocessed>();
+public string _baseDir = "D:\\Dataset\\medai\\PreProcessed";ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»ÇdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄)
+public void PyMain()
+        {
+            try
+            {
+                // Path to the Python DLL
+                Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+                // Setting the PYTHONHOME environment variable
+                Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
+
+                // Initialize the Python Engine
+                PythonEngine.Initialize();
+                //PythonScriptRemoveBackground();
+
+                using (Py.GIL())
+                {
+                    // Read the Python script
+                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+                    // Run the Python script
+                    PythonEngine.RunSimpleString(pythonScript);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine($"Failed to remove background: {e.Message}");
+            }
+            finally
+            {
+                // Shutdown the Python Engine
+                PythonEngine.Shutdown();
+            }
+        }ØOriginalContent¿™Selectionsê®FilePathŸÜD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\PythonRunner.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»÷dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄á
+public void DataPaserFromOrignalDirAndFeeder()
+        {
+            SpeciesDictInit(speciesDictIdx);
+            DBFeeder dbFeeder = new DBFeeder();
+            string path = "D:\\Dataset\\medai\\DataOrignal";
+            string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+
+            List<OrignalImgPath.ImgPathOrignal> imgData = new List<OrignalImgPath.ImgPathOrignal>();
+
+            foreach (string file in files)
+            {
+                string[] parts = file.Split('\\');
+
+                string species = parts[parts.Length - 2];
+                string catagory = parts[parts.Length - 3];
+
+                int speciesID = 0;
+                int catagoryID = 0;
+                foreach (KeyValuePair<int, string> spe in speciesDictIdx)
+                {
+                    if (spe.Value == species)
+                    {
+                        speciesID = spe.Key;
+                        break;
+                    }
+                }
+
+                if (catagory == "Medicinal_leaf_dataset")
+                {
+                    catagoryID = 1;
+                }
+                else if (catagory == "Medicinal_plant_dataset")
+                {
+                    catagoryID = 2;
+                }
+                else
+                {
+                    WriteLine("Invalid catagory");
+                }
+
+                OrignalImgPath.ImgPathOrignal imgPathOrignal = new OrignalImgPath.ImgPathOrignal
+                {
+                    catagoryId = catagoryID,
+                    speciesId = speciesID,
+                    imgPath = file
+                };
+
+                imgData.Add(imgPathOrignal);
+            }
+
+            dbFeeder.DataFeederToOrignalPathtable(imgData);
+
+            WriteLine("Total img count" + imgData.Count);
+
+            WriteLine("Data Feeding to Orignal Path Table: done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸ|D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\DataBaseAction\DBMain.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»$dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄œ
+private void ZoomAugmentation(string process)
+        {
+            string action = "zoomed";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat zoomedImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    var zoomMatrix = new Mat();
+                    CvInvoke.Resize(image, zoomedImage, new Size(image.Width / i, image.Height / i));
+
+                    string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                    if (!Directory.Exists(newImgdir))
+                    {
+                        Directory.CreateDirectory(newImgdir);
+                    }
+
+                    string newImgPath = Path.Combine(newImgdir, $"{imgName}_{i}.jpg");
+
+                    var result = CvInvoke.Imwrite(newImgPath, zoomedImage);
+                }
+            });
+            WriteLine("     Zoom Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»$dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄œ
+private void ZoomAugmentation(string process)
+        {
+            string action = "zoomed";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat zoomedImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    var zoomMatrix = new Mat();
+                    CvInvoke.Resize(image, zoomedImage, new Size(image.Width / i, image.Height / i));
+
+                    string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                    if (!Directory.Exists(newImgdir))
+                    {
+                        Directory.CreateDirectory(newImgdir);
+                    }
+
+                    string newImgPath = Path.Combine(newImgdir, $"{imgName}_{i}.jpg");
+
+                    var result = CvInvoke.Imwrite(newImgPath, zoomedImage);
+                }
+            });
+            WriteLine("     Zoom Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»údŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄G
+private void GaussianBlurAugmentation(string process)
+        {
+            string action = "gaussianBlurred";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat gaussianBlurredImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                CvInvoke.GaussianBlur(image, gaussianBlurredImage, new Size(5, 5), 0);
+
+                string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                if (!Directory.Exists(newImgdir))
+                {
+                    Directory.CreateDirectory(newImgdir);
+                }
+
+                string newImgPath = Path.Combine(newImgdir, $"{imgName}.jpg");
+
+                var result = CvInvoke.Imwrite(newImgPath, gaussianBlurredImage);
+            });
+            WriteLine("     Gaussian Blur Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»údŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄G
+private void GaussianBlurAugmentation(string process)
+        {
+            string action = "gaussianBlurred";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat gaussianBlurredImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                CvInvoke.GaussianBlur(image, gaussianBlurredImage, new Size(5, 5), 0);
+
+                string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                if (!Directory.Exists(newImgdir))
+                {
+                    Directory.CreateDirectory(newImgdir);
+                }
+
+                string newImgPath = Path.Combine(newImgdir, $"{imgName}.jpg");
+
+                var result = CvInvoke.Imwrite(newImgPath, gaussianBlurredImage);
+            });
+            WriteLine("     Gaussian Blur Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»`dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄
+private void FlipAugment(string process)
+        {
+            string action = "flipped";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat flippedImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                CvInvoke.Flip(image, flippedImage, FlipType.Horizontal);
+
+                string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                if (!Directory.Exists(newImgdir))
+                {
+                    Directory.CreateDirectory(newImgdir);
+                }
+
+                string newImgPath = Path.Combine(newImgdir, $"{imgName}.jpg");
+
+                var result = CvInvoke.Imwrite(newImgPath, flippedImage);
+            });
+            WriteLine("     Flip Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»`dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄
+private void FlipAugment(string process)
+        {
+            string action = "flipped";
+            Parallel.ForEach(imgData, img =>
+            {
+                string species = speciesDict[img.speciesId];
+                Mat image = CvInvoke.Imread(img.imgPath, ImreadModes.Color);
+                Mat flippedImage = new Mat();
+                var imgName = Path.GetFileNameWithoutExtension(img.imgPath);
+
+                string curBaseDir;
+
+                if (img.catagoryId == 1)
+                {
+                    curBaseDir = Path.Combine(_baseDir, "leaf");
+                }
+                else
+                {
+                    curBaseDir = Path.Combine(_baseDir, "plant");
+                }
+
+                CvInvoke.Flip(image, flippedImage, FlipType.Horizontal);
+
+                string newImgdir = Path.Combine(curBaseDir, species, $"{process}", action);
+                if (!Directory.Exists(newImgdir))
+                {
+                    Directory.CreateDirectory(newImgdir);
+                }
+
+                string newImgPath = Path.Combine(newImgdir, $"{imgName}.jpg");
+
+                var result = CvInvoke.Imwrite(newImgPath, flippedImage);
+            });
+            WriteLine("     Flip Augmentation Done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸÇD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PreProcessing\Preprocessing.cs®Language¢C#ÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$510a19f4-859b-4c03-870c-fe70673bff15©Reference©#solution•Value»àdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄9
+public void DataParserFromPreprocessedDirAndFeeder()
+        {
+            if (speciesDictIdx.Count == 0)
+            {
+                SpeciesDictInit(speciesDictIdx);
+            }
+            if (processDictIdx.Count == 0)
+            {
+                ProcessDictInit(processDictIdx);
+            }
+            if (modifierDictIdx.Count == 0)
+            {
+                ModifierDictInit(modifierDictIdx);
+            }
+
+            DBFeeder dbFeeder = new DBFeeder();
+            string path = "D:\\Dataset\\medai\\PreProcessed";
+            string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+
+            List<PreprocessedPath.ImgPathPreprocessed> imgData = new List<PreprocessedPath.ImgPathPreprocessed>();
+
+            foreach (string file in files)
+            {
+                string[] parts = file.Split('\\');
+
+                string species = parts[parts.Length - 4];
+                string catagory = parts[parts.Length - 5];
+                string process = parts[parts.Length - 3];
+                string modifier = parts[parts.Length - 2];
+
+                int speciesID = 0;
+                int catagoryID = 0;
+                int processID = 0;
+                int modifierID = 0;
+
+                foreach (KeyValuePair<int, string> spe in speciesDictIdx)
+                {
+                    if (spe.Value == species)
+                    {
+                        speciesID = spe.Key;
+                        break;
+                    }
+                }
+
+                foreach (KeyValuePair<int, string> pro in processDictIdx)
+                {
+                    if (pro.Value == process)
+                    {
+                        processID = pro.Key;
+                        break;
+                    }
+                }
+
+                foreach (KeyValuePair<int, string> mod in modifierDictIdx)
+                {
+                    if (mod.Value == modifier)
+                    {
+                        modifierID = mod.Key;
+                        break;
+                    }
+                }
+
+                if (catagory == "leaf")
+                {
+                    catagoryID = 1;
+                }
+                else if (catagory == "plant")
+                {
+                    catagoryID = 2;
+                }
+                else
+                {
+                    WriteLine("Invalid catagory");
+                }
+
+                PreprocessedPath.ImgPathPreprocessed imgPathPreprocessed = new PreprocessedPath.ImgPathPreprocessed
+                {
+                    catagoryId = catagoryID,
+                    speciesId = speciesID,
+                    preprocessedId = processID,
+                    modifierId = modifierID,
+                    imgPath = file
+                };
+
+                imgData.Add(imgPathPreprocessed);
+            }
+
+            dbFeeder.DataFeederToPathtable(imgData);
+
+            WriteLine("Total img count" + imgData.Count);
+
+            WriteLine("Data Feeding to Preprocessed Path Table: done");
+        }ØOriginalContent¿™Selectionsê®FilePathŸ|D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\DataBaseAction\DBMain.cs®Language¢C#ëíìÅ•Value Ÿ&#solution both the file is in same dir¿®ResponseÖßContent⁄¿If both the Python files are in the same directory and you're still facing the issue, it might be due to the working directory being different when the Python script is run from C# in Visual Studio.
+
+In your C# code, when you're reading the Python script using `File.ReadAllText()`, you're providing the absolute path to the Python script. However, when you're running the Python script using `PythonEngine.RunSimpleString()`, it doesn't know about the original file location. It just receives the content of the script as a string. So, when the Python script tries to import `model_data_prepare`, it looks for it in the current working directory, which is the directory where the C# process was started, not the directory where the Python script is located.
+
+To fix this, you can set the Python working directory to the directory where your Python scripts are located before running the Python script. Here's how you can do it:
+
+```csharp
+using (Py.GIL())
+{
+    // Set the Python working directory to the directory where your Python scripts are located
+    dynamic os = Py.Import("os");
+    os.chdir(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts");
+
+    // Read the Python script
+    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+    // Run the Python script
+    PythonEngine.RunString(pythonScript);
+}
+```
+
+In the `os.chdir()` call, replace the path with the actual path to the directory where your Python scripts are located. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsíŸYDoes this solution also apply if I have multiple Python scripts in different directories?ŸYCan I use this method to run other Python scripts with dependencies in my C# application?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ…â;0f?Iè™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$a2a6ec95-ecab-44d3-822d-0135f9a8c734Ÿ$e4502d3c-67bd-4109-9460-83400cf4fbdcëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$a2a6ec95-ecab-44d3-822d-0135f9a8c734©Reference¿•Value»™dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄;using Python.Runtime;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Minor_Project_Ai_Plant_Recognition.SorceCode.ModelTraining
+{
+    internal class PythonMain
+    {
+        public void PyMain()
+        {
+            try
+            {
+                // Path to the Python DLL
+                Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+                // Setting the PYTHONHOME environment variable
+                Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
+
+                // Initialize the Python Engine
+                PythonEngine.Initialize();
+                //PythonScriptRemoveBackground();
+
+                using (Py.GIL())
+                {
+                    // Read the Python script
+                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+                    // Run the Python script
+                    PythonEngine.RunSimpleString(pythonScript);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine($"Failed to remove background: {e.Message}");
+            }
+            finally
+            {
+                // Shutdown the Python Engine
+                PythonEngine.Shutdown();
+            }
+        }
+    }
+}ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÕ;®FilePathŸÜD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\PythonRunner.cs®Language¢C#ëíìÅ•Value Ÿ%here i am trying to call it from here¿®ResponseÖßContent⁄™In your C# code, you're using `PythonEngine.RunSimpleString()` to execute the Python script. This method runs the Python code in the current working directory of the C# process, not the directory where the Python script is located. 
+
+When your Python script tries to import `model_data_prepare`, it looks for it in the current working directory, which is the directory where the C# process was started, not the directory where the Python script is located.
+
+To fix this, you can set the Python working directory to the directory where your Python scripts are located before running the Python script. Here's how you can do it:
+
+```csharp
+using (Py.GIL())
+{
+    // Import os module
+    dynamic os = Py.Import("os");
+    // Set the Python working directory to the directory where your Python scripts are located
+    os.chdir(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts");
+
+    // Read the Python script
+    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+    // Run the Python script
+    PythonEngine.RunString(pythonScript);
+}
+```
+
+In the `os.chdir()` call, replace the path with the actual path to the directory where your Python scripts are located. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsíŸ1How can I handle Python exceptions in my C# code?Ÿ2Can I run multiple Python scripts from my C# code?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇª€w†f?I⁄™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$d3404fc6-d8ec-469a-bb93-abec4af6538cŸ$9b893792-719b-4566-ad8f-2dc95794b48aëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$d3404fc6-d8ec-469a-bb93-abec4af6538c©Reference¿•Value»	dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄£using Python.Runtime;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Minor_Project_Ai_Plant_Recognition.SorceCode.ModelTraining
+{
+    internal class PythonMain
+    {
+        public void PyMain()
+        {
+            try
+            {
+                // Path to the Python DLL
+                Runtime.PythonDLL = @"C:\Users\kumar\AppData\Local\Programs\Python\Python312\python312.dll";
+                // Setting the PYTHONHOME environment variable
+                Environment.SetEnvironmentVariable("PYTHONHOME", @"C:\Users\kumar\AppData\Local\Programs\Python\Python312", EnvironmentVariableTarget.Process);
+
+                // Initialize the Python Engine
+                PythonEngine.Initialize();
+                //PythonScriptRemoveBackground();
+
+                using (Py.GIL())
+                {
+                    // Import os module
+                    dynamic os = Py.Import("os");
+                    // Set the Python working directory to the directory where your Python scripts are located
+                    os.chdir(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts");
+
+                    // Read the Python script
+                    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+                    // Run the Python script
+                    PythonEngine.RunSimpleString(pythonScript);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine($"Failed to remove background: {e.Message}");
+            }
+            finally
+            {
+                // Shutdown the Python Engine
+                PythonEngine.Shutdown();
+            }
+        }
+    }
+}ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÕ£®FilePathŸÜD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\PythonRunner.cs®Language¢C#ëíìÅ•Value Ænow is it fine¿®ResponseÖßContent⁄ZYes, the updated code should work correctly now. 
+
+By using the `os.chdir()` function, you're setting the Python working directory to the directory where your Python scripts are located. This means that when your Python script tries to import the `model_data_prepare` module, it will look for it in the correct directory.
+
+Just to recap, here's the updated part of your code:
+
+```csharp
+using (Py.GIL())
+{
+    // Import os module
+    dynamic os = Py.Import("os");
+    // Set the Python working directory to the directory where your Python scripts are located
+    os.chdir(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts");
+
+    // Read the Python script
+    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+    // Run the Python script
+    PythonEngine.RunSimpleString(pythonScript);
+}
+```
+
+This should resolve the `ModuleNotFoundError` you were experiencing. If you still encounter any issues, feel free to ask.§Type ¶StatusØFollowUpPromptsíŸ1How can I handle Python exceptions in my C# code?Ÿ?Can I run multiple Python scripts sequentially from my C# code?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ0:pf?J™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$6bcf33d1-c968-429f-85d1-1ee408a6b1bfŸ$119330ea-292e-4326-a65e-40e8c413c2edêëíìÅ•Value ºstill getting the same error¿®ResponseÖßContent⁄zI apologize for the confusion. The `PythonEngine.RunSimpleString()` method is not suitable for running scripts that contain import statements, because it doesn't know about the original file location. It just receives the content of the script as a string.
+
+Instead, you should use `PythonEngine.RunString()` method which takes a Python script file name as an argument and runs it. This way, the Python script will be executed in its original location and will be able to find the modules it needs to import.
+
+Here's how you can modify your code:
+
+```csharp
+using (Py.GIL())
+{
+    // Import os module
+    dynamic os = Py.Import("os");
+    // Set the Python working directory to the directory where your Python scripts are located
+    os.chdir(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts");
+
+    // Run the Python script
+    PythonEngine.RunString("python_main.py");
+}
+```
+
+In the `PythonEngine.RunString()` call, replace `"python_main.py"` with the name of your Python script. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsê≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ#µd‡f?Jæ™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$ed1e2ab7-fcf7-48a8-b6e9-e4e8ddcf9a9bŸ$73e881c6-b98c-4362-a31a-e9895bec2088êëíìÅ•Value ºstill getting the same issue¿®ResponseÖßContent⁄oI apologize for the confusion earlier. The `PythonEngine.Exec()` method executes Python code in the current scope. If the Python script you're trying to run is importing modules from its own directory, those won't be found because the C# process's working directory is different.
+
+A better approach would be to use `PythonEngine.RunString()` method with the `-m` option, which runs the library module as a script, effectively changing the working directory to the script's directory before execution.
+
+However, `PythonEngine.RunString()` doesn't support command line arguments like `-m`. So, we need to use `PythonEngine.RunCommand()` which supports command line arguments.
+
+Here's how you can modify your code:
+
+```csharp
+using (Py.GIL())
+{
+    // Import os and sys modules
+    dynamic os = Py.Import("os");
+    dynamic sys = Py.Import("sys");
+
+    // Add the Python script's directory to sys.path
+    string scriptDir = @"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts";
+    sys.path.append(scriptDir);
+
+    // Run the Python script
+    PythonEngine.RunCommand($"python -m python_main");
+}
+```
+
+In the `PythonEngine.RunCommand()` call, replace `"python_main"` with the name of your Python script without the `.py` extension. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsê≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ8BÙ@f?K™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$4a5fbc69-7c8b-4414-9bb7-0a07a58bafa6Ÿ$50d4be21-e754-4666-9cc8-393bdca9d922ëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$4a5fbc69-7c8b-4414-9bb7-0a07a58bafa6©Reference¿•Value»:dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContentŸ import model_data_prepare as mdp
+
+
+if __name__ == "__main__":
+    print("Hello, world!")
+
+    data_prepare = mdp.Main()
+
+    for i in range(0, 6):
+        data_prepare.data_prepare_starter(i)
+ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÃ»®FilePathŸÖD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py®Language¶PythonëíìÅ•Value Ÿ'perhaps i need to change something here¿®ResponseÖßContent⁄¶The Python code you've provided seems fine. The issue you're facing is likely due to the way you're running the Python script from C#. 
+
+When you run the Python script from C#, the Python interpreter doesn't know where to look for the `model_data_prepare` module. This is because the Python interpreter's working directory is different from the directory where your Python script and the `model_data_prepare` module are located.
+
+To fix this, you need to add the directory of your Python script to the Python interpreter's path. Here's how you can do it in your C# code:
+
+```csharp
+using (Py.GIL())
+{
+    // Import os and sys modules
+    dynamic os = Py.Import("os");
+    dynamic sys = Py.Import("sys");
+
+    // Add the Python script's directory to sys.path
+    string scriptDir = @"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts";
+    sys.path.append(scriptDir);
+
+    // Read the Python script
+    string pythonScript = File.ReadAllText(@"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SorceCode\PythonModelScripts\python_main.py");
+    // Run the Python script
+    PythonEngine.RunString(pythonScript);
+}
+```
+
+In the `sys.path.append()` call, replace the path with the actual path to the directory where your Python scripts are located. This will ensure that Python can find the `model_data_prepare` module when it's run from C#.§Type ¶StatusØFollowUpPromptsíŸ1How can I handle Python exceptions in my C# code?Ÿ?Can I run multiple Python scripts sequentially from my C# code?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ	^ùPfB<)™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$300301c7-ad5e-4c7f-ad99-bbe40cc71f5fŸ$f00c82b6-2833-4130-a8a7-c17c1cf09e45ëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$300301c7-ad5e-4c7f-ad99-bbe40cc71f5f©Reference¿•Value»ÍdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄r"""_summary_
+This is the implementation of inception model.
+"""
+
+import torch
+import timm
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from torch.utils.data import Dataset
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_squared_error
+import numpy as np
+from tqdm import tqdm
+from PIL import Image
+import sys
+
+try:
+    sys.path.append("SourceCode/PythonModelScripts")
+    import model_data_prepare as mdp
+except ImportError:
+    print("Unable to import model_data_prepare")
+import os
+
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
+
+class CustomDataset(Dataset):
+    def __init__(self, data, transform=None):
+        self.data = data
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        img_data = self.data[idx]
+        # print(f"Data at index {idx}: {self.data[idx]}")
+        image = Image.open(img_data.img_path)
+        label = img_data.species_id
+        if self.transform:
+            image = self.transform(image)
+        return image, label
+
+
+class DataPreparation:
+    def __init__(self, data_parser, process_id):
+        self.data_parser = data_parser
+        self.process_id = process_id
+
+    def prepare_data(self):
+        traindata, testdata, pname = self.data_parser.data_prepare_starter(
+            self.process_id
+        )
+        transform = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        classes = 10
+        train_dataset = CustomDataset(traindata, transform)
+        test_dataset = CustomDataset(testdata, transform)
+
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+        return train_loader, test_loader, classes
+
+
+class ViTModel:
+    def __init__(self, num_classes):
+        self.model = timm.create_model(
+            "vit_base_patch16_224", pretrained=True, num_classes=num_classes
+        )
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self.model.to(self.device)
+        self.criterion = torch.nn.CrossEntropyLoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters())
+
+    def train(self, train_loader, val_loader, num_epochs):
+        self.losses = []
+        for epoch in range(num_epochs):
+            print(epoch)
+            for inputs, labels in tqdm(train_loader, desc="Training", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                self.optimizer.zero_grad()
+
+                outputs = self.model(inputs)
+                self.optimizer.step()
+
+    def evaluate(self, test_loader):
+        self.model.eval()
+        self.accuracies = []
+
+        with torch.no_grad():
+            correct = 0
+            total = 0
+            for inputs, labels in tqdm(test_loader, desc="Testing", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                outputs = self.model(inputs)
+
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+                accuracy = 100 * correct / total
+                self.accuracies.append(accuracy)
+
+        print(correct)
+        print(total)
+        print("Test Accuracy: {} %".format(100 * correct / total))
+
+
+class VITMain:
+    def vit_main(self):
+        data_parser = mdp.Main()
+        process_id = 0
+        num_epochs = 25
+        data_prep = DataPreparation(data_parser, process_id)
+        train_loader, test_loader, num_classes = data_prep.prepare_data()
+
+        vit_model = ViTModel(num_classes)
+        vit_model.train(train_loader, test_loader, num_epochs)
+        vit_model.evaluate(test_loader)
+
+        plt.figure(figsize=(12, 4))
+        plt.subplot(1, 2, 1)
+        plt.plot(vit_model.losses)
+        plt.title("Training Loss")
+        plt.subplot(1, 2, 2)
+        plt.plot(vit_model.accuracies)
+        plt.title("Test Accuracy")
+        plt.show()ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÕr®FilePathŸãD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py®Language¶PythonëíìÅ•Value ±how to save model¿®ResponseÖßContent⁄{You can save your trained model in PyTorch using `torch.save()`. Here's how you can modify your `ViTModel` class to include a method for saving the model:
+
+```python
+class ViTModel:
+    # ... existing code ...
+
+    def save_model(self, path):
+        torch.save(self.model.state_dict(), path)
+```
+
+You can then call this method from your `VITMain` class after training and evaluating the model:
+
+```python
+class VITMain:
+    def vit_main(self):
+        # ... existing code ...
+
+        vit_model = ViTModel(num_classes)
+        vit_model.train(train_loader, test_loader, num_epochs)
+        vit_model.evaluate(test_loader)
+
+        # Save the model
+        vit_model.save_model("path_to_save_model.pt")
+
+        # ... existing code ...
+```
+
+Replace `"path_to_save_model.pt"` with the path where you want to save your model. The `.pt` or `.pth` extension is typically used for PyTorch models.§Type ¶StatusØFollowUpPromptsíŸ.How can I load the saved model for future use?ŸNWhat is the best practice for versioning and managing multiple trained models?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ¬P`fB<¬™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$29adaeda-ffbe-43c0-9d17-0669ff8c05e3Ÿ$b49774d0-d721-4362-a392-eb3d4ebd0b86ëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$29adaeda-ffbe-43c0-9d17-0669ff8c05e3©Reference¿•Value»'dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄Ø"""_summary_
+This is the implementation of inception model.
+"""
+
+import torch
+import timm
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from torch.utils.data import Dataset
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_squared_error
+import numpy as np
+from tqdm import tqdm
+from PIL import Image
+import sys
+
+try:
+    sys.path.append("SourceCode/PythonModelScripts")
+    import model_data_prepare as mdp
+except ImportError:
+    print("Unable to import model_data_prepare")
+import os
+
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
+class CustomDataset(Dataset):
+    def __init__(self, data, transform=None):
+        self.data = data
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        img_data = self.data[idx]
+        # print(f"Data at index {idx}: {self.data[idx]}")
+        image = Image.open(img_data.img_path)
+        label = img_data.species_id
+        if self.transform:
+            image = self.transform(image)
+        return image, label
+
+class DataPreparation:
+    def __init__(self, data_parser, process_id):
+        self.data_parser = data_parser
+        self.process_id = process_id
+
+    def prepare_data(self):
+        traindata, testdata, pname = self.data_parser.data_prepare_starter(
+            self.process_id
+        )
+        transform = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        classes = 10
+        train_dataset = CustomDataset(traindata, transform)
+        test_dataset = CustomDataset(testdata, transform)
+
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+        return train_loader, test_loader, classes
+
+class ViTModel:
+    def __init__(self, num_classes):
+        self.model = timm.create_model(
+            "vit_base_patch16_224", pretrained=True, num_classes=num_classes
+        )
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self.model.to(self.device)
+        self.criterion = torch.nn.CrossEntropyLoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters())
+
+    def train(self, train_loader, val_loader, num_epochs):
+        self.losses = []
+        for epoch in range(num_epochs):
+            print(epoch)
+            for inputs, labels in tqdm(train_loader, desc="Training", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                self.optimizer.zero_grad()
+
+                outputs = self.model(inputs)
+                self.optimizer.step()
+
+    def evaluate(self, test_loader):
+        self.model.eval()
+        self.accuracies = []
+
+        with torch.no_grad():
+            correct = 0
+            total = 0
+            for inputs, labels in tqdm(test_loader, desc="Testing", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                outputs = self.model(inputs)
+
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+                accuracy = 100 * correct / total
+                self.accuracies.append(accuracy)
+
+        print(correct)
+        print(total)
+        print("Test Accuracy: {} %".format(100 * correct / total))
+
+class VITMain:
+    def vit_main(self):
+        data_parser = mdp.Main()
+        process_id = 0
+        num_epochs = 25
+        data_prep = DataPreparation(data_parser, process_id)
+        train_loader, test_loader, num_classes = data_prep.prepare_data()
+
+        vit_model = ViTModel(num_classes)
+        vit_model.train(train_loader, test_loader, num_epochs)
+        vit_model.evaluate(test_loader)
+
+        torch.save(vit_model.model.state_dict(), "VIT_model.pth")
+
+        plt.figure(figsize=(12, 4))
+        plt.subplot(1, 2, 1)
+        plt.plot(vit_model.losses)
+        plt.title("Training Loss")
+        plt.subplot(1, 2, 2)
+        plt.plot(vit_model.accuracies)
+        plt.title("Test Accuracy")
+        plt.show()ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÕØ®FilePathŸãD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py®Language¶PythonëíìÅ•Value πis every thing right here¿®ResponseÖßContent⁄The code looks mostly correct, but there are a few potential issues:
+
+1. The docstring at the top of the file says "This is the implementation of inception model." but the code is actually implementing a Vision Transformer (ViT) model. This could be misleading for someone reading the code.
+
+2. In the `train` method of the `ViTModel` class, you're not calculating the loss or backpropagating it. This means the model isn't actually learning anything during training. You should add these lines:
+
+```python
+loss = self.criterion(outputs, labels)
+loss.backward()
+```
+
+Here's the corrected `train` method:
+
+```python
+def train(self, train_loader, val_loader, num_epochs):
+    self.losses = []
+    for epoch in range(num_epochs):
+        print(epoch)
+        for inputs, labels in tqdm(train_loader, desc="Training", leave=False):
+            inputs = inputs.to(self.device)
+            labels = labels.to(self.device)
+
+            self.optimizer.zero_grad()
+
+            outputs = self.model(inputs)
+            loss = self.criterion(outputs, labels)
+            loss.backward()
+            self.optimizer.step()
+
+            self.losses.append(loss.item())
+```
+
+3. The `val_loader` parameter in the `train` method is not used. If you intended to use it for validation during training, you'll need to add code for that.
+
+4. The `r2_score` and `mean_squared_error` imports from `sklearn.metrics` are not used. If you don't need them, it's best to remove these imports to keep the code clean.
+
+5. The `numpy` import is not used. If you don't need it, it's best to remove this import to keep the code clean.
+
+6. The `os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"` line is not needed unless you're using TensorFlow, which you're not in this script. It's best to remove this line to avoid confusion.
+
+7. The `plt.show()` at the end of the `vit_main` method will block the rest of the script until the plot window is closed. If you don't want this behavior, you can remove this line.
+
+Remember to test your code thoroughly after making these changes to ensure everything works as expected.§Type ¶StatusØFollowUpPromptsíŸEHow can I implement validation during training in the `train` method?Ÿ5Can you show me how to plot the loss during training?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇ`„ã–fB?™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$828729df-fe78-4b20-a098-33c211e0810dŸ$33665226-14eb-4901-bc3e-ddd0e2909d8bëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$828729df-fe78-4b20-a098-33c211e0810d©Reference¿•Value»ìdŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄"""_summary_
+This is the implementation of inception model.
+"""
+
+import torch
+import timm
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from torch.utils.data import Dataset
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_squared_error
+import numpy as np
+from tqdm import tqdm
+from PIL import Image
+import sys
+
+try:
+    sys.path.append("SourceCode/PythonModelScripts")
+    import model_data_prepare as mdp
+except ImportError:
+    print("Unable to import model_data_prepare")
+import os
+
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
+class CustomDataset(Dataset):
+    def __init__(self, data, transform=None):
+        self.data = data
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        img_data = self.data[idx]
+        # print(f"Data at index {idx}: {self.data[idx]}")
+        image = Image.open(img_data.img_path)
+        label = img_data.species_id
+        if self.transform:
+            image = self.transform(image)
+        return image, label
+
+class DataPreparation:
+    def __init__(self, data_parser, process_id):
+        self.data_parser = data_parser
+        self.process_id = process_id
+
+    def prepare_data(self):
+        traindata, testdata, pname = self.data_parser.data_prepare_starter(
+            self.process_id
+        )
+        transform = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        classes = 10
+        train_dataset = CustomDataset(traindata, transform)
+        test_dataset = CustomDataset(testdata, transform)
+
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+        return train_loader, test_loader, classes
+
+class ViTModel:
+    def __init__(self, num_classes):
+        self.model = timm.create_model(
+            "vit_base_patch16_224", pretrained=True, num_classes=num_classes
+        )
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self.model.to(self.device)
+        self.criterion = torch.nn.CrossEntropyLoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters())
+
+    def train(self, train_loader, num_epochs):
+        self.losses = []
+        for epoch in range(num_epochs):
+            print(epoch)
+            for inputs, labels in tqdm(train_loader, desc="Training", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                self.optimizer.zero_grad()
+
+                outputs = self.model(inputs)
+                loss = self.criterion(outputs, labels)
+                loss.backward()
+                self.optimizer.step()
+
+                self.losses.append(loss.item())
+
+    def evaluate(self, test_loader):
+        self.model.eval()
+        self.accuracies = []
+
+        with torch.no_grad():
+            correct = 0
+            total = 0
+            for inputs, labels in tqdm(test_loader, desc="Testing", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                outputs = self.model(inputs)
+
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+                accuracy = 100 * correct / total
+                self.accuracies.append(accuracy)
+
+        print(correct)
+        print(total)
+        print("Test Accuracy: {} %".format(100 * correct / total))
+
+class VITMain:
+    def vit_main(self):
+        data_parser = mdp.Main()
+        process_id = 0
+        num_epochs = 25
+        data_prep = DataPreparation(data_parser, process_id)
+        train_loader, test_loader, num_classes = data_prep.prepare_data()
+
+        vit_model = ViTModel(num_classes)
+        vit_model.train(train_loader, num_epochs)
+        vit_model.evaluate(test_loader)
+
+        torch.save(vit_model.model.state_dict(), "VIT_model.pth")
+
+        plt.figure(figsize=(12, 4))
+        plt.subplot(1, 2, 1)
+        plt.plot(vit_model.losses)
+        plt.title("Training Loss")
+        plt.subplot(1, 2, 2)
+        plt.plot(vit_model.accuracies)
+        plt.title("Test Accuracy")
+
+        save_path = r"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Results"
+        name = "VIT_model_accuracy_loss.png"
+        save_path = save_path + "/" + name
+        plt.savefig(save_path)
+        plt.close()ØOriginalContent¿™SelectionsëÉ•Caret¿•StartÕ	€£EndÕ.®FilePathŸãD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py®Language¶PythonëíìÅ•Value ⁄îwhat is this problem" File "<string>", line 41, in <module>
+  File "D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py", line 129, in vit_main
+    vit_model.train(train_loader, num_epochs)
+  File "D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py", line 91, in train
+    loss = self.criterion(outputs, labels)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kumar\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kumar\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kumar\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\loss.py", line 1185, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kumar\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\functional.py", line 3086, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: Target 10 is out of bounds."¿®ResponseÖßContent⁄§The error message "IndexError: Target 10 is out of bounds" typically means that the target labels in your dataset are not correctly matched with the number of output units in your model.
+
+In your case, you're using a Vision Transformer (ViT) model with a certain number of output units (classes). This number is determined by the `num_classes` parameter when you create the model:
+
+```python
+self.model = timm.create_model(
+    "vit_base_patch16_224", pretrained=True, num_classes=num_classes
+)
+```
+
+The error message suggests that there's a label in your dataset with the value 10, but your model doesn't have an output unit to match this label. This could happen if, for example, your `num_classes` is set to 10. In PyTorch, if you have 10 classes, the labels should be in the range [0, 9] because the output units are zero-indexed.
+
+To fix this issue, you should check the following:
+
+1. Ensure that the `num_classes` parameter correctly reflects the number of classes in your dataset. If you have 11 classes with labels from 0 to 10, `num_classes` should be 11, not 10.
+
+2. Check your dataset to make sure the labels are correct. If you're using zero-indexed labels (which is typical in PyTorch), the labels should range from 0 to `num_classes - 1`.
+
+3. If your labels are not zero-indexed (for example, if they range from 1 to `num_classes`), you'll need to adjust them to be zero-indexed. You can do this by subtracting 1 from each label.§Type ¶StatusØFollowUpPromptsíŸ9How can I adjust my labels to be zero-indexed in PyTorch?Ÿ?Can you show me how to check the range of labels in my dataset?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿Ü®DateTime◊ˇS8«pfB@}™ThreadName¿∞CopilotSessionIdÇ§GuidŸ$f8ba384b-848f-47bc-8593-3c618453acf1®ClientIdÅ¢IdŸ4Microsoft.VisualStudio.Conversations.Chat.HelpWindowßRequestÅßRequestïŸ$c637e539-3bab-4bc1-9746-9b44a9c41df1Ÿ$9dd4f2c6-6bb6-4201-aede-f67e76e4d0e1ëÜØProviderMonikerÇ§NameŸ6Microsoft.VisualStudio.Copilot.DocumentContextProviderßVersion£0.1¶Member§file©CanReduce√©RequestIdŸ$c637e539-3bab-4bc1-9746-9b44a9c41df1©Reference¿•Value»´dŸëMicrosoft.VisualStudio.Copilot.DocumentContext, Microsoft.VisualStudio.Copilot, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aÖßContent⁄3"""_summary_
+This is the implementation of inception model.
+"""
+
+import torch
+import timm
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from torch.utils.data import Dataset
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_squared_error
+import numpy as np
+from tqdm import tqdm
+from PIL import Image
+import sys
+
+try:
+    sys.path.append("SourceCode/PythonModelScripts")
+    import model_data_prepare as mdp
+except ImportError:
+    print("Unable to import model_data_prepare")
+import os
+
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
+class CustomDataset(Dataset):
+    def __init__(self, data, transform=None):
+        self.data = data
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        img_data = self.data[idx]
+        # print(f"Data at index {idx}: {self.data[idx]}")
+        image = Image.open(img_data.img_path)
+        label = img_data.species_id
+        print(label)
+        if self.transform:
+            image = self.transform(image)
+        return image, label
+
+class DataPreparation:
+    def __init__(self, data_parser, process_id):
+        self.data_parser = data_parser
+        self.process_id = process_id
+
+    def prepare_data(self):
+        traindata, testdata, pname = self.data_parser.data_prepare_starter(
+            self.process_id
+        )
+        transform = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        classes = 10
+        train_dataset = CustomDataset(traindata, transform)
+        test_dataset = CustomDataset(testdata, transform)
+
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+        return train_loader, test_loader, classes
+
+class ViTModel:
+    def __init__(self, num_classes):
+        self.model = timm.create_model(
+            "vit_base_patch16_224", pretrained=True, num_classes=num_classes - 1
+        )
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self.model.to(self.device)
+        self.criterion = torch.nn.CrossEntropyLoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters())
+
+    def train(self, train_loader, num_epochs):
+        self.losses = []
+        for epoch in range(num_epochs):
+            print(epoch)
+            for inputs, labels in tqdm(train_loader, desc="Training", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                self.optimizer.zero_grad()
+
+                outputs = self.model(inputs)
+                loss = self.criterion(outputs, labels)
+                loss.backward()
+                self.optimizer.step()
+
+                self.losses.append(loss.item())
+
+    def evaluate(self, test_loader):
+        self.model.eval()
+        self.accuracies = []
+
+        with torch.no_grad():
+            correct = 0
+            total = 0
+            for inputs, labels in tqdm(test_loader, desc="Testing", leave=False):
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
+
+                outputs = self.model(inputs)
+
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+                accuracy = 100 * correct / total
+                self.accuracies.append(accuracy)
+
+        print(correct)
+        print(total)
+        print("Test Accuracy: {} %".format(100 * correct / total))
+
+class VITMain:
+    def vit_main(self):
+        data_parser = mdp.Main()
+        process_id = 0
+        num_epochs = 25
+        data_prep = DataPreparation(data_parser, process_id)
+        train_loader, test_loader, num_classes = data_prep.prepare_data()
+
+        vit_model = ViTModel(num_classes)
+        vit_model.train(train_loader, num_epochs)
+        vit_model.evaluate(test_loader)
+
+        torch.save(vit_model.model.state_dict(), "VIT_model.pth")
+
+        plt.figure(figsize=(12, 4))
+        plt.subplot(1, 2, 1)
+        plt.plot(vit_model.losses)
+        plt.title("Training Loss")
+        plt.subplot(1, 2, 2)
+        plt.plot(vit_model.accuracies)
+        plt.title("Test Accuracy")
+
+        save_path = r"D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\Results"
+        name = "VIT_model_accuracy_loss.png"
+        save_path = save_path + "/" + name
+        plt.savefig(save_path)
+        plt.close()ØOriginalContent¿™SelectionsëÉ•Caret¿•Start £EndÕ3®FilePathŸãD:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\SourceCode\PythonModelScripts\Models\vit_model.py®Language¶PythonëíìÅ•Value Ÿ4my label is from 1 to 10. what should i change here.¿®ResponseÖßContent⁄˙If your labels range from 1 to 10, you should adjust them to be zero-indexed, as PyTorch expects labels to start from 0. You can do this by subtracting 1 from each label. 
+
+In your `CustomDataset` class, modify the `__getitem__` method to subtract 1 from the label:
+
+```python
+def __getitem__(self, idx):
+    img_data = self.data[idx]
+    image = Image.open(img_data.img_path)
+    label = img_data.species_id - 1  # Subtract 1 to make labels zero-indexed
+    if self.transform:
+        image = self.transform(image)
+    return image, label
+```
+
+Also, when you're creating your model in the `ViTModel` class, you should not subtract 1 from `num_classes`. The `num_classes` parameter should reflect the actual number of classes in your dataset. If you have 10 classes, `num_classes` should be 10:
+
+```python
+self.model = timm.create_model(
+    "vit_base_patch16_224", pretrained=True, num_classes=num_classes
+)
+```
+
+Remember to test your code thoroughly after making these changes to ensure everything works as expected.§Type ¶StatusØFollowUpPromptsíŸQHow can I verify that the labels have been correctly adjusted to be zero-indexed?ŸGCan I use the same approach to adjust labels in other PyTorch projects?≥CodeVulnerabilitiesê∂LoggedSkillInvocations¿
