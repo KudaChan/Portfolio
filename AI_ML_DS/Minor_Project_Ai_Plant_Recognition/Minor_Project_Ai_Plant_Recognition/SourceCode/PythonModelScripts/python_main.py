@@ -13,8 +13,8 @@ import model_data_prepare as mdp
 if __name__ == "__main__":
     print("Hello, world!")
 
-    data_parser = mdp.Main()
-    traindata, testdata, pname = data_parser.data_prepare_starter(0)
+    # data_parser = mdp.Main()
+    # traindata, testdata, pname = data_parser.data_prepare_starter(0)
 
     # print("staring training InceptionV3")
     # inception_model = InceptionModel(traindata, testdata, pname)
@@ -36,10 +36,6 @@ if __name__ == "__main__":
     # x_train, y_train, x_test, y_test = vgg16_model.data_prepare()
     # vgg16_model.train_model(x_train, y_train, x_test, y_test)
 
-    print("starting training VIT Model")
-    vit_mod = VITMain()
-    vit_mod.vit_main()
-
-    print("starting training SWIN Model")
-    swin_mod = SWINMain()
-    swin_mod.swin_main()
+    # print("starting training VIT Model")
+    # vit_mod = VITMain()
+    # vit_mod.vit_main()
