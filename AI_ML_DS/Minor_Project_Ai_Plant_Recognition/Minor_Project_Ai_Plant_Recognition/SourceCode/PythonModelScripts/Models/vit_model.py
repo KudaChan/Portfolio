@@ -8,7 +8,16 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from torch.utils.data import Dataset
 import matplotlib.pyplot as plt
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import (
+    r2_score,
+    mean_squared_error,
+    confusion_matrix,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_curve,
+    auc,
+)
 import numpy as np
 from tqdm import tqdm
 from PIL import Image
@@ -19,9 +28,6 @@ try:
     import model_data_prepare as mdp
 except ImportError:
     print("Unable to import model_data_prepare")
-import os
-
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
 class CustomDataset(Dataset):
     def __init__(self, data, transform=None):
@@ -51,17 +57,14 @@ class DataPreparation:
         )
         transform = transforms.Compose(
             [
-                transforms.RandomHorizontalFlip(),
-                transforms.RandomRotation(10),
-                transforms.RandomResizedCrop(224),
-                transforms.Resize(224, 224),
+                transforms.Resize((224, 224)),
                 transforms.ToTensor(),
                 transforms.Normalize(
                     mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
                 ),
             ]
         )
-        classes = 10
+        classes = 5
         train_dataset = CustomDataset(traindata, transform)
         test_dataset = CustomDataset(testdata, transform)
 
@@ -100,6 +103,8 @@ class ViTModel:
     def evaluate(self, test_loader):
         self.model.eval()
         self.accuracies = []
+        all_labels = []
+        all_predictions = []
 
         with torch.no_grad():
             correct = 0
@@ -112,19 +117,30 @@ class ViTModel:
 
                 _, predicted = torch.max(outputs.data, 1)
                 total += labels.size(0)
+                all_labels.extend(labels.tolist())
+                all_predictions.extend(predicted.tolist())
                 correct += (predicted == labels).sum().item()
                 accuracy = 100 * correct / total
                 self.accuracies.append(accuracy)
 
+        cm = confusion_matrix(all_labels, all_predictions)
+        print("Confusion Matrix:")
+        print(cm)
         print(f"Correct Prediction : {correct}")
         print(f"Total Prediction : {total}")
+        precision = precision_score(all_labels, all_predictions, average="macro")
+        recall = recall_score(all_labels, all_predictions, average="macro")
+        f1 = f1_score(all_labels, all_predictions, average="macro")
+        print(f"Precision: {precision}")
+        print(f"Recall: {recall}")
+        print(f"F1 Score: {f1}")
         print("Test Accuracy: {} %".format(100 * correct / total))
 
 class VITMain:
     def vit_main(self):
         data_parser = mdp.Main()
         process_id = 0
-        num_epochs = 10
+        num_epochs = 5
         data_prep = DataPreparation(data_parser, process_id)
         train_loader, test_loader, num_classes = data_prep.prepare_data()
 

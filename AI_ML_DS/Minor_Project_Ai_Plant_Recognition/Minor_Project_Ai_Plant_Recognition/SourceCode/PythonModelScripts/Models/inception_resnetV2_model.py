@@ -1,5 +1,5 @@
 """_summary_
-This is the implementation of inception model.
+This is the implementation of inception resnet v3 model.
 """
 from sklearn.metrics import r2_score, mean_squared_error
 from tensorflow.keras.applications.inception_resnet_v2 import InceptionResNetV2  # type: ignore
@@ -12,16 +12,7 @@ from keras.optimizers import Adam  # type: ignore
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
-# import sys
 
-# try:
-#     sys.path.append('SourceCode/PythonModelScripts')
-#     import model_data_prepare as mdp
-# except ImportError:
-#     print("Unable to import model_data_prepare")
-import os
-
-os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 class InceptionResNetModel:
     def __init__(self, train_data, test_data, i):
@@ -39,7 +30,7 @@ class InceptionResNetModel:
             image = np.array(image, dtype='float16') / 255.0
             x_train.append(image)
 
-            y_train.append(to_categorical(img.species_id-1, num_classes=10))
+            y_train.append(to_categorical(img.species_id-1, num_classes=5))
 
         x_test = []
         y_test = []
@@ -52,7 +43,7 @@ class InceptionResNetModel:
             x_test.append(image)
 
             # Convert label to one-hot encoding
-            y_test.append(to_categorical(img.species_id-1, num_classes=10))
+            y_test.append(to_categorical(img.species_id-1, num_classes=5))
 
         return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
@@ -66,7 +57,7 @@ class InceptionResNetModel:
         x = BatchNormalization()(x)  # Add batch normalization layer
         x = Dropout(0.6)(x)  # Add dropout layer to prevent overfitting
 
-        predictions = Dense(10, activation='softmax')(x)
+        predictions = Dense(5, activation='softmax')(x)
 
         model = Model(inputs=base_model.input, outputs=predictions)
 
@@ -96,7 +87,7 @@ class InceptionResNetModel:
 
         # Train the model
         history = model.fit(x_train, y_train, validation_data=(
-            x_test, y_test), epochs=100, batch_size=32, callbacks=[early_stop, lr_reduce, checkpoint])
+            x_test, y_test), epochs=10, batch_size=32, callbacks=[early_stop, lr_reduce, checkpoint])
 
         # After training the model
         y_pred_train = model.predict(x_train)

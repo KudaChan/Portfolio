@@ -193,7 +193,7 @@ namespace Minor_Project_Ai_Plant_Recognition.SourceCode.DataBaseAction
             WriteLine("Data Feeding to Preprocessed Path Table: done");
         }
 
-        public static void DataParseFromOrignalPathTable(List<OrignalImgPath.ImgPathOrignal> imgPath)
+        public void DataParseFromOrignalPathTable(List<OrignalImgPath.ImgPathOrignal> imgPath)
         {
             _ = new DBReader();
             string SQLQuery = "SELECT catagory, species, imgpath FROM pathtableorignal WHERE species < 6;";

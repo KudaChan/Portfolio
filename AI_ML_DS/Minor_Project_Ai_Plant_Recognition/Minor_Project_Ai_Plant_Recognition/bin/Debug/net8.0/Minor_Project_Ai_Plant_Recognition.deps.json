@@ -11,8 +11,9 @@
           "Emgu.CV": "4.9.0.5494",
           "Emgu.CV.runtime.windows": "4.9.0.5494",
           "Emgu.CV.runtime.windows.cuda": "4.4.0.4099",
+          "Keras.NET": "3.8.5",
           "Kurukuru": "1.4.2",
-          "Microsoft.IdentityModel.Tokens": "7.5.1",
+          "Microsoft.IdentityModel.Tokens": "7.5.2",
           "Numpy": "3.11.1.33",
           "SciSharp.TensorFlow.Redist-Windows-GPU": "2.10.3",
           "ShellProgressBar": "5.2.0",
@@ -341,6 +342,17 @@
           }
         }
       },
+      "Keras.NET/3.8.5": {
+        "dependencies": {
+          "Numpy.Bare": "3.8.1.25"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Keras.dll": {
+            "assemblyVersion": "3.8.5.0",
+            "fileVersion": "3.8.5.0"
+          }
+        }
+      },
       "Kurukuru/1.4.2": {
         "runtime": {
           "lib/net5.0/Kurukuru.dll": {
@@ -380,33 +392,33 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/7.5.1": {
+      "Microsoft.IdentityModel.Abstractions/7.5.2": {
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
-            "assemblyVersion": "7.5.1.0",
-            "fileVersion": "7.5.1.50405"
+            "assemblyVersion": "7.5.2.0",
+            "fileVersion": "7.5.2.50513"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/7.5.1": {
+      "Microsoft.IdentityModel.Logging/7.5.2": {
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "7.5.1"
+          "Microsoft.IdentityModel.Abstractions": "7.5.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
-            "assemblyVersion": "7.5.1.0",
-            "fileVersion": "7.5.1.50405"
+            "assemblyVersion": "7.5.2.0",
+            "fileVersion": "7.5.2.50513"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/7.5.1": {
+      "Microsoft.IdentityModel.Tokens/7.5.2": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "7.5.1"
+          "Microsoft.IdentityModel.Logging": "7.5.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
-            "assemblyVersion": "7.5.1.0",
-            "fileVersion": "7.5.1.50405"
+            "assemblyVersion": "7.5.2.0",
+            "fileVersion": "7.5.2.50513"
           }
         }
       },
@@ -440,6 +452,18 @@
           "lib/netstandard2.0/Numpy.dll": {
             "assemblyVersion": "3.10.0.0",
             "fileVersion": "3.10.0.0"
+          }
+        }
+      },
+      "Numpy.Bare/3.8.1.25": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "pythonnet_netstandard_py38_win": "2.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {
+            "assemblyVersion": "3.7.1.4",
+            "fileVersion": "3.7.1.4"
           }
         }
       },
@@ -502,6 +526,7 @@
           }
         }
       },
+      "pythonnet_netstandard_py38_win/2.5.1": {},
       "Razorvine.Pickle/1.4.0": {
         "dependencies": {
           "System.Memory": "4.5.5"
@@ -923,6 +948,13 @@
       "path": "hdf5-csharp/1.19.0",
       "hashPath": "hdf5-csharp.1.19.0.nupkg.sha512"
     },
+    "Keras.NET/3.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NFUV194GVq87ZBrUNMrFXy/pMPchh0clyShr4HHoKY+NYaCOIr9kvcRS1hE0rs8S9Adbvt2+gIG9HfNCWikIAg==",
+      "path": "keras.net/3.8.5",
+      "hashPath": "keras.net.3.8.5.nupkg.sha512"
+    },
     "Kurukuru/1.4.2": {
       "type": "package",
       "serviceable": true,
@@ -958,26 +990,26 @@
       "path": "microsoft.extensions.logging.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Abstractions/7.5.1": {
+    "Microsoft.IdentityModel.Abstractions/7.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PT16ZFbPIiMsYv07oy3zOjqUOJ7xutGBkJTOX0+IbNyU6+O6X7aIxjq9EaSSRLWbekRgamgtmfg8Xjw6A6Ua9g==",
-      "path": "microsoft.identitymodel.abstractions/7.5.1",
-      "hashPath": "microsoft.identitymodel.abstractions.7.5.1.nupkg.sha512"
+      "sha512": "sha512-xXFP4PUcI/l4n3hpw4TXbvONNTQ9WflyMxUx03qNJXSd7dVtxbFrL+B9+IevMwzvktZjTVfMdDlzQoTzdtN1bA==",
+      "path": "microsoft.identitymodel.abstractions/7.5.2",
+      "hashPath": "microsoft.identitymodel.abstractions.7.5.2.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Logging/7.5.1": {
+    "Microsoft.IdentityModel.Logging/7.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PnpAQX20BAiDIPYmWUyQSlEaWD8BLXzHpiDGTCT568Cs0ReOeyzNe401LzCeiv6ilug/KefVeV1CeqtCHTo8dw==",
-      "path": "microsoft.identitymodel.logging/7.5.1",
-      "hashPath": "microsoft.identitymodel.logging.7.5.1.nupkg.sha512"
+      "sha512": "sha512-FpMJ2i1e8Z+1rAchYQiawk0ChwYv6CNtCQDtMzwzkZtUWQYmkrkLXzl3qniOT8FFQck7bPKhQJY6nU7P7tojwQ==",
+      "path": "microsoft.identitymodel.logging/7.5.2",
+      "hashPath": "microsoft.identitymodel.logging.7.5.2.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Tokens/7.5.1": {
+    "Microsoft.IdentityModel.Tokens/7.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Q3DKpyFViP84IUlTFKH/zIkswIrmSh2Vd/eFDo4wlOHy4DYxoweZEEw4kDEiKt9VCX6o7SddK3HK2xDYyFpexA==",
-      "path": "microsoft.identitymodel.tokens/7.5.1",
-      "hashPath": "microsoft.identitymodel.tokens.7.5.1.nupkg.sha512"
+      "sha512": "sha512-VFLS4Ajy5jadM/YV9x3FA4pHHwbEWTjkbN/RtShqVH8eI8j6UDg5522ogTx1iMLJKQdL9QbfxXx4d1+w1eCDgQ==",
+      "path": "microsoft.identitymodel.tokens/7.5.2",
+      "hashPath": "microsoft.identitymodel.tokens.7.5.2.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.1": {
       "type": "package",
@@ -1013,6 +1045,13 @@
       "sha512": "sha512-+sYpF3JL0OhG1UriBOhkTY4zzBzwtzBKgO4E14rx31vE87NaqaCObvjdnKfwEufsukYHXUzzNK35kMuEpf2Txg==",
       "path": "numpy/3.11.1.33",
       "hashPath": "numpy.3.11.1.33.nupkg.sha512"
+    },
+    "Numpy.Bare/3.8.1.25": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YqbpafFbck+JI0/guhaiJqAqTOKJXGbCfre6PZH+eeQbg27rllyTNPCdw36oLSNzagBIzJjmsGDE61lfSvairg==",
+      "path": "numpy.bare/3.8.1.25",
+      "hashPath": "numpy.bare.3.8.1.25.nupkg.sha512"
     },
     "OneOf/3.0.263": {
       "type": "package",
@@ -1055,6 +1094,13 @@
       "sha512": "sha512-Go6pLzJ0msUVISUDf4n49GFja/7PbrjfQ9Nxpz+KV0r39YB8x5lPz7sItX38a0KGLoQIsSMxkUNDRjGRvplLHw==",
       "path": "pythonnet/3.0.3",
       "hashPath": "pythonnet.3.0.3.nupkg.sha512"
+    },
+    "pythonnet_netstandard_py38_win/2.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y8D5KG5Z5pFUzxBINwaN6LuM50LpkRV3TD8Lrn9jz1spbT1mBSCeYAzyA8MSo9+Jb3R/evXq0m3+d1KiDGGYUg==",
+      "path": "pythonnet_netstandard_py38_win/2.5.1",
+      "hashPath": "pythonnet_netstandard_py38_win.2.5.1.nupkg.sha512"
     },
     "Razorvine.Pickle/1.4.0": {
       "type": "package",

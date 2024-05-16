@@ -62,13 +62,17 @@
               "target": "Package",
               "version": "[4.4.0.4099, )"
             },
+            "Keras.NET": {
+              "target": "Package",
+              "version": "[3.8.5, )"
+            },
             "Kurukuru": {
               "target": "Package",
               "version": "[1.4.2, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[7.5.1, )"
+              "version": "[7.5.2, )"
             },
             "Numpy": {
               "target": "Package",

@@ -180,3 +180,5 @@ D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Re
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\x64\opencv_xphoto440.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\x64\vcruntime140.dll
 D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\x64\vcruntime140_1.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Keras.dll
+D:\Project\AI_ML_DS\Minor_Project_Ai_Plant_Recognition\Minor_Project_Ai_Plant_Recognition\bin\Debug\net8.0\Numpy.Bare.dll

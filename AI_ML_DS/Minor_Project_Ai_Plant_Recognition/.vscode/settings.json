@@ -1,0 +1,29 @@
+{
+    "cSpell.words": [
+        "Aloevera",
+        "Amla",
+        "Amruthaballi",
+        "Arali",
+        "Ashoka",
+        "crossentropy",
+        "densenet",
+        "dtype",
+        "edgecolor",
+        "facecolor",
+        "figsize",
+        "fontsize",
+        "fontweight",
+        "imagenet",
+        "optim",
+        "pathtable",
+        "pname",
+        "relu",
+        "skyblue",
+        "softmax",
+        "suptitle",
+        "traindata",
+        "xlabel",
+        "ylabel"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}

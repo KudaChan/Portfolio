@@ -3,10 +3,10 @@ imports
 """
 
 import os
-import pandas as pd
 import random
-from sklearn.model_selection import train_test_split
 import psycopg2
+import matplotlib.pyplot as plt
+
 
 class ImgData:
     """
@@ -25,6 +25,7 @@ class ImgData:
         self.img_path = img_path
         self.species_id = species_id
         self.catagory_id = catagory_id
+
 
 class DBConnector:
     """
@@ -54,21 +55,21 @@ class DBConnector:
         secure configuration files to store sensitive information.
         """
         try:
-            self.conn = psycopg2.connect(
-                dbname=os.getenv("DB_NAME"),
-                user=os.getenv("DB_USER"),
-                password=os.getenv("DB_PASSWORD"),
-                host=os.getenv("DB_HOST"),
-                port=os.getenv("DB_PORT"),
-            )
-
             # self.conn = psycopg2.connect(
-            #     dbname="medai",
-            #     user="kumar",
-            #     password="chan05dan",
-            #     host="localhost",
-            #     port="5432",
+            #     dbname=os.getenv("DB_NAME"),
+            #     user=os.getenv("DB_USER"),
+            #     password=os.getenv("DB_PASSWORD"),
+            #     host=os.getenv("DB_HOST"),
+            #     port=os.getenv("DB_PORT"),
             # )
+
+            self.conn = psycopg2.connect(
+                dbname="medai",
+                user="kumar",
+                password="chan05dan",
+                host="localhost",
+                port="5432",
+            )
 
             self.cursor = self.conn.cursor()
             print("Connected to the database")
@@ -139,7 +140,7 @@ class DBConnector:
         img_data_list = []
         species_dict = {}
 
-        idx_query = "SELECT * FROM species_idx WHERE idx < 11;"
+        idx_query = "SELECT * FROM species_idx WHERE idx <= 5;"
         rows = self.execute_sql(idx_query)
         species_dict = {row[0]: row[1] for row in rows}
 
@@ -148,6 +149,7 @@ class DBConnector:
             img_data_list.append(ImgData(row[2], row[1], row[0]))
 
         return img_data_list, species_dict
+
 
 class DataSplitter:
     """_summary_
@@ -203,6 +205,7 @@ class DataSplitter:
 
         return train_data, test_data
 
+
 class Main:
     """_summary_
     This class is starting point and called from different script.
@@ -219,6 +222,7 @@ class Main:
         None
         """
         print("Starting DataPreparation")
+        self.species_dict = None
 
     def data_split_per_process(self, sql_query):
         """
@@ -250,6 +254,7 @@ class Main:
         print(f"    Train data count: {len(train_data)}")
         print(f"    Test data count: {len(test_data)}")
         print(f"    Species dict: {species_dict}")
+        self.species_dict = species_dict
 
         return train_data, test_data
 
@@ -272,15 +277,13 @@ class Main:
         if process == 0:
             pname = "Orignal Data"
             print("Orignal Data :")
-            sql_query = "SELECT catagory, species, imgpath FROM pathtableorignal WHERE catagory = 1 AND species < 11"
+            sql_query = "SELECT catagory, species, imgpath FROM pathtableorignal WHERE catagory = 1 AND species <= 5"
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 1:
             pname = "Augmented Data"
             print("Augmented Data:")
-            sql_query = (
-                "SELECT catagory, species, imgpath FROM pathtable where preprocess = 1"
-            )
+            sql_query = "SELECT catagory, species, imgpath FROM pathtable where preprocess = 1 AND species < 3 AND catagory = 1"
 
             train_data, test_data = self.data_split_per_process(sql_query)
         elif process == 2:
@@ -311,3 +314,118 @@ class Main:
 
         print("Data preparation complete.")
         return train_data, test_data, pname
+
+    def visualize_data(self, img_train_data_df, img_test_data_df):
+        """
+        This method visualizes the distribution of categories and species in the data.
+
+        Parameters:
+        img_data_df (DataFrame): The DataFrame containing the image data.
+        species_dict (dict): A dictionary mapping species IDs to their corresponding names.
+
+        Returns:
+        None
+        """
+        img_total_data_df = pd.concat([img_train_data_df, img_test_data_df])
+        img_total_data_df['species_id'] = img_total_data_df['species_id'].replace(
+            self.species_dict)
+
+        # Replace species IDs with their names for better visualization
+        img_train_data_df['species_id'] = img_train_data_df['species_id'].replace(
+            self.species_dict)
+
+        img_test_data_df['species_id'] = img_test_data_df['species_id'].replace(
+            self.species_dict)
+
+        # Calculate the counts of each species in the training, testing, and total data
+        train_counts = img_train_data_df['species_id'].value_counts()
+        test_counts = img_test_data_df['species_id'].value_counts()
+        total_counts = img_total_data_df['species_id'].value_counts()
+
+        # Create a DataFrame that contains the counts
+        counts_df = pd.DataFrame({
+            'Train': train_counts,
+            'Test': test_counts,
+            'Total': total_counts
+        })
+
+        # Fill NaN values with 0
+        counts_df = counts_df.fillna(0)
+
+        # Convert the counts to integers
+        counts_df = counts_df.astype(int)
+
+        # Create a new figure
+        fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+
+        # Hide axes
+        ax.axis('off')
+
+        # Create a table and add it to the figure
+        table = plt.table(cellText=counts_df.values,
+                          colLabels=counts_df.columns,
+                          rowLabels=counts_df.index,
+                          cellLoc='center',
+                          loc='center',
+                          bbox=[0, 0, 1, 1])  # Use bbox to position the table
+
+        table.auto_set_font_size(True)
+        # table.set_fontsize(10)  # Adjust font size
+        table.scale(1, 1.5)  # Adjust table size
+
+        # Set color for the cells in the table
+        table_props = table.properties()
+        table_cells = table_props['children']
+        for cell in table_cells:
+            cell.set_edgecolor('black')  # Set cell border color
+            if cell.get_text().get_text() == 'Species' or cell.get_text().get_text() == 'Train' or cell.get_text().get_text() == 'Test' or cell.get_text().get_text() == 'Total':
+                # Set cell background color for header
+                cell.set_facecolor('skyblue')
+            else:
+                # Set cell background color for others
+                cell.set_facecolor('white')
+
+        plt.title('Data distribution table', fontsize=16, fontweight='bold')
+        plt.show()
+
+        # Plot the distribution of species
+        plt.figure(figsize=(8, 6))
+        total_counts = img_total_data_df['species_id'].value_counts()
+        plt.bar(total_counts.index, total_counts.values,
+                alpha=0.6, label='Total Data')
+
+        # Plot the distribution of species in the testing data
+        test_counts = img_test_data_df['species_id'].value_counts()
+        plt.bar(test_counts.index, test_counts.values,
+                alpha=0.6, label='Test Data')
+
+        # Add labels and title
+        plt.xlabel('Species Name')
+        plt.ylabel('Count')
+        plt.title('Distribution of Species in Total and Test Data')
+
+        # Add a legend
+        plt.legend()
+
+        # Show the plot
+        plt.show()
+
+
+# if __name__ == '__main__':
+#     import pandas as pd
+
+#     # Initialize the Main class
+#     main = Main()
+
+#     # Prepare the data
+#     train_data, test_data, pname = main.data_prepare_starter(
+#         process=0)  # change the process number as per your requirement
+
+#     # Convert the list of ImgData instances to a DataFrame
+#     img_train_data_df = pd.DataFrame([(img.img_path, img.species_id, img.catagory_id) for img in train_data],
+#                                      columns=['img_path', 'species_id', 'category_id'])
+#     img_test_data_df = pd.DataFrame([(img.img_path, img.species_id, img.catagory_id) for img in test_data],
+#                                     columns=['img_path', 'species_id', 'category_id'])
+
+#     # Visualize the data
+#     main.visualize_data(img_train_data_df, img_test_data_df)

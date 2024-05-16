@@ -329,6 +329,18 @@
           "lib/net7.0/HDF5CSharp.dll": {}
         }
       },
+      "Keras.NET/3.8.5": {
+        "type": "package",
+        "dependencies": {
+          "Numpy.Bare": "3.8.1.25"
+        },
+        "compile": {
+          "lib/netstandard2.0/Keras.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Keras.dll": {}
+        }
+      },
       "Kurukuru/1.4.2": {
         "type": "package",
         "compile": {
@@ -397,7 +409,7 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-      "Microsoft.IdentityModel.Abstractions/7.5.1": {
+      "Microsoft.IdentityModel.Abstractions/7.5.2": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
@@ -410,10 +422,10 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/7.5.1": {
+      "Microsoft.IdentityModel.Logging/7.5.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "7.5.1"
+          "Microsoft.IdentityModel.Abstractions": "7.5.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
@@ -426,10 +438,10 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/7.5.1": {
+      "Microsoft.IdentityModel.Tokens/7.5.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "7.5.1"
+          "Microsoft.IdentityModel.Logging": "7.5.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -502,6 +514,19 @@
           "lib/netstandard2.0/Numpy.dll": {}
         }
       },
+      "Numpy.Bare/3.8.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "pythonnet_netstandard_py38_win": "2.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Numpy.Bare.dll": {}
+        }
+      },
       "OneOf/3.0.263": {
         "type": "package",
         "compile": {
@@ -564,6 +589,19 @@
           "Microsoft.CSharp": "4.7.0",
           "System.Reflection.Emit": "4.3.0"
         },
+        "compile": {
+          "lib/netstandard2.0/Python.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Python.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "pythonnet_netstandard_py38_win/2.5.1": {
+        "type": "package",
         "compile": {
           "lib/netstandard2.0/Python.Runtime.dll": {
             "related": ".xml"
@@ -1539,6 +1577,19 @@
         "lib/netstandard2.1/HDF5CSharp.dll"
       ]
     },
+    "Keras.NET/3.8.5": {
+      "sha512": "NFUV194GVq87ZBrUNMrFXy/pMPchh0clyShr4HHoKY+NYaCOIr9kvcRS1hE0rs8S9Adbvt2+gIG9HfNCWikIAg==",
+      "type": "package",
+      "path": "keras.net/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "keras.net.3.8.5.nupkg.sha512",
+        "keras.net.nuspec",
+        "lib/netstandard2.0/Keras.dll"
+      ]
+    },
     "Kurukuru/1.4.2": {
       "sha512": "OpfXP8piJFx8hEG+z2Gw2/VWvj96RkzDvtjfAxJnZRuREDasW8Is9kjwm/E8oXmyq6TjSStBzkSwdAJLlqG3Dg==",
       "type": "package",
@@ -1743,10 +1794,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.IdentityModel.Abstractions/7.5.1": {
-      "sha512": "PT16ZFbPIiMsYv07oy3zOjqUOJ7xutGBkJTOX0+IbNyU6+O6X7aIxjq9EaSSRLWbekRgamgtmfg8Xjw6A6Ua9g==",
+    "Microsoft.IdentityModel.Abstractions/7.5.2": {
+      "sha512": "xXFP4PUcI/l4n3hpw4TXbvONNTQ9WflyMxUx03qNJXSd7dVtxbFrL+B9+IevMwzvktZjTVfMdDlzQoTzdtN1bA==",
       "type": "package",
-      "path": "microsoft.identitymodel.abstractions/7.5.1",
+      "path": "microsoft.identitymodel.abstractions/7.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1762,14 +1813,14 @@
         "lib/net8.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
-        "microsoft.identitymodel.abstractions.7.5.1.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.7.5.2.nupkg.sha512",
         "microsoft.identitymodel.abstractions.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/7.5.1": {
-      "sha512": "PnpAQX20BAiDIPYmWUyQSlEaWD8BLXzHpiDGTCT568Cs0ReOeyzNe401LzCeiv6ilug/KefVeV1CeqtCHTo8dw==",
+    "Microsoft.IdentityModel.Logging/7.5.2": {
+      "sha512": "FpMJ2i1e8Z+1rAchYQiawk0ChwYv6CNtCQDtMzwzkZtUWQYmkrkLXzl3qniOT8FFQck7bPKhQJY6nU7P7tojwQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/7.5.1",
+      "path": "microsoft.identitymodel.logging/7.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1785,14 +1836,14 @@
         "lib/net8.0/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.7.5.1.nupkg.sha512",
+        "microsoft.identitymodel.logging.7.5.2.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/7.5.1": {
-      "sha512": "Q3DKpyFViP84IUlTFKH/zIkswIrmSh2Vd/eFDo4wlOHy4DYxoweZEEw4kDEiKt9VCX6o7SddK3HK2xDYyFpexA==",
+    "Microsoft.IdentityModel.Tokens/7.5.2": {
+      "sha512": "VFLS4Ajy5jadM/YV9x3FA4pHHwbEWTjkbN/RtShqVH8eI8j6UDg5522ogTx1iMLJKQdL9QbfxXx4d1+w1eCDgQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/7.5.1",
+      "path": "microsoft.identitymodel.tokens/7.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1808,7 +1859,7 @@
         "lib/net8.0/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.7.5.1.nupkg.sha512",
+        "microsoft.identitymodel.tokens.7.5.2.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -1907,6 +1958,18 @@
         "numpy.nuspec"
       ]
     },
+    "Numpy.Bare/3.8.1.25": {
+      "sha512": "YqbpafFbck+JI0/guhaiJqAqTOKJXGbCfre6PZH+eeQbg27rllyTNPCdw36oLSNzagBIzJjmsGDE61lfSvairg==",
+      "type": "package",
+      "path": "numpy.bare/3.8.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Numpy.Bare.dll",
+        "numpy.bare.3.8.1.25.nupkg.sha512",
+        "numpy.bare.nuspec"
+      ]
+    },
     "OneOf/3.0.263": {
       "sha512": "2xXFnUxkAA0rJ2sJz9FPeW/gzJIBvyj+xIvfTIkz42pz9JlcYse4/rwRnkmCsYxw6osy1whnBO6Ox6HBKEqDMw==",
       "type": "package",
@@ -1996,6 +2059,19 @@
         "python-clear.png",
         "pythonnet.3.0.3.nupkg.sha512",
         "pythonnet.nuspec"
+      ]
+    },
+    "pythonnet_netstandard_py38_win/2.5.1": {
+      "sha512": "y8D5KG5Z5pFUzxBINwaN6LuM50LpkRV3TD8Lrn9jz1spbT1mBSCeYAzyA8MSo9+Jb3R/evXq0m3+d1KiDGGYUg==",
+      "type": "package",
+      "path": "pythonnet_netstandard_py38_win/2.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Python.Runtime.dll",
+        "lib/netstandard2.0/Python.Runtime.xml",
+        "pythonnet_netstandard_py38_win.2.5.1.nupkg.sha512",
+        "pythonnet_netstandard_py38_win.nuspec"
       ]
     },
     "Razorvine.Pickle/1.4.0": {
@@ -3512,8 +3588,9 @@
       "Emgu.CV >= 4.9.0.5494",
       "Emgu.CV.runtime.windows >= 4.9.0.5494",
       "Emgu.CV.runtime.windows.cuda >= 4.4.0.4099",
+      "Keras.NET >= 3.8.5",
       "Kurukuru >= 1.4.2",
-      "Microsoft.IdentityModel.Tokens >= 7.5.1",
+      "Microsoft.IdentityModel.Tokens >= 7.5.2",
       "Numpy >= 3.11.1.33",
       "SciSharp.TensorFlow.Redist-Windows-GPU >= 2.10.3",
       "ShellProgressBar >= 5.2.0",
@@ -3587,13 +3664,17 @@
             "target": "Package",
             "version": "[4.4.0.4099, )"
           },
+          "Keras.NET": {
+            "target": "Package",
+            "version": "[3.8.5, )"
+          },
           "Kurukuru": {
             "target": "Package",
             "version": "[1.4.2, )"
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "[7.5.1, )"
+            "version": "[7.5.2, )"
           },
           "Numpy": {
             "target": "Package",

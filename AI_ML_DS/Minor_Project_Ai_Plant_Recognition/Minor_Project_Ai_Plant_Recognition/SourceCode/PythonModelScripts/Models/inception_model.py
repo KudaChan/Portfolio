@@ -13,22 +13,7 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D  # type: ignor
 from tensorflow.keras.models import Model  # type: ignore
 from tensorflow.keras.applications.inception_v3 import InceptionV3  # type: ignore
 from sklearn.metrics import r2_score, mean_squared_error
-import os
-import tensorflow as tf
 
-os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-# import sys
-
-# try:
-#     sys.path.append('SourceCode/PythonModelScripts')
-#     import model_data_prepare as mdp
-# except ImportError:
-#     print("Unable to import model_data_prepare")
-
-# import os
-# import tensorflow as tf
-
-# os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 class InceptionModel:
     def __init__(self, train_data, test_data, i):
@@ -46,7 +31,7 @@ class InceptionModel:
             image = np.array(image, dtype='float16') / 255.0
             x_train.append(image)
 
-            y_train.append(to_categorical(img.species_id-1, num_classes=10))
+            y_train.append(to_categorical(img.species_id-1, num_classes=5))
 
         x_test = []
         y_test = []
@@ -59,7 +44,7 @@ class InceptionModel:
             x_test.append(image)
 
             # Convert label to one-hot encoding
-            y_test.append(to_categorical(img.species_id-1, num_classes=10))
+            y_test.append(to_categorical(img.species_id-1, num_classes=5))
 
         return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
@@ -73,7 +58,7 @@ class InceptionModel:
         x = BatchNormalization()(x)  # Add batch normalization layer
         x = Dropout(0.5)(x)  # Add dropout layer to prevent overfitting
 
-        predictions = Dense(10, activation='softmax')(x)
+        predictions = Dense(5, activation='softmax')(x)
         model = Model(inputs=base_model.input, outputs=predictions)
 
         for layer in base_model.layers:
@@ -102,7 +87,7 @@ class InceptionModel:
 
         # Train the model
         history = model.fit(x_train, y_train, validation_data=(
-            x_test, y_test), epochs=100, batch_size=32, callbacks=[early_stop, lr_reduce, checkpoint])
+            x_test, y_test), epochs=10, batch_size=32, callbacks=[early_stop, lr_reduce, checkpoint])
 
         # After training the model
         y_pred_train = model.predict(x_train)
