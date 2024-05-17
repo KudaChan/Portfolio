@@ -68,14 +68,6 @@ def predict():
     # Print the final DataFrame
     print(results_df)
 
-    for img in img_files:
-        plt.figure(figsize=(10, 5))
-        results_df.loc[img].value_counts().plot(kind='bar')
-        plt.title(f'Predictions for {img}')
-        plt.xlabel('Species')
-        plt.ylabel('Count')
-        plt.show()
-
 
 if __name__ == "__main__":
     predict()

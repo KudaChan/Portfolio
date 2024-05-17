@@ -19,10 +19,10 @@ namespace Minor_Project_Ai_Plant_Recognition.SourceCode.PreProcessing
 
         private void DataLoaderFromDB()
         {
-            _ = new DBMain();
+            DBMain dBMain = new();
             DBMain.SpeciesDictInit(speciesDict);
 
-            DBMain.DataParseFromOrignalPathTable(imgData);
+            dBMain.DataParseFromOrignalPathTable(imgData);
 
             WriteLine(imgData.Count);
         }

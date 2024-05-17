@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-project\\src\\predictor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:src\\predictor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-project\\dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:dataset\\crop_recommendation.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|d:\\project\\ai_ml_ds\\crop-recommendation-project\\src\\temp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:src\\temp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\crop-recommendation-project.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{04DF4227-8E35-47FE-B554-41872516E153}|Crop-Recommendation-Project.csproj|solutionrelative:crop-recommendation-project.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,47 +30,43 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Crop-Recommendation-Project.csproj",
-              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Crop-Recommendation-Project.csproj",
-              "RelativeDocumentMoniker": "Crop-Recommendation-Project.csproj",
-              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Crop-Recommendation-Project.csproj",
-              "RelativeToolTip": "Crop-Recommendation-Project.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-05T23:39:57.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "temp.cs",
-              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\temp.cs",
-              "RelativeDocumentMoniker": "src\\temp.cs",
-              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\temp.cs",
-              "RelativeToolTip": "src\\temp.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T23:05:50.454Z",
+              "Title": "Crop_recommendation.csv",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Dataset\\Crop_recommendation.csv",
+              "RelativeDocumentMoniker": "Dataset\\Crop_recommendation.csv",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Dataset\\Crop_recommendation.csv",
+              "RelativeToolTip": "Dataset\\Crop_recommendation.csv",
+              "ViewState": "AQIAALoAAAAAAAAAAAAAAAoAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2024-05-17T02:08:07.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Predictor.cs",
+              "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\Predictor.cs",
+              "RelativeDocumentMoniker": "src\\Predictor.cs",
+              "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\src\\Predictor.cs",
+              "RelativeToolTip": "src\\Predictor.cs",
+              "ViewState": "AQIAAIYAAAAAAAAAAAAAwK8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T01:34:13.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Project\\AI_ML_DS\\Crop-Recommendation-Project\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAADwv0EAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T17:54:35.102Z",
               "EditorCaption": ""

@@ -26,4 +26,16 @@
     <PackageReference Include="tensorflow.net" Version="0.150.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="C:\Users\kumar\.nuget\packages\accord\3.8.0\build\Accord.dll.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\kumar\.nuget\packages\accord\3.8.0\build\Accord.dll.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\kumar\.nuget\packages\accord\3.8.0\build\Accord.dll.config" />
+  </ItemGroup>
+
 </Project>
