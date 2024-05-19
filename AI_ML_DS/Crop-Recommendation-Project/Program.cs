@@ -9,6 +9,8 @@ namespace Crop_Recommendation_Project
         {
             Console.WriteLine("Crop Recommendation Project.");
 
+            //ModelTrainer.Train();
+
             DataPrepare.DataRetriver();
             DataPrepare.GetUserInput();
             DataPrepare.PrepareData();

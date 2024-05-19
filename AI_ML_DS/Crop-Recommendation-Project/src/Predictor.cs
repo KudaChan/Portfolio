@@ -157,7 +157,6 @@ namespace Crop_Recommendation_Model.src
             Console.WriteLine("Prediction Completed.");
 
             // Implement your voting system here
-            // For example, you could simply choose the prediction with the highest confidence score:
             ModelOutput finalPrediction = new[] { prediction1, prediction2, prediction3 }
                 .OrderByDescending(p => p.Score!.Max())
                 .First();

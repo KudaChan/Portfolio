@@ -400,7 +400,7 @@
           }
         }
       },
-      "Npgsql/8.0.2": {
+      "Npgsql/8.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
@@ -454,10 +454,10 @@
           "lib/netstandard2.0/OneOf.dll": {}
         }
       },
-      "Polly/8.3.1": {
+      "Polly/8.4.0": {
         "type": "package",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.4.0"
         },
         "compile": {
           "lib/net6.0/Polly.dll": {
@@ -470,7 +470,7 @@
           }
         }
       },
-      "Polly.Core/8.3.1": {
+      "Polly.Core/8.4.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/Polly.Core.dll": {
@@ -520,7 +520,7 @@
           "lib/netstandard2.0/Razorvine.Pickle.dll": {}
         }
       },
-      "ScottPlot/5.0.33": {
+      "ScottPlot/5.0.34": {
         "type": "package",
         "dependencies": {
           "SkiaSharp": "2.88.8",
@@ -1509,10 +1509,10 @@
         "packageIcon.png"
       ]
     },
-    "Npgsql/8.0.2": {
-      "sha512": "MuJzLoWCaQhQAR3oh66YR0Ir6mxuezncGX3f8wxvAc21g0+9HICktJQlqMoODhxztZKXE5k9GxRxqUAN+vPb4g==",
+    "Npgsql/8.0.3": {
+      "sha512": "6WEmzsQJCZAlUG1pThKg/RmeF6V+I0DmBBBE/8YzpRtEzhyZzKcK7ulMANDm5CkxrALBEC8H+5plxHWtIL7xnA==",
       "type": "package",
-      "path": "npgsql/8.0.2",
+      "path": "npgsql/8.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1527,7 +1527,7 @@
         "lib/netstandard2.0/Npgsql.xml",
         "lib/netstandard2.1/Npgsql.dll",
         "lib/netstandard2.1/Npgsql.xml",
-        "npgsql.8.0.2.nupkg.sha512",
+        "npgsql.8.0.3.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
       ]
@@ -1573,10 +1573,10 @@
         "oneof.nuspec"
       ]
     },
-    "Polly/8.3.1": {
-      "sha512": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+    "Polly/8.4.0": {
+      "sha512": "z2EeUutuy49jBQyZ5s2FUuTCGx3GCzJ0cJ2HbjWwks94TsC6bKTtAHKBkMZOa/DyYRl5yIX7MshvMTWl1J6RNg==",
       "type": "package",
-      "path": "polly/8.3.1",
+      "path": "polly/8.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1594,14 +1594,14 @@
         "lib/netstandard2.0/Polly.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.8.3.1.nupkg.sha512",
+        "polly.8.4.0.nupkg.sha512",
         "polly.nuspec"
       ]
     },
-    "Polly.Core/8.3.1": {
-      "sha512": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+    "Polly.Core/8.4.0": {
+      "sha512": "3AZxuP//pxOeBo9tQs7/tz4Z5TTbu4BYfjpaXZD0JYKJo98ngN9TMUz1nybh4k0ykWkMBpGZALV/AmVIE3ew7A==",
       "type": "package",
-      "path": "polly.core/8.3.1",
+      "path": "polly.core/8.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1622,7 +1622,7 @@
         "lib/netstandard2.0/Polly.Core.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.core.8.3.1.nupkg.sha512",
+        "polly.core.8.4.0.nupkg.sha512",
         "polly.core.nuspec"
       ]
     },
@@ -1664,10 +1664,10 @@
         "razorvine.pickle.nuspec"
       ]
     },
-    "ScottPlot/5.0.33": {
-      "sha512": "pzmJvpk36axsdrxbzQ5Rh5CMcu6fG6SAntTlsh/mnW6002VAHm85baRCL559+ofkxgyceGwLLSteVSbh/axjDg==",
+    "ScottPlot/5.0.34": {
+      "sha512": "xo59+NWxTB9mTAHEvzKWi3U7dB0JjKGzx8KMWd3xWykGACSR1GKjY4yfRJ5AYuYmDVSE9UVL0IDb1U5GqYKjqg==",
       "type": "package",
-      "path": "scottplot/5.0.33",
+      "path": "scottplot/5.0.34",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1681,7 +1681,7 @@
         "lib/netstandard2.0/ScottPlot.dll",
         "lib/netstandard2.0/ScottPlot.xml",
         "readme.md",
-        "scottplot.5.0.33.nupkg.sha512",
+        "scottplot.5.0.34.nupkg.sha512",
         "scottplot.nuspec"
       ]
     },
@@ -2555,11 +2555,11 @@
       "CNTK.GPU >= 2.7.0",
       "MathNet.Numerics >= 5.0.0",
       "Microsoft.ML >= 3.0.1",
-      "Polly >= 8.3.1",
-      "ScottPlot >= 5.0.33",
+      "Polly >= 8.4.0",
+      "ScottPlot >= 5.0.34",
       "accord >= 3.8.0",
       "keras.net >= 3.8.5",
-      "npgsql >= 8.0.2",
+      "npgsql >= 8.0.3",
       "numsharp >= 0.30.0",
       "tensorflow.net >= 0.150.0"
     ]
@@ -2632,11 +2632,11 @@
           },
           "Polly": {
             "target": "Package",
-            "version": "[8.3.1, )"
+            "version": "[8.4.0, )"
           },
           "ScottPlot": {
             "target": "Package",
-            "version": "[5.0.33, )"
+            "version": "[5.0.34, )"
           },
           "accord": {
             "target": "Package",
@@ -2648,7 +2648,7 @@
           },
           "npgsql": {
             "target": "Package",
-            "version": "[8.0.2, )"
+            "version": "[8.0.3, )"
           },
           "numsharp": {
             "target": "Package",

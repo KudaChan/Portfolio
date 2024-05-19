@@ -68,11 +68,11 @@
             },
             "Polly": {
               "target": "Package",
-              "version": "[8.3.1, )"
+              "version": "[8.4.0, )"
             },
             "ScottPlot": {
               "target": "Package",
-              "version": "[5.0.33, )"
+              "version": "[5.0.34, )"
             },
             "accord": {
               "target": "Package",
@@ -84,7 +84,7 @@
             },
             "npgsql": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.3, )"
             },
             "numsharp": {
               "target": "Package",
