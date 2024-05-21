@@ -14,27 +14,27 @@ namespace Minor_Project_Ai_Plant_Recognition
         {
             WriteLine("Database Connection Started");
             DBMain dbMain = new DBMain();
-            dbMain.DataParserFromOrignalDirAndFeeder();
+            //dbMain.DataParserFromOrignalDirAndFeeder();
 
-            DataAugmentation preprocessing = new();
-            preprocessing.DataAugmentationMain();
+            //DataAugmentation preprocessing = new();
+            //preprocessing.DataAugmentationMain();
 
-            BckRemove.RemoveBackground();
+            //BckRemove.RemoveBackground();
 
-            Augmentation_BckRem augmentation_BckRem = new();
-            augmentation_BckRem.DataAugmentationMain();
+            //Augmentation_BckRem augmentation_BckRem = new();
+            //augmentation_BckRem.DataAugmentationMain();
 
-            dbMain.DataParserFromPreprocessedDirAndFeeder();
+            //dbMain.DataParserFromPreprocessedDirAndFeeder();
 
-            dbMain.DataParserFromOrignalDirAndFeeder();
+            //dbMain.DataParserFromOrignalDirAndFeeder();
 
-            DataAugmentation preprocessing2 = new();
-            preprocessing2.DataAugmentationMain();
+            //DataAugmentation preprocessing2 = new();
+            //preprocessing2.DataAugmentationMain();
 
-            BckRemove.RemoveBackground();
+            //BckRemove.RemoveBackground();
 
-            Augmentation_BckRem augmentation_BckRem2 = new();
-            augmentation_BckRem2.DataAugmentationMain();
+            //Augmentation_BckRem augmentation_BckRem2 = new();
+            //augmentation_BckRem2.DataAugmentationMain();
 
             dbMain.DataParserFromPreprocessedDirAndFeeder();
 
