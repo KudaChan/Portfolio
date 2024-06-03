@@ -1,0 +1,298 @@
+                                        Table "public.majors"
++----------+-----------------------+-----------+----------+------------------------------------------+
+|  Column  |         Type          | Collation | Nullable |                 Default                  |
++----------+-----------------------+-----------+----------+------------------------------------------+
+| major_id | integer               |           | not null | nextval('majors_major_id_seq'::regclass) |
+| major    | character varying(50) |           | not null |                                          |
++----------+-----------------------+-----------+----------+------------------------------------------+
+Indexes:
+    "majors_pkey" PRIMARY KEY, btree (major_id)
+Referenced by:
+    TABLE "majors_courses" CONSTRAINT "majors_courses_major_id_fkey" FOREIGN KEY (major_id) REFERENCES majors(major_id)
+    TABLE "students" CONSTRAINT "students_major_id_fkey" FOREIGN KEY (major_id) REFERENCES majors(major_id)
+
+                   
++----------+-------------------------+
+| major_id |          major          |
++----------+-------------------------+
+|        1 | Database Administration |
+|        2 | major                   |
+|        3 | Web Development         |
+|        4 | Data Science            |
++----------+-------------------------+
+(4 rows)
+
+TRUNCATE TABLE
+          
++----------+-------+
+| major_id | major |
++----------+-------+
++----------+-------+
+(0 rows)
+
+            
++----------+-----------+
+| major_id | course_id |
++----------+-----------+
++----------+-----------+
+(0 rows)
+
+                            
++------------+------------+-----------+----------+-----+
+| student_id | first_name | last_name | major_id | gpa |
++------------+------------+-----------+----------+-----+
++------------+------------+-----------+----------+-----+
+(0 rows)
+
+                       
++-----------+--------------------------------+
+| course_id |             course             |
++-----------+--------------------------------+
+|         1 | Data Structures and Algorithms |
++-----------+--------------------------------+
+(1 row)
+
+TRUNCATE TABLE
+           
++-----------+--------+
+| course_id | course |
++-----------+--------+
++-----------+--------+
+(0 rows)
+
+                   
++----------+-------------------------+
+| major_id |          major          |
++----------+-------------------------+
+|        5 | major                   |
+|        6 | Database Administration |
+|        7 | Web Development         |
+|        8 | Data Science            |
++----------+-------------------------+
+(4 rows)
+
+TRUNCATE TABLE
+          
++----------+-------+
+| major_id | major |
++----------+-------+
++----------+-------+
+(0 rows)
+
+                   
++----------+-------------------------+
+| major_id |          major          |
++----------+-------------------------+
+|        9 | Database Administration |
+|       10 | Web Development         |
+|       11 | Data Science            |
++----------+-------------------------+
+(3 rows)
+
+TRUNCATE TABLE
+          
++----------+-------+
+| major_id | major |
++----------+-------+
++----------+-------+
+(0 rows)
+
+TRUNCATE TABLE
+          
++----------+-------+
+| major_id | major |
++----------+-------+
++----------+-------+
+(0 rows)
+
+                       
++-----------+--------------------------------+
+| course_id |             course             |
++-----------+--------------------------------+
+|         2 | Data Structures and Algorithms |
+|         3 | Web Programming                |
+|         4 | Database Systems               |
++-----------+--------------------------------+
+(3 rows)
+
+             Table "public.majors_courses"
++-----------+---------+-----------+----------+---------+
+|  Column   |  Type   | Collation | Nullable | Default |
++-----------+---------+-----------+----------+---------+
+| major_id  | integer |           | not null |         |
+| course_id | integer |           | not null |         |
++-----------+---------+-----------+----------+---------+
+Indexes:
+    "majors_courses_pkey" PRIMARY KEY, btree (major_id, course_id)
+Foreign-key constraints:
+    "majors_courses_course_id_fkey" FOREIGN KEY (course_id) REFERENCES courses(course_id)
+    "majors_courses_major_id_fkey" FOREIGN KEY (major_id) REFERENCES majors(major_id)
+
+                   
++----------+-------------------------+
+| major_id |          major          |
++----------+-------------------------+
+|       21 | Database Administration |
+|       22 | Web Development         |
+|       23 | Data Science            |
++----------+-------------------------+
+(3 rows)
+
+                       
++-----------+--------------------------------+
+| course_id |             course             |
++-----------+--------------------------------+
+|         8 | Data Structures and Algorithms |
+|         9 | Web Programming                |
+|        10 | Database Systems               |
++-----------+--------------------------------+
+(3 rows)
+
+            
++----------+-----------+
+| major_id | course_id |
++----------+-----------+
+|       21 |         8 |
+|       22 |         9 |
+|       21 |        10 |
+|       23 |         8 |
++----------+-----------+
+(4 rows)
+
+                                          Table "public.students"
++------------+-----------------------+-----------+----------+----------------------------------------------+
+|   Column   |         Type          | Collation | Nullable |                   Default                    |
++------------+-----------------------+-----------+----------+----------------------------------------------+
+| student_id | integer               |           | not null | nextval('students_student_id_seq'::regclass) |
+| first_name | character varying(50) |           | not null |                                              |
+| last_name  | character varying(50) |           | not null |                                              |
+| major_id   | integer               |           |          |                                              |
+| gpa        | numeric(2,1)          |           |          |                                              |
++------------+-----------------------+-----------+----------+----------------------------------------------+
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+Foreign-key constraints:
+    "students_major_id_fkey" FOREIGN KEY (major_id) REFERENCES majors(major_id)
+
+                            
++------------+------------+-----------+----------+-----+
+| student_id | first_name | last_name | major_id | gpa |
++------------+------------+-----------+----------+-----+
+|          2 | Rhea       | Kellems   |       33 | 2.5 |
+|          3 | Emma       | Gilbert   |          |     |
+|          4 | Kimberly   | Whitley   |       34 | 3.8 |
+|          5 | Jimmy      | Felipe    |       33 | 3.7 |
++------------+------------+-----------+----------+-----+
+(4 rows)
+
+                              
++------------+------------+--------------+----------+-----+
+| student_id | first_name |  last_name   | major_id | gpa |
++------------+------------+--------------+----------+-----+
+|          6 | Rhea       | Kellems      |       36 | 2.5 |
+|          7 | Emma       | Gilbert      |          |     |
+|          8 | Kimberly   | Whitley      |       37 | 3.8 |
+|          9 | Jimmy      | Felipe       |       36 | 3.7 |
+|         10 | Kyle       | Stimson      |          | 2.8 |
+|         11 | Casares    | Hijo         |       41 | 4.0 |
+|         12 | Noe        | Savage       |          | 3.6 |
+|         13 | Sterling   | Boss         |       41 | 3.9 |
+|         14 | Brian      | Davis        |          | 2.3 |
+|         15 | Kaija      | Uronen       |       41 | 3.7 |
+|         16 | Faye       | Conn         |       41 | 2.1 |
+|         17 | Efren      | Reilly       |       37 | 3.9 |
+|         18 | Danh       | Nhung        |          | 2.4 |
+|         19 | Maxine     | Hagenes      |       36 | 2.9 |
+|         20 | Larry      | Saunders     |       38 | 2.2 |
+|         21 | Karl       | Kuhar        |       37 |     |
+|         22 | Lieke      | Hazenveld    |       41 | 3.5 |
+|         23 | Obie       | Hilpert      |       37 |     |
+|         24 | Peter      | Booysen      |          | 2.9 |
+|         25 | Nathan     | Turner       |       36 | 3.3 |
+|         26 | Gerald     | Osiki        |       38 | 2.2 |
+|         27 | Vanya      | Hassanah     |       41 | 4.0 |
+|         28 | Roxelana   | Florescu     |       36 | 3.2 |
+|         29 | Helene     | Parker       |       38 | 3.4 |
+|         30 | Mariana    | Russel       |       37 | 1.8 |
+|         31 | Ajit       | Dhungel      |          | 3.0 |
+|         32 | Mehdi      | Vandenberghe |       36 | 1.9 |
+|         33 | Dejon      | Howell       |       37 | 4.0 |
+|         34 | Aliya      | Gulgowski    |       42 | 2.6 |
+|         35 | Ana        | Tupajic      |       38 | 3.1 |
+|         36 | Hugo       | Duran        |          | 3.8 |
++------------+------------+--------------+----------+-----+
+(31 rows)
+
+                   
++----------+-------------------------+
+| major_id |          major          |
++----------+-------------------------+
+|       36 | Database Administration |
+|       37 | Web Development         |
+|       38 | Data Science            |
+|       39 | Network Engineering     |
+|       40 | Computer Programming    |
+|       41 | Game Design             |
+|       42 | System Administration   |
++----------+-------------------------+
+(7 rows)
+
+                       
++-----------+--------------------------------+
+| course_id |             course             |
++-----------+--------------------------------+
+|        23 | Data Structures and Algorithms |
+|        24 | Web Programming                |
+|        25 | Database Systems               |
+|        26 | Computer Networks              |
+|        27 | SQL                            |
+|        28 | Machine Learning               |
+|        29 | Computer Systems               |
+|        30 | Web Applications               |
+|        31 | Artificial Intelligence        |
+|        32 | Python                         |
+|        33 | Object-Oriented Programming    |
+|        34 | Calculus                       |
+|        35 | Game Architecture              |
+|        36 | Algorithms                     |
+|        37 | UNIX                           |
+|        38 | Server Administration          |
+|        39 | Network Security               |
++-----------+--------------------------------+
+(17 rows)
+
+            
++----------+-----------+
+| major_id | course_id |
++----------+-----------+
+|       36 |        23 |
+|       37 |        24 |
+|       36 |        25 |
+|       38 |        23 |
+|       39 |        26 |
+|       36 |        27 |
+|       38 |        28 |
+|       39 |        29 |
+|       40 |        26 |
+|       36 |        30 |
+|       41 |        31 |
+|       38 |        32 |
+|       40 |        33 |
+|       42 |        29 |
+|       41 |        34 |
+|       37 |        23 |
+|       38 |        34 |
+|       37 |        33 |
+|       41 |        35 |
+|       42 |        26 |
+|       41 |        36 |
+|       42 |        37 |
+|       42 |        38 |
+|       40 |        29 |
+|       40 |        32 |
+|       39 |        39 |
+|       37 |        30 |
+|       39 |        36 |
++----------+-----------+
+(28 rows)
+

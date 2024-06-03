@@ -1,0 +1,565 @@
+CREATE TABLE
+            List of relations
++--------+-------+-------+--------------+
+| Schema | Name  | Type  |    Owner     |
++--------+-------+-------+--------------+
+| public | bikes | table | freecodecamp |
++--------+-------+-------+--------------+
+(1 row)
+
+ALTER TABLE
+                                Table "public.bikes"
++---------+---------+-----------+----------+----------------------------------------+
+| Column  |  Type   | Collation | Nullable |                Default                 |
++---------+---------+-----------+----------+----------------------------------------+
+| bike_id | integer |           | not null | nextval('bikes_bike_id_seq'::regclass) |
++---------+---------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+ALTER TABLE
+                                       Table "public.bikes"
++---------+-----------------------+-----------+----------+----------------------------------------+
+| Column  |         Type          | Collation | Nullable |                Default                 |
++---------+-----------------------+-----------+----------+----------------------------------------+
+| bike_id | integer               |           | not null | nextval('bikes_bike_id_seq'::regclass) |
+| type    | character varying(50) |           | not null |                                        |
++---------+-----------------------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+                                        Table "public.bikes"
++-----------+-----------------------+-----------+----------+----------------------------------------+
+|  Column   |         Type          | Collation | Nullable |                Default                 |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+| bike_id   | integer               |           | not null | nextval('bikes_bike_id_seq'::regclass) |
+| type      | character varying(50) |           | not null |                                        |
+| size      | integer               |           | not null |                                        |
+| available | boolean               |           | not null | true                                   |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+
+CREATE TABLE
+ALTER TABLE
+                                    Table "public.customers"
++-------------+---------+-----------+----------+------------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                    Default                     |
++-------------+---------+-----------+----------+------------------------------------------------+
+| customer_id | integer |           | not null | nextval('customers_customer_id_seq'::regclass) |
++-------------+---------+-----------+----------+------------------------------------------------+
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+                                           Table "public.customers"
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+|   Column    |         Type          | Collation | Nullable |                    Default                     |
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+| customer_id | integer               |           | not null | nextval('customers_customer_id_seq'::regclass) |
+| phone       | character varying(15) |           | not null |                                                |
+| name        | character varying(40) |           | not null |                                                |
++-------------+-----------------------+-----------+----------+------------------------------------------------+
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+
+CREATE TABLE
+ALTER TABLE
+                                  Table "public.rentals"
++-----------+---------+-----------+----------+--------------------------------------------+
+|  Column   |  Type   | Collation | Nullable |                  Default                   |
++-----------+---------+-----------+----------+--------------------------------------------+
+| rental_id | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
++-----------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+
+ALTER TABLE
+                                   Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+ALTER TABLE
+                                   Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
+| bike_id     | integer |           | not null |                                            |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+ALTER TABLE
+                                   Table "public.rentals"
++-------------+---------+-----------+----------+--------------------------------------------+
+|   Column    |  Type   | Collation | Nullable |                  Default                   |
++-------------+---------+-----------+----------+--------------------------------------------+
+| rental_id   | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id | integer |           | not null |                                            |
+| bike_id     | integer |           | not null |                                            |
+| date_rented | date    |           | not null | now()                                      |
++-------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+ALTER TABLE
+                                    Table "public.rentals"
++---------------+---------+-----------+----------+--------------------------------------------+
+|    Column     |  Type   | Collation | Nullable |                  Default                   |
++---------------+---------+-----------+----------+--------------------------------------------+
+| rental_id     | integer |           | not null | nextval('rentals_rental_id_seq'::regclass) |
+| customer_id   | integer |           | not null |                                            |
+| bike_id       | integer |           | not null |                                            |
+| date_rented   | date    |           | not null | now()                                      |
+| date_returned | date    |           |          |                                            |
++---------------+---------+-----------+----------+--------------------------------------------+
+Indexes:
+    "rentals_pkey" PRIMARY KEY, btree (rental_id)
+Foreign-key constraints:
+    "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+    "rentals_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+                       List of relations
++--------+---------------------------+----------+--------------+
+| Schema |           Name            |   Type   |    Owner     |
++--------+---------------------------+----------+--------------+
+| public | bikes                     | table    | freecodecamp |
+| public | bikes_bike_id_seq         | sequence | freecodecamp |
+| public | customers                 | table    | freecodecamp |
+| public | customers_customer_id_seq | sequence | freecodecamp |
+| public | rentals                   | table    | freecodecamp |
+| public | rentals_rental_id_seq     | sequence | freecodecamp |
++--------+---------------------------+----------+--------------+
+(6 rows)
+
+                                        Table "public.bikes"
++-----------+-----------------------+-----------+----------+----------------------------------------+
+|  Column   |         Type          | Collation | Nullable |                Default                 |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+| bike_id   | integer               |           | not null | nextval('bikes_bike_id_seq'::regclass) |
+| type      | character varying(50) |           | not null |                                        |
+| size      | integer               |           | not null |                                        |
+| available | boolean               |           | not null | true                                   |
++-----------+-----------------------+-----------+----------+----------------------------------------+
+Indexes:
+    "bikes_pkey" PRIMARY KEY, btree (bike_id)
+Referenced by:
+    TABLE "rentals" CONSTRAINT "rentals_bike_id_fkey" FOREIGN KEY (bike_id) REFERENCES bikes(bike_id)
+
+INSERT 0 1
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
++---------+----------+------+-----------+
+(1 row)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
++---------+----------+------+-----------+
+(4 rows)
+
+INSERT 0 2
+INSERT 0 3
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+UPDATE 9
+             
++---------+------+------+
+| bike_id | type | size |
++---------+------+------+
++---------+------+------+
+(0 rows)
+
+UPDATE 6
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | f         |
+|       9 | BMX      |   21 | f         |
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+UPDATE 9
+               
++-------------+-------+------+
+| customer_id | phone | name |
++-------------+-------+------+
++-------------+-------+------+
+(0 rows)
+
+                 
++-------------+----------+------+
+| customer_id |  phone   | name |
++-------------+----------+------+
+|           1 | 555-5555 | Me   |
++-------------+----------+------+
+(1 row)
+
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
++-----------+-------------+---------+-------------+---------------+
+(0 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         1 |           1 |       1 | 2024-06-01  |               |
++-----------+-------------+---------+-------------+---------------+
+(1 row)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       1 | Mountain |   27 | f         |
++---------+----------+------+-----------+
+(9 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | t         |
+|       3 | Mountain |   29 | t         |
+|       4 | Road     |   27 | t         |
+|       5 | Road     |   28 | t         |
+|       6 | Road     |   29 | t         |
+|       7 | BMX      |   19 | t         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+                 
++-------------+----------+------+
+| customer_id |  phone   | name |
++-------------+----------+------+
+|           1 | 555-5555 | Me   |
+|           2 | 000-0000 | Test |
++-------------+----------+------+
+(2 rows)
+
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         1 |           1 |       1 | 2024-06-01  |               |
+|         2 |           1 |       2 | 2024-06-01  |               |
+|         3 |           1 |       3 | 2024-06-01  |               |
+|         4 |           1 |       4 | 2024-06-01  |               |
+|         5 |           1 |       5 | 2024-06-01  |               |
+|         6 |           2 |       6 | 2024-06-01  |               |
+|         7 |           2 |       7 | 2024-06-01  |               |
++-----------+-------------+---------+-------------+---------------+
+(7 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
+|       1 | Mountain |   27 | f         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
++---------+----------+------+-----------+
+(9 rows)
+
+                                                 
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+| bike_id |   type   | size | available | rental_id | customer_id | date_rented | date_returned |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+|       1 | Mountain |   27 | f         |         1 |           1 | 2024-06-01  |               |
+|       2 | Mountain |   28 | f         |         2 |           1 | 2024-06-01  |               |
+|       3 | Mountain |   29 | f         |         3 |           1 | 2024-06-01  |               |
+|       4 | Road     |   27 | f         |         4 |           1 | 2024-06-01  |               |
+|       5 | Road     |   28 | f         |         5 |           1 | 2024-06-01  |               |
+|       6 | Road     |   29 | f         |         6 |           2 | 2024-06-01  |               |
+|       7 | BMX      |   19 | f         |         7 |           2 | 2024-06-01  |               |
+|       8 | BMX      |   20 | t         |           |             |             |               |
+|       9 | BMX      |   21 | t         |           |             |             |               |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+(9 rows)
+
+                                                 
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+| bike_id |   type   | size | available | rental_id | customer_id | date_rented | date_returned |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+|       1 | Mountain |   27 | f         |         1 |           1 | 2024-06-01  |               |
+|       2 | Mountain |   28 | f         |         2 |           1 | 2024-06-01  |               |
+|       3 | Mountain |   29 | f         |         3 |           1 | 2024-06-01  |               |
+|       4 | Road     |   27 | f         |         4 |           1 | 2024-06-01  |               |
+|       5 | Road     |   28 | f         |         5 |           1 | 2024-06-01  |               |
+|       6 | Road     |   29 | f         |         6 |           2 | 2024-06-01  |               |
+|       7 | BMX      |   19 | f         |         7 |           2 | 2024-06-01  |               |
++---------+----------+------+-----------+-----------+-------------+-------------+---------------+
+(7 rows)
+
+                                                          
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+| customer_id | bike_id |   type   | size | available | rental_id | date_rented | date_returned |  phone   | name |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+|           1 |       1 | Mountain |   27 | f         |         1 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       2 | Mountain |   28 | f         |         2 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       3 | Mountain |   29 | f         |         3 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       4 | Road     |   27 | f         |         4 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       5 | Road     |   28 | f         |         5 | 2024-06-01  |               | 555-5555 | Me   |
+|           2 |       6 | Road     |   29 | f         |         6 | 2024-06-01  |               | 000-0000 | Test |
+|           2 |       7 | BMX      |   19 | f         |         7 | 2024-06-01  |               | 000-0000 | Test |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+(7 rows)
+
+                                                          
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+| customer_id | bike_id |   type   | size | available | rental_id | date_rented | date_returned |  phone   | name |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+|           1 |       1 | Mountain |   27 | f         |         1 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       2 | Mountain |   28 | f         |         2 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       3 | Mountain |   29 | f         |         3 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       4 | Road     |   27 | f         |         4 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |       5 | Road     |   28 | f         |         5 | 2024-06-01  |               | 555-5555 | Me   |
++-------------+---------+----------+------+-----------+-----------+-------------+---------------+----------+------+
+(5 rows)
+
+               
++---------+------+----------+
+| bike_id | size |   type   |
++---------+------+----------+
+|       1 |   27 | Mountain |
+|       2 |   28 | Mountain |
+|       3 |   29 | Mountain |
+|       4 |   27 | Road     |
+|       5 |   28 | Road     |
++---------+------+----------+
+(5 rows)
+
+               
++---------+------+----------+
+| bike_id | size |   type   |
++---------+------+----------+
+|       1 |   27 | Mountain |
+|       2 |   28 | Mountain |
+|       3 |   29 | Mountain |
+|       4 |   27 | Road     |
+|       5 |   28 | Road     |
++---------+------+----------+
+(5 rows)
+
+                                           
++-------------+-----------+---------+-------------+---------------+----------+------+
+| customer_id | rental_id | bike_id | date_rented | date_returned |  phone   | name |
++-------------+-----------+---------+-------------+---------------+----------+------+
+|           1 |         1 |       1 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |         2 |       2 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |         3 |       3 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |         4 |       4 | 2024-06-01  |               | 555-5555 | Me   |
+|           1 |         5 |       5 | 2024-06-01  |               | 555-5555 | Me   |
+|           2 |         6 |       6 | 2024-06-01  |               | 000-0000 | Test |
+|           2 |         7 |       7 | 2024-06-01  |               | 000-0000 | Test |
++-------------+-----------+---------+-------------+---------------+----------+------+
+(7 rows)
+
+                                           
++-------------+-----------+---------+-------------+---------------+----------+------+
+| customer_id | rental_id | bike_id | date_rented | date_returned |  phone   | name |
++-------------+-----------+---------+-------------+---------------+----------+------+
+|           1 |         1 |       1 | 2024-06-01  |               | 555-5555 | Me   |
++-------------+-----------+---------+-------------+---------------+----------+------+
+(1 row)
+
+      
++---------+
+| bike_id |
++---------+
+|       1 |
++---------+
+(1 row)
+
+       
++-----------+
+| rental_id |
++-----------+
+|         1 |
++-----------+
+(1 row)
+
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         1 |           1 |       1 | 2024-06-01  |               |
+|         2 |           1 |       2 | 2024-06-01  |               |
+|         3 |           1 |       3 | 2024-06-01  |               |
+|         4 |           1 |       4 | 2024-06-01  |               |
+|         5 |           1 |       5 | 2024-06-01  |               |
+|         6 |           2 |       6 | 2024-06-01  |               |
+|         7 |           2 |       7 | 2024-06-01  |               |
++-----------+-------------+---------+-------------+---------------+
+(7 rows)
+
+                                  
++-----------+-------------+---------+-------------+---------------+
+| rental_id | customer_id | bike_id | date_rented | date_returned |
++-----------+-------------+---------+-------------+---------------+
+|         2 |           1 |       2 | 2024-06-01  |               |
+|         3 |           1 |       3 | 2024-06-01  |               |
+|         4 |           1 |       4 | 2024-06-01  |               |
+|         5 |           1 |       5 | 2024-06-01  |               |
+|         6 |           2 |       6 | 2024-06-01  |               |
+|         7 |           2 |       7 | 2024-06-01  |               |
+|         1 |           1 |       1 | 2024-06-01  | 2024-06-01    |
++-----------+-------------+---------+-------------+---------------+
+(7 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       1 | Mountain |   27 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
+                     
++---------+----------+------+-----------+
+| bike_id |   type   | size | available |
++---------+----------+------+-----------+
+|       1 | Mountain |   27 | t         |
+|       2 | Mountain |   28 | f         |
+|       3 | Mountain |   29 | f         |
+|       4 | Road     |   27 | f         |
+|       5 | Road     |   28 | f         |
+|       6 | Road     |   29 | f         |
+|       7 | BMX      |   19 | f         |
+|       8 | BMX      |   20 | t         |
+|       9 | BMX      |   21 | t         |
++---------+----------+------+-----------+
+(9 rows)
+
