@@ -1,0 +1,1 @@
+01-apple_web Stack: React, vite, tailwindCSS, gsap, three
