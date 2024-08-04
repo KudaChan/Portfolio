@@ -6,6 +6,8 @@ import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 
+import * as Sentry from '@sentry/react';
+
 const App = () => {
 
   return (
@@ -20,5 +22,10 @@ const App = () => {
     </main>
   )
 }
+const AppWithSentry = () => (
+  <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+    <App />
+  </Sentry.ErrorBoundary>
+);
 
-export default App;
+export default AppWithSentry;
