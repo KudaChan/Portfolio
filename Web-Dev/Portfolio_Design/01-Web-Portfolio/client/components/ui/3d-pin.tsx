@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 export const PinContainer = ({
     children,
@@ -29,14 +28,13 @@ export const PinContainer = ({
     };
 
     return (
-        <Link
+        <div
             className={cn(
-                "relative group/pin z-50  cursor-pointer",
+                "relative group/pin z-50 cursor-pointer",
                 containerClassName
             )}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            href={href || "/"}
         >
             <div
                 style={{
@@ -55,7 +53,7 @@ export const PinContainer = ({
                 </div>
             </div>
             <PinPerspective title={title} href={href} />
-        </Link>
+        </div>
     );
 };
 
@@ -78,7 +76,6 @@ export const PinPerspective = ({
                         <span className="relative z-20 text-white text-xs font-bold inline-block py-0.5">
                             {title}
                         </span>
-
                         <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
                     </a>
                 </div>
