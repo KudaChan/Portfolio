@@ -1,4 +1,5 @@
 export const navItems = [
+    { name: 'Home', link: '#home' },
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
     { name: "Testimonials", link: "#testimonials" },
@@ -169,15 +170,21 @@ export const workExperience = [
 export const socialMedia = [
     {
         id: 1,
+        name: "GitHub",
         img: "/git.svg",
+        link: "https://github.com/KudaChan"
     },
     {
         id: 2,
-        img: "/twit.svg",
+        name: "x",
+        img: "/x.svg",
+        link: "https://x.com/lk_kashyap05",
     },
     {
         id: 3,
+        name: "linkedIn",
         img: "/link.svg",
+        link: "https://www.linkedin.com/in/chandan-kumarn-972b54224/",
     },
 ];
 
